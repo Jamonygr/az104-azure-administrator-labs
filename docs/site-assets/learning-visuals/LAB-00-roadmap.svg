@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1607" viewBox="0 0 640 1607" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-00">
+  <title id="roadmap-title">LAB-00 learning roadmap: Safe Azure lab bootstrap</title>
+  <desc id="roadmap-desc">Safe Azure lab bootstrap. Follow five checkpoints in lesson order. Task 1, LAB00-CP01: Confirm the local Azure CLI, PowerShell, Bicep, AzCopy, Python, and Node toolchain. Task 2, LAB00-CP02: Sign in deliberately and confirm tenant, subscription, and cloud context. Task 3, LAB00-CP03: Create a safe run ID, deterministic names, tags, and a local state boundary. Task 4, LAB00-CP04: Preview cost gates, ownership checks, cleanup, and residual queries. Task 5, LAB00-CP05: Run the blocking readiness report and interpret every result. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;foundation&quot;,&quot;labId&quot;:&quot;LAB-00&quot;,&quot;metadataSource&quot;:&quot;labs/00-safe-bootstrap/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/00-safe-bootstrap/README.md&quot;,&quot;sourceSha256&quot;:&quot;3bcd8ac03059c2e24b97841f943eb7dd4c166dcf1c555db02cac60a22db0b0ce&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;PowerShell, Azure CLI, Bicep through Azure CLI, AzCopy, Python, and Node all return versions from the intended PATH.&quot;,&quot;id&quot;:&quot;LAB00-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;FD-TOOLS-01&quot;],&quot;purpose&quot;:&quot;Inventory every executable used by later labs and record its version without installing or changing software.&quot;,&quot;title&quot;:&quot;Confirm the local Azure CLI, PowerShell, Bicep, AzCopy, Python, and Node toolchain&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;Exactly one active default context matches the supplied subscription and reports AzureCloud.&quot;,&quot;id&quot;:&quot;LAB00-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;FD-CONTEXT-01&quot;],&quot;purpose&quot;:&quot;Compare the active Azure CLI context with the explicitly supplied sandbox subscription before any later mutation.&quot;,&quot;title&quot;:&quot;Sign in deliberately and confirm tenant, subscription, and cloud context&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The name and tags contain the run ID, and `.state/&lt;run-id&gt;/run.json` already exists outside version control.&quot;,&quot;id&quot;:&quot;LAB00-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;FD-SAFETY-01&quot;],&quot;purpose&quot;:&quot;Derive predictable names and ownership tags, then verify that the ignored manifest uniquely identifies this run.&quot;,&quot;title&quot;:&quot;Create a safe run ID, deterministic names, tags, and a local state boundary&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The region exists, required providers are observable, and no Azure resource is falsely claimed by this non-mutating bootstrap run.&quot;,&quot;id&quot;:&quot;LAB00-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;FD-COST-01&quot;,&quot;FD-CLEANUP-01&quot;],&quot;purpose&quot;:&quot;Verify region and provider readiness, inventory any matching lab resources, and review the exact residual query before deployment.&quot;,&quot;title&quot;:&quot;Preview cost gates, ownership checks, cleanup, and residual queries&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;Every required tool, Azure CLI sign-in, Bicep, extension, region, and Lab 00 prerequisite check passes.&quot;,&quot;id&quot;:&quot;LAB00-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;FD-TOOLS-01&quot;,&quot;FD-CONTEXT-01&quot;,&quot;FD-COST-01&quot;,&quot;FD-SAFETY-01&quot;,&quot;FD-CLEANUP-01&quot;],&quot;purpose&quot;:&quot;Run the repository readiness contract as one command and investigate any required check that does not pass.&quot;,&quot;title&quot;:&quot;Run the blocking readiness report and interpret every result&quot;}],&quot;title&quot;:&quot;Safe Azure lab bootstrap&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-00</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Safe Azure lab bootstrap</text>
+    <text x="24" y="147" class="hint">Foundation · 5 checkpoints</text>
+    <path d="M24 163H616" stroke="#2C405C"/>
+    <circle cx="42" cy="230" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="238" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB00-CP01">
+      <rect x="78" y="182" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="201" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="293" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="216" class="checkpoint" fill="#62D7FF">LAB00-CP01</text>
+    <g transform="translate(92 243)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="11" y="17" width="78" height="56" rx="8"/>
+      <path d="M23 33L34 42L23 51M43 52H59M34 84H66M50 73V84"/>
+      <circle cx="80" cy="77" r="14" fill="#12253A"/>
+      <path d="M75 77L79 81L86 73"/>
+    </g>
+      <text x="204" y="254" class="task-title">Confirm the local Azure CLI,</text>
+      <text x="204" y="282" class="task-title">PowerShell, Bicep, AzCopy,</text>
+      <text x="204" y="310" class="task-title">Python, and Node toolchain</text>
+      <text x="204" y="391" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 255V462" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="490" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="498" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB00-CP02">
+      <rect x="78" y="442" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="461" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="553" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="476" class="checkpoint" fill="#AB98FF">LAB00-CP02</text>
+    <g transform="translate(92 503)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M28 65H77C93 65 94 42 79 40C80 20 51 12 43 32C26 26 14 40 20 55C10 61 17 75 28 75"/>
+      <circle cx="52" cy="49" r="8"/><path d="M39 66V63C39 51 65 51 65 63V66M44 88H64M54 76V88"/>
+    </g>
+      <text x="204" y="514" class="task-title">Sign in deliberately and</text>
+      <text x="204" y="542" class="task-title">confirm tenant,</text>
+      <text x="204" y="570" class="task-title">subscription, and cloud</text>
+      <text x="204" y="598" class="task-title">context</text>
+      <text x="204" y="651" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 515V722" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="750" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="758" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB00-CP03">
+      <rect x="78" y="702" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="721" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="813" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="736" class="checkpoint" fill="#63E9D0">LAB00-CP03</text>
+    <g transform="translate(92 763)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M25 9H62L78 25V89H25ZM62 9V25H78"/>
+      <path d="M38 39H65M38 52H65M38 65H52M38 78H49"/>
+      <path d="M60 69L69 64L78 69V78L69 86L60 78Z" fill="#12253A"/>
+      <path d="M65 74L68 77L73 71"/>
+    </g>
+      <text x="204" y="774" class="task-title">Create a safe run ID,</text>
+      <text x="204" y="802" class="task-title">deterministic names, tags,</text>
+      <text x="204" y="830" class="task-title">and a local state boundary</text>
+      <text x="204" y="911" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 775V982" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1010" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1018" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB00-CP04">
+      <rect x="78" y="962" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="981" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1073" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="996" class="checkpoint" fill="#8CACFF">LAB00-CP04</text>
+    <g transform="translate(92 1023)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 65A37 37 0 0 1 87 65M18 62L25 57M29 38L34 45M50 29V38M73 38L67 45M83 60L75 57"/>
+      <path d="M50 65L70 42M16 78H84"/><circle cx="50" cy="65" r="6"/>
+      <circle cx="50" cy="88" r="7" fill="#12253A"/>
+    </g>
+      <text x="204" y="1034" class="task-title">Preview cost gates,</text>
+      <text x="204" y="1062" class="task-title">ownership checks, cleanup,</text>
+      <text x="204" y="1090" class="task-title">and residual queries</text>
+      <text x="204" y="1171" class="small">2 mapped objectives · lesson #task-4</text>
+    </g>
+    <path d="M42 1035V1242" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1270" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1278" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB00-CP05">
+      <rect x="78" y="1222" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1241" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1333" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1256" class="checkpoint" fill="#D3A3FF">LAB00-CP05</text>
+    <g transform="translate(92 1283)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 9H64L78 23V90H17ZM64 9V23H78M28 32H53M28 45H51M28 61L32 65L38 58M28 77L32 81L38 74"/>
+      <circle cx="66" cy="57" r="15" fill="#12253A"/><path d="M76 69L91 84M60 57L65 62L73 51"/>
+    </g>
+      <text x="204" y="1294" class="task-title">Run the blocking readiness</text>
+      <text x="204" y="1322" class="task-title">report and interpret every</text>
+      <text x="204" y="1350" class="task-title">result</text>
+      <text x="204" y="1431" class="small">5 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1483H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1512" r="7" fill="#AB98FF"/>
+    <text x="54" y="1518" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1552" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1581" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

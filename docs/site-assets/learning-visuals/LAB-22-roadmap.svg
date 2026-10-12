@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1642" viewBox="0 0 640 1642" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-22">
+  <title id="roadmap-title">LAB-22 learning roadmap: Collect and analyze Azure Monitor metrics, logs, and Insights</title>
+  <desc id="roadmap-desc">Collect and analyze Azure Monitor metrics, logs, and Insights. Follow five checkpoints in lesson order. Task 1, LAB22-CP01: Verify Log Analytics, diagnostic, and KQL prerequisites. Task 2, LAB22-CP02: Create the monitored storage account and workspace. Task 3, LAB22-CP03: Route resource metrics into Log Analytics. Task 4, LAB22-CP04: Generate a transaction and prove KQL ingestion. Task 5, LAB22-CP05: Reconcile diagnostic configuration and ingested telemetry. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;monitor-recovery&quot;,&quot;labId&quot;:&quot;LAB-22&quot;,&quot;metadataSource&quot;:&quot;labs/22-azure-monitor-logs-insights/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/22-azure-monitor-logs-insights/README.md&quot;,&quot;sourceSha256&quot;:&quot;fe1878fb13fffe730415c4f8fc4c0897ed44595a3a3c914b0c6b51732d481563&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;The workspace and diagnostic-setting APIs are available and the planned resource exposes a metric category that can be collected.&quot;,&quot;id&quot;:&quot;LAB22-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-01&quot;],&quot;purpose&quot;:&quot;Read the provider, region, SKU, feature, quota, and companion-tool signals needed for verify log analytics, diagnostic, and kql prerequisites, without changing Azure state.&quot;,&quot;title&quot;:&quot;Verify Log Analytics, diagnostic, and KQL prerequisites&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;The storage account and Log Analytics workspace IDs are immediately recorded in the run manifest.&quot;,&quot;id&quot;:&quot;LAB22-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-02&quot;],&quot;purpose&quot;:&quot;Provision and immediately inventory the exact run-owned resources needed to create the monitored storage account and workspace, so partial completion remains recoverable.&quot;,&quot;title&quot;:&quot;Create the monitored storage account and workspace&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The diagnostic setting targets the run-owned workspace and enables the supported metrics category for the storage resource.&quot;,&quot;id&quot;:&quot;LAB22-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-03&quot;],&quot;purpose&quot;:&quot;Configure and independently inspect the control-plane and data-path properties needed to route resource metrics into log analytics.&quot;,&quot;title&quot;:&quot;Route resource metrics into Log Analytics&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;A harmless storage data-plane operation is followed by a bounded query that finds at least one matching AzureMetrics row for the exact resource ID.&quot;,&quot;id&quot;:&quot;LAB22-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-05&quot;],&quot;purpose&quot;:&quot;Exercise the deterministic operational or denied path needed to generate a transaction and prove kql ingestion, then retain comparable before-and-after results.&quot;,&quot;title&quot;:&quot;Generate a transaction and prove KQL ingestion&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;The destination workspace ID, enabled category, deterministic transaction, and asserted KQL result form one traceable monitoring path.&quot;,&quot;id&quot;:&quot;LAB22-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-01&quot;,&quot;MR-MONITOR-02&quot;,&quot;MR-MONITOR-03&quot;,&quot;MR-MONITOR-05&quot;,&quot;MR-MONITOR-06&quot;],&quot;purpose&quot;:&quot;Reconcile live service properties, returned IDs, and dependency-aware removal needed to reconcile diagnostic configuration and ingested telemetry before handoff.&quot;,&quot;title&quot;:&quot;Reconcile diagnostic configuration and ingested telemetry&quot;}],&quot;title&quot;:&quot;Collect and analyze Azure Monitor metrics, logs, and Insights&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-22</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Collect and analyze Azure Monitor</text>
+    <text x="24" y="135" class="heading">metrics, logs, and Insights</text>
+    <text x="24" y="182" class="hint">Monitoring and recovery · 5 checkpoints</text>
+    <path d="M24 198H616" stroke="#2C405C"/>
+    <circle cx="42" cy="265" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="273" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB22-CP01">
+      <rect x="78" y="217" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="236" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="328" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="251" class="checkpoint" fill="#62D7FF">LAB22-CP01</text>
+    <g transform="translate(92 278)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="14" width="84" height="61" rx="7"/><path d="M18 52H31L39 35L50 61L62 41L68 52H82M50 75V88M32 88H68"/>
+    </g>
+      <text x="204" y="289" class="task-title">Verify Log Analytics,</text>
+      <text x="204" y="317" class="task-title">diagnostic, and KQL</text>
+      <text x="204" y="345" class="task-title">prerequisites</text>
+      <text x="204" y="426" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 290V497" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="525" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="533" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB22-CP02">
+      <rect x="78" y="477" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="496" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="588" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="511" class="checkpoint" fill="#AB98FF">LAB22-CP02</text>
+    <g transform="translate(92 538)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="50" cy="22" rx="35" ry="13"/><path d="M15 22V76C15 94 85 94 85 76V22M15 40C15 58 85 58 85 40M15 58C15 76 85 76 85 58"/>
+      <circle cx="70" cy="78" r="3" fill="currentColor"/>
+    </g>
+      <text x="204" y="549" class="task-title">Create the monitored storage</text>
+      <text x="204" y="577" class="task-title">account and workspace</text>
+      <text x="204" y="686" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 550V757" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="785" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="793" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB22-CP03">
+      <rect x="78" y="737" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="756" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="848" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="771" class="checkpoint" fill="#63E9D0">LAB22-CP03</text>
+    <g transform="translate(92 798)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 25L50 50L78 22M50 50L23 79M50 50L80 78"/>
+      <rect x="37" y="37" width="26" height="26" rx="7"/>
+      <rect x="10" y="10" width="27" height="27" rx="6"/>
+      <rect x="66" y="8" width="27" height="27" rx="6"/>
+      <rect x="9" y="67" width="27" height="27" rx="6"/>
+      <rect x="66" y="66" width="27" height="27" rx="6"/>
+    </g>
+      <text x="204" y="809" class="task-title">Route resource metrics into</text>
+      <text x="204" y="837" class="task-title">Log Analytics</text>
+      <text x="204" y="946" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 810V1017" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1045" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1053" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB22-CP04">
+      <rect x="78" y="997" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1016" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1108" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1031" class="checkpoint" fill="#8CACFF">LAB22-CP04</text>
+    <g transform="translate(92 1058)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="14" width="84" height="61" rx="7"/><path d="M18 52H31L39 35L50 61L62 41L68 52H82M50 75V88M32 88H68"/>
+    </g>
+      <text x="204" y="1069" class="task-title">Generate a transaction and</text>
+      <text x="204" y="1097" class="task-title">prove KQL ingestion</text>
+      <text x="204" y="1206" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1070V1277" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1305" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1313" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB22-CP05">
+      <rect x="78" y="1257" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1276" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1368" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1291" class="checkpoint" fill="#D3A3FF">LAB22-CP05</text>
+    <g transform="translate(92 1318)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="14" width="84" height="61" rx="7"/><path d="M18 52H31L39 35L50 61L62 41L68 52H82M50 75V88M32 88H68"/>
+    </g>
+      <text x="204" y="1329" class="task-title">Reconcile diagnostic</text>
+      <text x="204" y="1357" class="task-title">configuration and ingested</text>
+      <text x="204" y="1385" class="task-title">telemetry</text>
+      <text x="204" y="1466" class="small">5 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1518H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1547" r="7" fill="#AB98FF"/>
+    <text x="54" y="1553" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1587" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1616" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

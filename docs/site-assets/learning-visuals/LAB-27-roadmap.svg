@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1677" viewBox="0 0 640 1677" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-27">
+  <title id="roadmap-title">LAB-27 learning roadmap: Capstone — Operate, troubleshoot, back up, and recover an Azure workload</title>
+  <desc id="roadmap-desc">Capstone — Operate, troubleshoot, back up, and recover an Azure workload. Follow five checkpoints in lesson order. Task 1, LAB27-CP01: Verify operations and recovery prerequisites. Task 2, LAB27-CP02: Create the private workload and telemetry foundation. Task 3, LAB27-CP03: Generate telemetry and configure an actionable alert. Task 4, LAB27-CP04: Inject and repair a deterministic NSG outage. Task 5, LAB27-CP05: Back up, restore, and reconcile operational evidence. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;capstone&quot;,&quot;labId&quot;:&quot;LAB-27&quot;,&quot;metadataSource&quot;:&quot;labs/27-capstone-operate-recover/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/27-capstone-operate-recover/README.md&quot;,&quot;sourceSha256&quot;:&quot;f0ddf8d03cfa576c9e18a2e52560e2bda0ca4291d53141ce1a74d5f469ee890f&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;VM, Network Watcher, Monitor, Storage, and Recovery Services capabilities are available for the selected region and SKU.&quot;,&quot;id&quot;:&quot;LAB27-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-03&quot;],&quot;purpose&quot;:&quot;Read the provider, region, SKU, feature, quota, and companion-tool signals needed for verify operations and recovery prerequisites, without changing Azure state.&quot;,&quot;title&quot;:&quot;Verify operations and recovery prerequisites&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;The private VM, storage account, workspace, vault, and network-security boundary are recorded immediately after creation.&quot;,&quot;id&quot;:&quot;LAB27-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;IG-GOVERN-01&quot;],&quot;purpose&quot;:&quot;Provision and immediately inventory the exact run-owned resources needed to create the private workload and telemetry foundation, so partial completion remains recoverable.&quot;,&quot;title&quot;:&quot;Create the private workload and telemetry foundation&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;A deterministic storage transaction is routed to the workspace and the metric alert scopes the exact storage resource.&quot;,&quot;id&quot;:&quot;LAB27-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;IG-GOVERN-02&quot;],&quot;purpose&quot;:&quot;Configure and independently inspect the control-plane and data-path properties needed to generate telemetry and configure an actionable alert.&quot;,&quot;title&quot;:&quot;Generate telemetry and configure an actionable alert&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The deny rule produces the documented effective-security symptom, diagnosis identifies its priority, and repair restores the prior path.&quot;,&quot;id&quot;:&quot;LAB27-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;IG-GOVERN-04&quot;],&quot;purpose&quot;:&quot;Exercise the deterministic operational or denied path needed to inject and repair a deterministic nsg outage, then retain comparable before-and-after results.&quot;,&quot;title&quot;:&quot;Inject and repair a deterministic NSG outage&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;The backup and disk-restore jobs complete, telemetry remains queryable, effective networking is healthy, and cleanup honors soft-delete retention.&quot;,&quot;id&quot;:&quot;LAB27-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-03&quot;,&quot;IG-GOVERN-01&quot;,&quot;IG-GOVERN-02&quot;,&quot;IG-GOVERN-04&quot;,&quot;IG-GOVERN-06&quot;,&quot;NW-VNET-05&quot;,&quot;NW-SECURE-02&quot;,&quot;NW-DNSLB-03&quot;,&quot;MR-MONITOR-03&quot;,&quot;MR-MONITOR-04&quot;,&quot;MR-MONITOR-05&quot;,&quot;MR-MONITOR-06&quot;,&quot;MR-RECOVERY-04&quot;,&quot;MR-RECOVERY-06&quot;,&quot;MR-RECOVERY-07&quot;],&quot;purpose&quot;:&quot;Reconcile live service properties, returned IDs, and dependency-aware removal needed to back up, restore, and reconcile operational evidence before handoff.&quot;,&quot;title&quot;:&quot;Back up, restore, and reconcile operational evidence&quot;}],&quot;title&quot;:&quot;Capstone — Operate, troubleshoot, back up, and recover an Azure workload&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-27</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Capstone — Operate, troubleshoot,</text>
+    <text x="24" y="135" class="heading">back up, and recover an Azure</text>
+    <text x="24" y="170" class="heading">workload</text>
+    <text x="24" y="217" class="hint">Integrated capstone · 5 checkpoints</text>
+    <path d="M24 233H616" stroke="#2C405C"/>
+    <circle cx="42" cy="300" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="308" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB27-CP01">
+      <rect x="78" y="252" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="271" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="363" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="286" class="checkpoint" fill="#62D7FF">LAB27-CP01</text>
+    <g transform="translate(92 313)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 37A34 34 0 1 1 13 64M18 19V38H37"/>
+      <rect x="33" y="42" width="41" height="37" rx="7"/>
+      <path d="M42 42V29C42 14 66 14 66 29V42M44 59L52 67L65 53"/>
+    </g>
+      <text x="204" y="324" class="task-title">Verify operations and</text>
+      <text x="204" y="352" class="task-title">recovery prerequisites</text>
+      <text x="204" y="461" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 325V532" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="560" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="568" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB27-CP02">
+      <rect x="78" y="512" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="531" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="623" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="546" class="checkpoint" fill="#AB98FF">LAB27-CP02</text>
+    <g transform="translate(92 573)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="14" width="84" height="61" rx="7"/><path d="M18 52H31L39 35L50 61L62 41L68 52H82M50 75V88M32 88H68"/>
+    </g>
+      <text x="204" y="584" class="task-title">Create the private workload</text>
+      <text x="204" y="612" class="task-title">and telemetry foundation</text>
+      <text x="204" y="721" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 585V792" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="820" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="828" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB27-CP03">
+      <rect x="78" y="772" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="791" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="883" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="806" class="checkpoint" fill="#63E9D0">LAB27-CP03</text>
+    <g transform="translate(92 833)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="844" class="task-title">Generate telemetry and</text>
+      <text x="204" y="872" class="task-title">configure an actionable</text>
+      <text x="204" y="900" class="task-title">alert</text>
+      <text x="204" y="981" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 845V1052" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1080" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1088" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB27-CP04">
+      <rect x="78" y="1032" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1051" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1143" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1066" class="checkpoint" fill="#8CACFF">LAB27-CP04</text>
+    <g transform="translate(92 1093)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 25L50 50L78 22M50 50L23 79M50 50L80 78"/>
+      <rect x="37" y="37" width="26" height="26" rx="7"/>
+      <rect x="10" y="10" width="27" height="27" rx="6"/>
+      <rect x="66" y="8" width="27" height="27" rx="6"/>
+      <rect x="9" y="67" width="27" height="27" rx="6"/>
+      <rect x="66" y="66" width="27" height="27" rx="6"/>
+    </g>
+      <text x="204" y="1104" class="task-title">Inject and repair a</text>
+      <text x="204" y="1132" class="task-title">deterministic NSG outage</text>
+      <text x="204" y="1241" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1105V1312" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1340" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1348" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB27-CP05">
+      <rect x="78" y="1292" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1311" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1403" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1326" class="checkpoint" fill="#D3A3FF">LAB27-CP05</text>
+    <g transform="translate(92 1353)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 37A34 34 0 1 1 13 64M18 19V38H37"/>
+      <rect x="33" y="42" width="41" height="37" rx="7"/>
+      <path d="M42 42V29C42 14 66 14 66 29V42M44 59L52 67L65 53"/>
+    </g>
+      <text x="204" y="1364" class="task-title">Back up, restore, and</text>
+      <text x="204" y="1392" class="task-title">reconcile operational</text>
+      <text x="204" y="1420" class="task-title">evidence</text>
+      <text x="204" y="1501" class="small">15 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1553H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1582" r="7" fill="#AB98FF"/>
+    <text x="54" y="1588" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1622" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1651" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

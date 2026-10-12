@@ -107,6 +107,12 @@ body { font-family: var(--md-text-font); }
 .az104-teaching-visual { background: #091321; border: 0.05rem solid var(--az104-border); border-radius: var(--az104-radius); overflow: hidden; }
 .md-typeset .az104-teaching-visual figcaption { color: #c5d5ed; font-size: 0.63rem; font-style: normal; margin: 0; padding: 0.7rem; }
 .az104-teaching-visual figcaption a { color: #82d6ff; }
+.md-typeset .az104-learning-visual { display: block; margin: 1.4rem auto; max-width: 35rem; width: 100%; }
+.md-typeset .az104-learning-visual img { display: block; height: auto; max-height: 48rem; object-fit: contain; width: 100%; }
+.md-typeset .az104-learning-visual > a:focus-visible { outline: 0.15rem solid #36d9ee; outline-offset: -0.2rem; }
+.az104-visual-card figure { width: 100%; }
+.az104-visual-card figure > a { display: block; }
+.az104-visual-card figure img { aspect-ratio: auto; height: 12rem; object-fit: contain; padding: 0.5rem; }
 .az104-progress-card, .az104-quiz-question, .az104-quiz-results { background: var(--az104-surface); border: 0.05rem solid var(--az104-border); border-radius: var(--az104-radius); box-shadow: var(--az104-shadow); }
 .az104-progress-actions button, .az104-progress-actions .az104-file-button, .az104-quiz-controls button, .az104-quiz-actions button { background: #085fca; border: 0.05rem solid #568fe0; border-radius: 0.35rem; color: #fff; font: inherit; font-size: 0.7rem; font-weight: 650; min-height: 2.25rem; padding: 0.4rem 0.8rem; cursor: pointer; }
 .az104-quiz-controls { align-items: end; background: var(--az104-surface); border: 0.05rem solid var(--az104-border); border-radius: var(--az104-radius); display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 1rem 0; padding: 1rem; }

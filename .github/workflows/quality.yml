@@ -33,6 +33,12 @@ jobs:
       - name: Confirm Mermaid sources and accessible SVGs are synchronized
         run: python tools/render_diagrams.py --check
 
+      - name: Validate supplementary learning visuals
+        run: |
+          python tools/render_learning_visuals.py --check
+          python tools/render_setup_visuals.py --check
+          python -m unittest tools.tests.test_learning_visuals -v
+
       - name: Confirm generated indexes are current
         run: python tools/generate_indexes.py --check
 

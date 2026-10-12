@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1642" viewBox="0 0 640 1642" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-03">
+  <title id="roadmap-title">LAB-03 learning roadmap: Assign and interpret Azure RBAC at multiple scopes</title>
+  <desc id="roadmap-desc">Assign and interpret Azure RBAC at multiple scopes. Follow five checkpoints in lesson order. Task 1, LAB03-CP01: Resolve the principal and inspect existing scope inheritance. Task 2, LAB03-CP02: Assign Reader at resource-group scope and persist the assignment ID. Task 3, LAB03-CP03: Add a resource-scoped blob data role. Task 4, LAB03-CP04: Inject, detect, and remove an over-privileged assignment. Task 5, LAB03-CP05: Build the final direct-versus-inherited access matrix. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;identity-governance&quot;,&quot;labId&quot;:&quot;LAB-03&quot;,&quot;metadataSource&quot;:&quot;labs/03-azure-rbac-scopes/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/03-azure-rbac-scopes/README.md&quot;,&quot;sourceSha256&quot;:&quot;59fe645398da481dc263977026e2cf5960f263363456d952eb4739cd1db685d5&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;The exact principal resolves, Reader exposes control-plane read actions and no blob dataActions, and inherited baseline assignments are visible.&quot;,&quot;id&quot;:&quot;LAB03-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-01&quot;],&quot;purpose&quot;:&quot;Verify the exact principal object, built-in roles, and pre-existing assignments before creating new access.&quot;,&quot;title&quot;:&quot;Resolve the principal and inspect existing scope inheritance&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;One direct Reader assignment exists at the exact resource-group scope and its ID is durable in run.json.&quot;,&quot;id&quot;:&quot;LAB03-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-02&quot;],&quot;purpose&quot;:&quot;Create one least-privilege control-plane assignment at the workload lifecycle boundary.&quot;,&quot;title&quot;:&quot;Assign Reader at resource-group scope and persist the assignment ID&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The storage account inherits Reader and has one direct Storage Blob Data Reader assignment for the principal.&quot;,&quot;id&quot;:&quot;LAB03-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-03&quot;],&quot;purpose&quot;:&quot;Create a tagged storage account and assign Storage Blob Data Reader only at that child resource.&quot;,&quot;title&quot;:&quot;Add a resource-scoped blob data role&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The Contributor fault is observed once, removed by assignment ID, and retained only as deleted lifecycle evidence.&quot;,&quot;id&quot;:&quot;LAB03-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-01&quot;],&quot;purpose&quot;:&quot;Create a temporary Contributor assignment, persist it before inspection, detect it by exact scope, and delete it by exact ID.&quot;,&quot;title&quot;:&quot;Inject, detect, and remove an over-privileged assignment&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;The final matrix shows only Reader inherited from the resource group and Storage Blob Data Reader direct at storage.&quot;,&quot;id&quot;:&quot;LAB03-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;IG-ACCESS-01&quot;,&quot;IG-ACCESS-02&quot;,&quot;IG-ACCESS-03&quot;],&quot;purpose&quot;:&quot;Correlate role definitions, assignment scopes, inheritance, principal ID, and rollback IDs into one least-privilege record.&quot;,&quot;title&quot;:&quot;Build the final direct-versus-inherited access matrix&quot;}],&quot;title&quot;:&quot;Assign and interpret Azure RBAC at multiple scopes&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-03</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Assign and interpret Azure RBAC</text>
+    <text x="24" y="135" class="heading">at multiple scopes</text>
+    <text x="24" y="182" class="hint">Identity and governance · 5 checkpoints</text>
+    <path d="M24 198H616" stroke="#2C405C"/>
+    <circle cx="42" cy="265" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="273" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB03-CP01">
+      <rect x="78" y="217" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="236" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="328" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="251" class="checkpoint" fill="#62D7FF">LAB03-CP01</text>
+    <g transform="translate(92 278)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M28 65H77C93 65 94 42 79 40C80 20 51 12 43 32C26 26 14 40 20 55C10 61 17 75 28 75"/>
+      <circle cx="52" cy="49" r="8"/><path d="M39 66V63C39 51 65 51 65 63V66M44 88H64M54 76V88"/>
+    </g>
+      <text x="204" y="289" class="task-title">Resolve the principal and</text>
+      <text x="204" y="317" class="task-title">inspect existing scope</text>
+      <text x="204" y="345" class="task-title">inheritance</text>
+      <text x="204" y="426" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 290V497" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="525" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="533" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB03-CP02">
+      <rect x="78" y="477" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="496" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="588" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="511" class="checkpoint" fill="#AB98FF">LAB03-CP02</text>
+    <g transform="translate(92 538)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="35" cy="38" r="23"/><circle cx="35" cy="38" r="8"/>
+      <path d="M52 54L84 86L94 76L84 66L78 72L71 65L77 59L68 50Z"/>
+    </g>
+      <text x="204" y="549" class="task-title">Assign Reader at</text>
+      <text x="204" y="577" class="task-title">resource-group scope and</text>
+      <text x="204" y="605" class="task-title">persist the assignment ID</text>
+      <text x="204" y="686" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 550V757" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="785" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="793" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB03-CP03">
+      <rect x="78" y="737" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="756" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="848" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="771" class="checkpoint" fill="#63E9D0">LAB03-CP03</text>
+    <g transform="translate(92 798)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="35" cy="38" r="23"/><circle cx="35" cy="38" r="8"/>
+      <path d="M52 54L84 86L94 76L84 66L78 72L71 65L77 59L68 50Z"/>
+    </g>
+      <text x="204" y="809" class="task-title">Add a resource-scoped blob</text>
+      <text x="204" y="837" class="task-title">data role</text>
+      <text x="204" y="946" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 810V1017" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1045" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1053" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB03-CP04">
+      <rect x="78" y="997" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1016" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1108" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1031" class="checkpoint" fill="#8CACFF">LAB03-CP04</text>
+    <g transform="translate(92 1058)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 9H64L78 23V90H17ZM64 9V23H78M28 32H53M28 45H51M28 61L32 65L38 58M28 77L32 81L38 74"/>
+      <circle cx="66" cy="57" r="15" fill="#12253A"/><path d="M76 69L91 84M60 57L65 62L73 51"/>
+    </g>
+      <text x="204" y="1069" class="task-title">Inject, detect, and remove</text>
+      <text x="204" y="1097" class="task-title">an over-privileged</text>
+      <text x="204" y="1125" class="task-title">assignment</text>
+      <text x="204" y="1206" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1070V1277" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1305" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1313" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB03-CP05">
+      <rect x="78" y="1257" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1276" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1368" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1291" class="checkpoint" fill="#D3A3FF">LAB03-CP05</text>
+    <g transform="translate(92 1318)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="35" cy="38" r="23"/><circle cx="35" cy="38" r="8"/>
+      <path d="M52 54L84 86L94 76L84 66L78 72L71 65L77 59L68 50Z"/>
+    </g>
+      <text x="204" y="1329" class="task-title">Build the final</text>
+      <text x="204" y="1357" class="task-title">direct-versus-inherited</text>
+      <text x="204" y="1385" class="task-title">access matrix</text>
+      <text x="204" y="1466" class="small">3 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1518H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1547" r="7" fill="#AB98FF"/>
+    <text x="54" y="1553" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1587" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1616" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

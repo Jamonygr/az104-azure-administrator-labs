@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1642" viewBox="0 0 640 1642" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-15">
+  <title id="roadmap-title">LAB-15 learning roadmap: Scale App Service and operate deployment slots</title>
+  <desc id="roadmap-desc">Scale App Service and operate deployment slots. Follow five checkpoints in lesson order. Task 1, LAB15-CP01: Verify App Service plan and slot capacity. Task 2, LAB15-CP02: Create the production web app and deployment slot. Task 3, LAB15-CP03: Configure scale-out and slot-sticky settings. Task 4, LAB15-CP04: Swap staging into production with a recoverable path. Task 5, LAB15-CP05: Reconcile worker count, slot state, and configuration scope. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;compute&quot;,&quot;labId&quot;:&quot;LAB-15&quot;,&quot;metadataSource&quot;:&quot;labs/15-app-service-scale-slots/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/15-app-service-scale-slots/README.md&quot;,&quot;sourceSha256&quot;:&quot;b21b7a649cd1baab40206ffebb9da9e1fbd765194303e38c0f1253383cef38ab&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;The selected region supports the documented Linux plan SKU and the subscription can enumerate web-app deployment slots.&quot;,&quot;id&quot;:&quot;LAB15-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;CP-APP-01&quot;],&quot;purpose&quot;:&quot;Read the provider, region, SKU, feature, quota, and companion-tool signals needed for verify app service plan and slot capacity, without changing Azure state.&quot;,&quot;title&quot;:&quot;Verify App Service plan and slot capacity&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;The production app and staging slot share the run-owned plan and each endpoint reports a healthy hostname.&quot;,&quot;id&quot;:&quot;LAB15-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;CP-APP-02&quot;],&quot;purpose&quot;:&quot;Provision and immediately inventory the exact run-owned resources needed to create the production web app and deployment slot, so partial completion remains recoverable.&quot;,&quot;title&quot;:&quot;Create the production web app and deployment slot&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The plan worker count matches the target and the designated application setting remains sticky to the slot.&quot;,&quot;id&quot;:&quot;LAB15-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;CP-APP-03&quot;],&quot;purpose&quot;:&quot;Configure and independently inspect the control-plane and data-path properties needed to configure scale-out and slot-sticky settings.&quot;,&quot;title&quot;:&quot;Configure scale-out and slot-sticky settings&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The swap completes, both slots remain provisioned, and the sticky value stays with its intended slot.&quot;,&quot;id&quot;:&quot;LAB15-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;CP-APP-08&quot;],&quot;purpose&quot;:&quot;Exercise the deterministic operational or denied path needed to swap staging into production with a recoverable path, then retain comparable before-and-after results.&quot;,&quot;title&quot;:&quot;Swap staging into production with a recoverable path&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;Plan capacity, production/slot hostnames, and slotConfigNames prove the intended scaled release boundary.&quot;,&quot;id&quot;:&quot;LAB15-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;CP-APP-01&quot;,&quot;CP-APP-02&quot;,&quot;CP-APP-03&quot;,&quot;CP-APP-08&quot;],&quot;purpose&quot;:&quot;Reconcile live service properties, returned IDs, and dependency-aware removal needed to reconcile worker count, slot state, and configuration scope before handoff.&quot;,&quot;title&quot;:&quot;Reconcile worker count, slot state, and configuration scope&quot;}],&quot;title&quot;:&quot;Scale App Service and operate deployment slots&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-15</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Scale App Service and operate</text>
+    <text x="24" y="135" class="heading">deployment slots</text>
+    <text x="24" y="182" class="hint">Compute · 5 checkpoints</text>
+    <path d="M24 198H616" stroke="#2C405C"/>
+    <circle cx="42" cy="265" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="273" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB15-CP01">
+      <rect x="78" y="217" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="236" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="328" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="251" class="checkpoint" fill="#62D7FF">LAB15-CP01</text>
+    <g transform="translate(92 278)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M50 8L84 28V71L50 92L16 71V28ZM16 28L50 49L84 28M50 49V92M34 18L68 38V58"/>
+      <path d="M26 59L40 67M26 70L40 78"/>
+    </g>
+      <text x="204" y="289" class="task-title">Verify App Service plan and</text>
+      <text x="204" y="317" class="task-title">slot capacity</text>
+      <text x="204" y="426" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 290V497" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="525" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="533" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB15-CP02">
+      <rect x="78" y="477" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="496" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="588" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="511" class="checkpoint" fill="#AB98FF">LAB15-CP02</text>
+    <g transform="translate(92 538)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="15" width="86" height="67" rx="8"/><path d="M7 33H93M33 51L24 59L33 67M65 51L74 59L65 67M55 48L44 71"/>
+      <circle cx="20" cy="24" r="2" fill="currentColor"/><circle cx="30" cy="24" r="2" fill="currentColor"/>
+      <circle cx="40" cy="24" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="549" class="task-title">Create the production web</text>
+      <text x="204" y="577" class="task-title">app and deployment slot</text>
+      <text x="204" y="686" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 550V757" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="785" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="793" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB15-CP03">
+      <rect x="78" y="737" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="756" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="848" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="771" class="checkpoint" fill="#63E9D0">LAB15-CP03</text>
+    <g transform="translate(92 798)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="55" width="21" height="31" rx="4"/><rect x="39" y="39" width="21" height="47" rx="4"/>
+      <rect x="69" y="21" width="21" height="65" rx="4"/><path d="M12 37L84 8M71 5L85 8L81 23"/>
+    </g>
+      <text x="204" y="809" class="task-title">Configure scale-out and</text>
+      <text x="204" y="837" class="task-title">slot-sticky settings</text>
+      <text x="204" y="946" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 810V1017" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1045" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1053" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB15-CP04">
+      <rect x="78" y="997" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1016" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1108" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1031" class="checkpoint" fill="#8CACFF">LAB15-CP04</text>
+    <g transform="translate(92 1058)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 37A34 34 0 1 1 13 64M18 19V38H37"/>
+      <rect x="33" y="42" width="41" height="37" rx="7"/>
+      <path d="M42 42V29C42 14 66 14 66 29V42M44 59L52 67L65 53"/>
+    </g>
+      <text x="204" y="1069" class="task-title">Swap staging into production</text>
+      <text x="204" y="1097" class="task-title">with a recoverable path</text>
+      <text x="204" y="1206" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1070V1277" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1305" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1313" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB15-CP05">
+      <rect x="78" y="1257" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1276" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1368" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1291" class="checkpoint" fill="#D3A3FF">LAB15-CP05</text>
+    <g transform="translate(92 1318)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="55" width="21" height="31" rx="4"/><rect x="39" y="39" width="21" height="47" rx="4"/>
+      <rect x="69" y="21" width="21" height="65" rx="4"/><path d="M12 37L84 8M71 5L85 8L81 23"/>
+    </g>
+      <text x="204" y="1329" class="task-title">Reconcile worker count, slot</text>
+      <text x="204" y="1357" class="task-title">state, and configuration</text>
+      <text x="204" y="1385" class="task-title">scope</text>
+      <text x="204" y="1466" class="small">4 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1518H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1547" r="7" fill="#AB98FF"/>
+    <text x="54" y="1553" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1587" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1616" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

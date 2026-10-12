@@ -4,6 +4,25 @@
 
 The AZ-104 website cover was created with the built-in imagegen tool on 2026-10-12. No CLI/API fallback was used. The original image is stored in `docs/site-assets/illustrations/az104-cloud-cover.png` (1902 × 827). The scene is a symbolic teaching illustration rather than a deployed resource topology. Domain and architecture SVGs are original repository-native artwork. Their service icons are symbolic forms drawn in code, not Microsoft logos. The 28 architecture visuals preserve all 259 source nodes, 262 directed connections, and 65 connection labels.
 
+## Supplementary teaching visuals
+
+Thirty-six additional original SVGs live in `docs/site-assets/learning-visuals`.
+The 28 lab roadmaps use the exact five task titles, checkpoint IDs, and objective
+mappings from each lab's authoritative metadata and instructions. Their arrows
+show the exercise sequence, not a resource topology or network traffic.
+
+Five setup illustrations explain Lab 00's toolchain, Azure context, ownership
+record, cost and cleanup rehearsal, and readiness report. Three shared guides
+illustrate safe execution, evidence-led troubleshooting, and scoped cleanup.
+They preserve preview defaults, explicit execution gates, ownership refusal,
+and retained or soft-deleted resource reporting. They do not deploy resources.
+
+The two native renderers, `tools/render_learning_visuals.py` and
+`tools/render_setup_visuals.py`, reproduce this artwork deterministically and
+support `--check`. Every visual includes an accessible name and description;
+the website adds alternative text, captions, and full-size links. No additional
+raster artwork or image-generation service was used for these SVGs.
+
 ## Final cover prompt
 
 ```text

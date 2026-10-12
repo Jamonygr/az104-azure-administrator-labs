@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1677" viewBox="0 0 640 1677" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-23">
+  <title id="roadmap-title">LAB-23 learning roadmap: Build Azure Monitor alerts, action groups, and processing rules</title>
+  <desc id="roadmap-desc">Build Azure Monitor alerts, action groups, and processing rules. Follow five checkpoints in lesson order. Task 1, LAB23-CP01: Verify metric, action-group, and processing-rule support. Task 2, LAB23-CP02: Create the monitored target and action group. Task 3, LAB23-CP03: Create a scoped metric alert. Task 4, LAB23-CP04: Apply a bounded alert-processing suppression rule. Task 5, LAB23-CP05: Reconcile alert scope, criteria, actions, and suppression. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;monitor-recovery&quot;,&quot;labId&quot;:&quot;LAB-23&quot;,&quot;metadataSource&quot;:&quot;labs/23-monitor-alerts-actions/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/23-monitor-alerts-actions/README.md&quot;,&quot;sourceSha256&quot;:&quot;67ea22c991c6cd1ec36c12f2497f556bb8699d070ef87331bc09360afc0995ec&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;The storage metric namespace exposes Transactions and the subscription can enumerate action groups and alert-processing rules.&quot;,&quot;id&quot;:&quot;LAB23-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-04&quot;],&quot;purpose&quot;:&quot;Read the provider, region, SKU, feature, quota, and companion-tool signals needed for verify metric, action-group, and processing-rule support, without changing Azure state.&quot;,&quot;title&quot;:&quot;Verify metric, action-group, and processing-rule support&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;The storage target and disabled test notification receiver are run-owned, with no unsolicited message sent during setup.&quot;,&quot;id&quot;:&quot;LAB23-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-04&quot;],&quot;purpose&quot;:&quot;Provision and immediately inventory the exact run-owned resources needed to create the monitored target and action group, so partial completion remains recoverable.&quot;,&quot;title&quot;:&quot;Create the monitored target and action group&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The alert rule targets only the run-owned storage account, uses the intended aggregation/threshold, and references the exact action-group ID.&quot;,&quot;id&quot;:&quot;LAB23-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-04&quot;],&quot;purpose&quot;:&quot;Configure and independently inspect the control-plane and data-path properties needed to create a scoped metric alert.&quot;,&quot;title&quot;:&quot;Create a scoped metric alert&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The processing rule is enabled only for the declared scope and schedule, without muting unrelated subscription alerts.&quot;,&quot;id&quot;:&quot;LAB23-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-04&quot;],&quot;purpose&quot;:&quot;Exercise the deterministic operational or denied path needed to apply a bounded alert-processing suppression rule, then retain comparable before-and-after results.&quot;,&quot;title&quot;:&quot;Apply a bounded alert-processing suppression rule&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;Alert criteria, target ID, action-group binding, and processing-rule scope all resolve to the run-owned resources.&quot;,&quot;id&quot;:&quot;LAB23-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;MR-MONITOR-04&quot;],&quot;purpose&quot;:&quot;Reconcile live service properties, returned IDs, and dependency-aware removal needed to reconcile alert scope, criteria, actions, and suppression before handoff.&quot;,&quot;title&quot;:&quot;Reconcile alert scope, criteria, actions, and suppression&quot;}],&quot;title&quot;:&quot;Build Azure Monitor alerts, action groups, and processing rules&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-23</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Build Azure Monitor alerts,</text>
+    <text x="24" y="135" class="heading">action groups, and processing</text>
+    <text x="24" y="170" class="heading">rules</text>
+    <text x="24" y="217" class="hint">Monitoring and recovery · 5 checkpoints</text>
+    <path d="M24 233H616" stroke="#2C405C"/>
+    <circle cx="42" cy="300" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="308" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB23-CP01">
+      <rect x="78" y="252" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="271" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="363" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="286" class="checkpoint" fill="#62D7FF">LAB23-CP01</text>
+    <g transform="translate(92 313)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="324" class="task-title">Verify metric, action-group,</text>
+      <text x="204" y="352" class="task-title">and processing-rule support</text>
+      <text x="204" y="461" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 325V532" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="560" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="568" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB23-CP02">
+      <rect x="78" y="512" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="531" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="623" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="546" class="checkpoint" fill="#AB98FF">LAB23-CP02</text>
+    <g transform="translate(92 573)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="584" class="task-title">Create the monitored target</text>
+      <text x="204" y="612" class="task-title">and action group</text>
+      <text x="204" y="721" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 585V792" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="820" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="828" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB23-CP03">
+      <rect x="78" y="772" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="791" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="883" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="806" class="checkpoint" fill="#63E9D0">LAB23-CP03</text>
+    <g transform="translate(92 833)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="844" class="task-title">Create a scoped metric alert</text>
+      <text x="204" y="981" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 845V1052" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1080" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1088" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB23-CP04">
+      <rect x="78" y="1032" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1051" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1143" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1066" class="checkpoint" fill="#8CACFF">LAB23-CP04</text>
+    <g transform="translate(92 1093)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="1104" class="task-title">Apply a bounded</text>
+      <text x="204" y="1132" class="task-title">alert-processing suppression</text>
+      <text x="204" y="1160" class="task-title">rule</text>
+      <text x="204" y="1241" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1105V1312" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1340" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1348" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB23-CP05">
+      <rect x="78" y="1292" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1311" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1403" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1326" class="checkpoint" fill="#D3A3FF">LAB23-CP05</text>
+    <g transform="translate(92 1353)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 61V40C26 12 74 12 74 40V61L84 73H16ZM41 85C44 94 56 94 59 85M50 8V15"/>
+      <path d="M11 24L5 18M89 24L95 18M50 36V49"/><circle cx="50" cy="59" r="2" fill="currentColor"/>
+    </g>
+      <text x="204" y="1364" class="task-title">Reconcile alert scope,</text>
+      <text x="204" y="1392" class="task-title">criteria, actions, and</text>
+      <text x="204" y="1420" class="task-title">suppression</text>
+      <text x="204" y="1501" class="small">1 mapped objective · lesson #task-5</text>
+    </g>
+    <path d="M24 1553H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1582" r="7" fill="#AB98FF"/>
+    <text x="54" y="1588" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1622" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1651" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

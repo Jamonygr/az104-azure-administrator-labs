@@ -28,6 +28,17 @@ SITE_ASSETS = REPO_ROOT / "docs" / "site-assets"
 CATALOG_PATH = REPO_ROOT / "labs" / "catalog.yml"
 BLUEPRINT_PATH = REPO_ROOT / "curriculum" / "blueprint.yml"
 
+LEARNING_GUIDES = (
+    ("setup-tools", "Your Azure toolchain", "PowerShell hosts Azure CLI, Bicep, AzCopy, Python, and Node; confirm every tool resolves correctly.", "#task-1"),
+    ("setup-context", "Confirm the right context", "Compare cloud, tenant, and subscription with the intended context before making changes.", "#task-2"),
+    ("setup-ownership", "Define your run boundary", "A unique run ID, deterministic names, tags, and an ignored state record identify the lab run.", "#task-3"),
+    ("setup-cost-cleanup", "Review cost and cleanup", "Preview cost gates and ownership checks, then plan the residual-resource audit.", "#task-4"),
+    ("setup-readiness", "Prove readiness", "Read every blocking readiness result and resolve failures before continuing.", "#task-5"),
+    ("safe-run-loop", "Follow a safe run", "Complete read-only checks, review the preview, pass the explicit execution gates, and validate the result.", "#read-only-preflight"),
+    ("troubleshoot-loop", "Diagnose with evidence", "Observe the failure, inspect context and prerequisites, query the current state, repair the cause, and revalidate.", "#troubleshooting"),
+    ("cleanup-boundary", "Clean up within ownership", "Verify run ownership before removal; report any deliberately retained or soft-deleted items separately.", "#cleanup-and-residual-verification"),
+)
+
 EXAM_DOMAINS = {
     "identity-governance": ("IG", "identity-governance", "Govern with confidence", "Manage identities, access, policy, and costs.", "Identity shield with users and governance controls"),
     "storage": ("ST", "storage", "Protect your data", "Secure storage, move data, and manage lifecycle.", "Storage cylinders and protected data connections"),
@@ -81,6 +92,9 @@ class AccessibilityParser(HTMLParser):
         self.skip_target = None
         self.document_title = ""
         self.in_document_title = False
+        self.learning_figures: list[dict[str, Any]] = []
+        self.active_learning_figure: dict[str, Any] | None = None
+        self.in_learning_caption = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
@@ -94,7 +108,7 @@ class AccessibilityParser(HTMLParser):
             self.main_count += 1
         elif tag == "h1":
             self.h1_count += 1
-        elif tag == "img" and "alt" not in attributes:
+        elif tag == "img" and not attributes.get("alt", "").strip():
             self.images_without_alt += 1
         elif tag == "pre":
             self.code_blocks += 1
@@ -103,6 +117,16 @@ class AccessibilityParser(HTMLParser):
             if "md-skip" in attributes.get("class", "").split():
                 self.skip_target = attributes["href"]
         classes = attributes.get("class", "").split()
+        if tag == "figure" and attributes.get("data-learning-visual"):
+            self.active_learning_figure = {"name": attributes["data-learning-visual"], "images": [], "links": [], "caption": ""}
+            self.learning_figures.append(self.active_learning_figure)
+        if self.active_learning_figure is not None:
+            if tag == "img":
+                self.active_learning_figure["images"].append((attributes.get("src"), attributes.get("alt")))
+            elif tag == "a":
+                self.active_learning_figure["links"].append(attributes.get("href"))
+            elif tag == "figcaption":
+                self.in_learning_caption = True
         if "az104-lab-card" in classes:
             self.home_card_count += 1
         if "az104-domain-card" in classes:
@@ -120,10 +144,16 @@ class AccessibilityParser(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag == "title":
             self.in_document_title = False
+        elif tag == "figcaption":
+            self.in_learning_caption = False
+        elif tag == "figure":
+            self.active_learning_figure = None
 
     def handle_data(self, data: str) -> None:
         if self.in_document_title:
             self.document_title += data
+        if self.in_learning_caption and self.active_learning_figure is not None:
+            self.active_learning_figure["caption"] += data
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -287,6 +317,7 @@ def copy_site_sources(output: Path, labs: list[dict[str, Any]]) -> None:
         "learner-progress.md": "learner-progress.md",
         "glossary.md": "glossary.md",
         "practice.md": "practice.md",
+        "visual-guides.md": "visual-guides.md",
     }
     for source_name, destination_name in required_pages.items():
         source = SITE_SOURCE / source_name
@@ -300,6 +331,11 @@ def copy_site_sources(output: Path, labs: list[dict[str, Any]]) -> None:
                     raise SiteBuildError(f"Homepage must contain exactly one {marker} marker")
                 content = content.replace(token, value)
             validate_homepage(content)
+        elif source_name == "visual-guides.md":
+            token = "<!-- AZ104_VISUAL_GUIDES -->"
+            if content.count(token) != 1:
+                raise SiteBuildError("Visual guide page must contain one gallery marker")
+            content = content.replace(token, visual_guide_gallery(labs))
         link_rewrites = {
             "../../labs/": "labs/",
             "../objective-map.md": "docs/objective-map.md",
@@ -378,6 +414,68 @@ def validate_svg(path: Path) -> None:
         raise SiteBuildError(f"{relative} is missing accessible SVG markup: {', '.join(missing)}")
 
 
+def learning_figure(filename: str, alternative: str, caption: str) -> str:
+    """Add an accessible supplementary visual without changing lesson sources."""
+    href = f"../../assets/learning-visuals/{filename}.svg"
+    return (
+        f'<figure class="az104-teaching-visual az104-learning-visual" data-learning-visual="{filename}">'
+        f'<a href="{href}" aria-label="Open {escape(alternative, quote=True)} at full size">'
+        f'<img src="{href}" alt="{escape(alternative, quote=True)}" loading="lazy"></a>'
+        f'<figcaption>{escape(caption)} <a href="{href}">Open at full size</a>.</figcaption></figure>'
+    )
+
+
+def insert_learning_visuals(content: str, lab: dict[str, Any]) -> str:
+    roadmap = learning_figure(
+        f"{lab['labId']}-roadmap",
+        f"{lab['labId']} five-checkpoint roadmap: {lab['title']}",
+        "Five learning checkpoints in task order. These arrows show the exercise sequence; see the architecture figure for service connections.",
+    )
+    heading = "## Objectives and checkpoints"
+    if content.count(f"\n{heading}\n") != 1:
+        raise SiteBuildError(f"{lab['labId']} must have one objectives heading")
+    content = content.replace(f"\n{heading}\n", f"\n{roadmap}\n\n{heading}\n", 1)
+    shared = (
+        ("## Read-only preflight", "safe-run-loop", "Readiness, preview, explicit execution, and result validation", "Follow the read-only checks and execution gates defined by this lab. A failed required gate blocks progress."),
+        ("## Troubleshooting", "troubleshoot-loop", "Evidence-led troubleshooting from observation to revalidation", "Use read-only evidence to identify the cause, make a targeted repair, and rerun the relevant validation."),
+        ("## Cleanup and residual verification", "cleanup-boundary", "Run-owned cleanup boundary and residual-resource audit", "Only verified run-owned objects are eligible for cleanup. Report deliberately retained or soft-deleted items; do not assume they were purged."),
+    )
+    for heading, filename, alternative, caption in shared:
+        if content.count(f"\n{heading}\n") != 1:
+            raise SiteBuildError(f"{lab['labId']} must have one {heading} heading")
+        visual = learning_figure(filename, alternative, caption)
+        content = content.replace(f"\n{heading}\n", f"\n{heading}\n\n{visual}\n", 1)
+    if lab["labId"] == "LAB-00":
+        for number, (filename, label, caption, _) in enumerate(LEARNING_GUIDES[:5], 1):
+            pattern = rf"(^## Task {number} — [^\n]+\{{#task-{number}\}}\n)"
+            visual = learning_figure(filename, label, f"{caption} Bootstrap discovery creates no Azure resource.")
+            content, count = re.subn(pattern, lambda match: match[1] + "\n" + visual + "\n", content, flags=re.MULTILINE)
+            if count != 1:
+                raise SiteBuildError(f"LAB-00 must have one task {number} heading")
+    return content
+
+
+def visual_guide_gallery(labs: list[dict[str, Any]]) -> str:
+    cards = []
+    for filename, label, caption, anchor in LEARNING_GUIDES:
+        image = f"../assets/learning-visuals/{filename}.svg"
+        lesson = f"../labs/00-safe-bootstrap/{anchor}"
+        cards.append(
+            f'<article class="az104-domain-card az104-visual-card"><figure><a href="{image}" aria-label="Open {escape(label)} at full size"><img src="{image}" alt="{escape(label)}: pictorial learning guide" loading="lazy"></a>'
+            f'<figcaption>{escape(label)} · <a href="{image}">Full size</a></figcaption></figure><div class="az104-card-body"><h3><a href="{lesson}">{escape(label)}</a></h3><p>{escape(caption)}</p><a class="az104-card-link" href="{lesson}">Read the lesson →</a></div></article>'
+        )
+    guide_cards = '<div class="az104-home"><div class="az104-domain-grid">' + "\n".join(cards) + '</div></div>'
+    roadmaps = []
+    for lab in labs:
+        image = f'../assets/learning-visuals/{lab["labId"]}-roadmap.svg'
+        lesson = f'../labs/{lab["folderName"]}/'
+        roadmaps.append(
+            f'<article class="az104-domain-card az104-visual-card"><figure><a href="{image}" aria-label="Open {lab["labId"]} checkpoint roadmap at full size"><img src="{image}" alt="{lab["labId"]}: five learning checkpoints for {escape(lab["title"])}" loading="lazy"></a>'
+            f'<figcaption>{lab["labId"]} checkpoint roadmap · <a href="{image}">Full size</a></figcaption></figure><div class="az104-card-body"><span class="az104-eyebrow">{lab["labId"]}</span><h3><a href="{lesson}">{escape(lab["title"])}</a></h3><p>Preview the five tasks, then follow the guided instructions.</p><a class="az104-card-link" href="{lesson}">Open lab →</a></div></article>'
+        )
+    return guide_cards + '\n\n## Roadmaps for every lab\n\n<div class="az104-home"><div class="az104-domain-grid">' + "\n".join(roadmaps) + '</div></div>\n'
+
+
 def copy_labs(output: Path, labs: list[dict[str, Any]]) -> None:
     copy_file(REPO_ROOT / "labs" / "README.md", output / "labs" / "README.md")
     copy_file(CATALOG_PATH, output / "labs" / "catalog.yml")
@@ -414,6 +512,7 @@ def copy_labs(output: Path, labs: list[dict[str, Any]]) -> None:
                 )
                 if replacements != 1:
                     raise SiteBuildError(f"{lab['labId']} must contain exactly one instructional architecture image")
+                staged = insert_learning_visuals(staged, lab)
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 with destination.open("w", encoding="utf-8", newline="\n") as handle:
                     handle.write(staged)
@@ -525,6 +624,13 @@ def check_artwork(output: Path, labs: list[dict[str, Any]]) -> None:
         diagram = output / "labs" / lab["folderName"] / "diagrams" / "architecture.svg"
         if not diagram.is_file():
             raise SiteBuildError(f"Missing architecture visual for {lab['labId']}")
+    expected = {f"{lab['labId']}-roadmap.svg" for lab in labs}
+    expected.update(f"{entry[0]}.svg" for entry in LEARNING_GUIDES)
+    visual_root = output / "assets" / "learning-visuals"
+    if {path.name for path in visual_root.glob("*.svg")} != expected:
+        raise SiteBuildError("Learning visuals must contain 28 roadmaps and eight teaching guides")
+    for filename in sorted(expected):
+        validate_svg(SITE_ASSETS / "learning-visuals" / filename)
 
 
 def write_manifest(output: Path) -> None:
@@ -609,6 +715,7 @@ def check_built_site(site_root: Path) -> None:
         site_root / "index.html",
         site_root / "learner-progress" / "index.html",
         site_root / "practice" / "index.html",
+        site_root / "visual-guides" / "index.html",
         site_root / "labs" / "00-safe-bootstrap" / "index.html",
         site_root / "labs" / "14-container-apps" / "index.html",
         site_root / "labs" / "27-capstone-operate-recover" / "index.html",
@@ -646,6 +753,12 @@ def check_built_site(site_root: Path) -> None:
                     target = site_root / href.split("#", 1)[0]
                     if not target.is_file() and not (target / "index.html").is_file():
                         raise SiteBuildError(f"Built homepage link is missing: {href}")
+        if page == site_root / "visual-guides" / "index.html":
+            if parser.domain_card_count != 36 or parser.code_blocks:
+                raise SiteBuildError("Visual gallery must render 36 illustrated guide cards")
+            for href in parser.links:
+                if href.startswith("../assets/learning-visuals/") and not (page.parent / href).resolve().is_file():
+                    raise SiteBuildError(f"Visual gallery image is missing: {href}")
 
     quiz_root = site_root / "assets" / "quiz"
     try:
@@ -732,6 +845,20 @@ def check_built_site(site_root: Path) -> None:
             raise SiteBuildError(f"Built site is missing lab guide: {location}")
         parser = AccessibilityParser()
         parser.feed(page_path.read_text(encoding="utf-8"))
+        visual_names = {f"{lab['labId']}-roadmap", "safe-run-loop", "troubleshoot-loop", "cleanup-boundary"}
+        if lab["labId"] == "LAB-00":
+            visual_names.update(entry[0] for entry in LEARNING_GUIDES[:5])
+        if {figure["name"] for figure in parser.learning_figures} != visual_names or len(parser.learning_figures) != len(visual_names):
+            raise SiteBuildError(f"{lab['labId']} must display its roadmap and contextual teaching guides exactly once")
+        for figure in parser.learning_figures:
+            if len(figure["images"]) != 1 or not all(figure["images"][0]) or not figure["caption"].strip():
+                raise SiteBuildError(f"{lab['labId']} visual {figure['name']} needs one image, descriptive alt text, and a caption")
+            source = figure["images"][0][0]
+            if figure["links"].count(source) != 2:
+                raise SiteBuildError(f"{lab['labId']} visual {figure['name']} needs image and caption full-size links")
+            target = (page_path.parent / source).resolve()
+            if not target.is_relative_to(site_root) or not target.is_file():
+                raise SiteBuildError(f"{lab['labId']} visual {figure['name']} has a missing local image")
         expected_title = f"Lab {lab['id']}: {lab['title']}"
         if not parser.document_title.startswith(expected_title) or parser.document_title.startswith("Index"):
             raise SiteBuildError(f"{lab['labId']} must have its meaningful lab title rather than Index")

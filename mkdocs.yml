@@ -53,6 +53,7 @@ nav:
       - Capstones: domains/capstone.md
   - Study resources:
       - Study plan: docs/study-plan.md
+      - Visual guides: visual-guides.md
       - Objective map: docs/objective-map.md
       - Assessment guide: docs/assessment-guide.md
       - Question-bank dashboard: docs/question-bank-index.md

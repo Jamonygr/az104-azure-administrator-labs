@@ -23,4 +23,4 @@ hide:
 <section class="az104-callout" aria-labelledby="loop-title"><div><span class="az104-eyebrow">Build · Validate · Troubleshoot · Recover</span><h2 id="loop-title">Make every learning session count</h2><p>Record deployment and cleanup results, review your assessment scores, and export a portable progress backup. Your progress stays in this browser.</p><p class="az104-safe-note">Labs are offline-validated. Review permissions, quotas, and current costs; use an authorized disposable environment and verify cleanup after every deployment.</p></div><a class="az104-button az104-button-primary" href="learner-progress/">Open your progress <span aria-hidden="true">→</span></a></section>
 </div>
 
-[Browse all labs](../../labs/README.md) · [Read the safety guide](../cost-and-cleanup.md) · [Explore the GitHub repository](https://github.com/Jamonygr/az104-azure-administrator-labs)
+[Browse all labs](../../labs/README.md) · [Explore 36 visual guides](visual-guides.md) · [Read the safety guide](../cost-and-cleanup.md) · [Explore the GitHub repository](https://github.com/Jamonygr/az104-azure-administrator-labs)

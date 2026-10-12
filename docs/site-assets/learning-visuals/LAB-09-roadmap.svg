@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1642" viewBox="0 0 640 1642" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-09">
+  <title id="roadmap-title">LAB-09 learning roadmap: Configure Azure Files, snapshots, soft delete, and identity access</title>
+  <desc id="roadmap-desc">Configure Azure Files, snapshots, soft delete, and identity access. Follow five checkpoints in lesson order. Task 1, LAB09-CP01: Baseline name, provider, and optional identity prerequisites. Task 2, LAB09-CP02: Create a bounded SMB share and enable share soft delete. Task 3, LAB09-CP03: Write sample content and capture a share snapshot. Task 4, LAB09-CP04: Configure the gated Entra Kerberos and share-RBAC path. Task 5, LAB09-CP05: Delete and restore the protected share, then reconcile readiness. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;storage&quot;,&quot;labId&quot;:&quot;LAB-09&quot;,&quot;metadataSource&quot;:&quot;labs/09-azure-files-identity/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/09-azure-files-identity/README.md&quot;,&quot;sourceSha256&quot;:&quot;4482e6c0cdd56d4dd647a5a62584f8e6db6e7fded9e1e7b06e35f68c8050f7b6&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;The deterministic account name is available and any requested identity source exactly selects the documented gated path.&quot;,&quot;id&quot;:&quot;LAB09-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;ST-ACCESS-05&quot;],&quot;purpose&quot;:&quot;Confirm global name availability and inventory the optional directory-source request before any storage mutation.&quot;,&quot;title&quot;:&quot;Baseline name, provider, and optional identity prerequisites&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;A tagged Standard_LRS account contains one 20-GiB transaction-optimized SMB share and seven-day share soft delete is enabled.&quot;,&quot;id&quot;:&quot;LAB09-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;ST-ACCOUNTS-05&quot;],&quot;purpose&quot;:&quot;Create and immediately record the storage account and ARM file-share IDs, then enable seven-day share recovery.&quot;,&quot;title&quot;:&quot;Create a bounded SMB share and enable share soft delete&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The active share contains sample.txt and an ARM-visible snapshot time is recorded without an account key in state.&quot;,&quot;id&quot;:&quot;LAB09-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;ST-DATA-01&quot;],&quot;purpose&quot;:&quot;Bootstrap one real file using a key held only in memory, then persist the returned snapshot time immediately.&quot;,&quot;title&quot;:&quot;Write sample content and capture a share snapshot&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;AADKERB is the only identity source and the approved principal has exactly the intended share-scoped SMB data role after the missing-role fault is repaired.&quot;,&quot;id&quot;:&quot;LAB09-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;ST-DATA-05&quot;],&quot;purpose&quot;:&quot;With exact authorization inputs, enable the single supported identity source, inject a missing-role fault, and restore the least-privileged share data role.&quot;,&quot;title&quot;:&quot;Configure the gated Entra Kerberos and share-RBAC path&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;The original share generation is soft-deleted, identified by deletedVersion, restored under the same name, and its sample content remains readable.&quot;,&quot;id&quot;:&quot;LAB09-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;ST-ACCESS-05&quot;,&quot;ST-ACCOUNTS-05&quot;,&quot;ST-DATA-01&quot;,&quot;ST-DATA-05&quot;],&quot;purpose&quot;:&quot;Exercise share soft delete against the real sample, persist the deleted-version recovery target, restore it, and prove content survived.&quot;,&quot;title&quot;:&quot;Delete and restore the protected share, then reconcile readiness&quot;}],&quot;title&quot;:&quot;Configure Azure Files, snapshots, soft delete, and identity access&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-09</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Configure Azure Files, snapshots,</text>
+    <text x="24" y="135" class="heading">soft delete, and identity access</text>
+    <text x="24" y="182" class="hint">Storage · 5 checkpoints</text>
+    <path d="M24 198H616" stroke="#2C405C"/>
+    <circle cx="42" cy="265" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="273" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB09-CP01">
+      <rect x="78" y="217" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="236" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="328" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="251" class="checkpoint" fill="#62D7FF">LAB09-CP01</text>
+    <g transform="translate(92 278)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 9H64L78 23V90H17ZM64 9V23H78M28 32H53M28 45H51M28 61L32 65L38 58M28 77L32 81L38 74"/>
+      <circle cx="66" cy="57" r="15" fill="#12253A"/><path d="M76 69L91 84M60 57L65 62L73 51"/>
+    </g>
+      <text x="204" y="289" class="task-title">Baseline name, provider, and</text>
+      <text x="204" y="317" class="task-title">optional identity</text>
+      <text x="204" y="345" class="task-title">prerequisites</text>
+      <text x="204" y="426" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 290V497" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="525" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="533" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB09-CP02">
+      <rect x="78" y="477" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="496" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="588" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="511" class="checkpoint" fill="#AB98FF">LAB09-CP02</text>
+    <g transform="translate(92 538)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="50" cy="22" rx="35" ry="13"/><path d="M15 22V76C15 94 85 94 85 76V22M15 40C15 58 85 58 85 40M15 58C15 76 85 76 85 58"/>
+      <circle cx="70" cy="78" r="3" fill="currentColor"/>
+    </g>
+      <text x="204" y="549" class="task-title">Create a bounded SMB share</text>
+      <text x="204" y="577" class="task-title">and enable share soft delete</text>
+      <text x="204" y="686" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 550V757" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="785" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="793" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB09-CP03">
+      <rect x="78" y="737" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="756" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="848" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="771" class="checkpoint" fill="#63E9D0">LAB09-CP03</text>
+    <g transform="translate(92 798)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 37A34 34 0 1 1 13 64M18 19V38H37"/>
+      <rect x="33" y="42" width="41" height="37" rx="7"/>
+      <path d="M42 42V29C42 14 66 14 66 29V42M44 59L52 67L65 53"/>
+    </g>
+      <text x="204" y="809" class="task-title">Write sample content and</text>
+      <text x="204" y="837" class="task-title">capture a share snapshot</text>
+      <text x="204" y="946" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 810V1017" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1045" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1053" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB09-CP04">
+      <rect x="78" y="997" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1016" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1108" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1031" class="checkpoint" fill="#8CACFF">LAB09-CP04</text>
+    <g transform="translate(92 1058)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="35" cy="38" r="23"/><circle cx="35" cy="38" r="8"/>
+      <path d="M52 54L84 86L94 76L84 66L78 72L71 65L77 59L68 50Z"/>
+    </g>
+      <text x="204" y="1069" class="task-title">Configure the gated Entra</text>
+      <text x="204" y="1097" class="task-title">Kerberos and share-RBAC path</text>
+      <text x="204" y="1206" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1070V1277" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1305" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1313" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB09-CP05">
+      <rect x="78" y="1257" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1276" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1368" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1291" class="checkpoint" fill="#D3A3FF">LAB09-CP05</text>
+    <g transform="translate(92 1318)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 37A34 34 0 1 1 13 64M18 19V38H37"/>
+      <rect x="33" y="42" width="41" height="37" rx="7"/>
+      <path d="M42 42V29C42 14 66 14 66 29V42M44 59L52 67L65 53"/>
+    </g>
+      <text x="204" y="1329" class="task-title">Delete and restore the</text>
+      <text x="204" y="1357" class="task-title">protected share, then</text>
+      <text x="204" y="1385" class="task-title">reconcile readiness</text>
+      <text x="204" y="1466" class="small">4 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1518H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1547" r="7" fill="#AB98FF"/>
+    <text x="54" y="1553" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1587" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1616" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

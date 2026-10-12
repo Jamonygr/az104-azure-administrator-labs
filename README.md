@@ -8,7 +8,7 @@ A command-first path from Azure fundamentals to job-ready administration, aligne
 
 28 guided labs · 1,250 original practice questions · 82 mapped objectives
 
-[Start learning](https://jamonygr.github.io/az104-azure-administrator-labs/) · [Practice questions](https://jamonygr.github.io/az104-azure-administrator-labs/practice/) · [Your progress](https://jamonygr.github.io/az104-azure-administrator-labs/learner-progress/)
+[Start learning](https://jamonygr.github.io/az104-azure-administrator-labs/) · [Practice questions](https://jamonygr.github.io/az104-azure-administrator-labs/practice/) · [Visual guides](https://jamonygr.github.io/az104-azure-administrator-labs/visual-guides/) · [Your progress](https://jamonygr.github.io/az104-azure-administrator-labs/learner-progress/)
 
 Explore the illustrated learning website with a black default theme, a light-mode toggle, searchable lessons, interactive assessments, and private browser-local progress.
 

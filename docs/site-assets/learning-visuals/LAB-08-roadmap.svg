@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1677" viewBox="0 0 640 1677" role="img" aria-labelledby="roadmap-title roadmap-desc" data-lab-id="LAB-08">
+  <title id="roadmap-title">LAB-08 learning roadmap: Manage Blob lifecycle, tiers, versioning, replication, and AzCopy</title>
+  <desc id="roadmap-desc">Manage Blob lifecycle, tiers, versioning, replication, and AzCopy. Follow five checkpoints in lesson order. Task 1, LAB08-CP01: Confirm AzCopy, identity, and object-replication prerequisites. Task 2, LAB08-CP02: Create and protect the source and destination accounts. Task 3, LAB08-CP03: Inject the missing-versioning fault and build both policy copies. Task 4, LAB08-CP04: Transfer and version a blob with AzCopy using the Azure CLI token. Task 5, LAB08-CP05: Reconcile protection, policy, versions, and asynchronous replication state. Offline-validated curriculum. Consult the lesson for commands, approval gates, and cleanup.</desc>
+  <metadata>{&quot;domain&quot;:&quot;storage&quot;,&quot;labId&quot;:&quot;LAB-08&quot;,&quot;metadataSource&quot;:&quot;labs/08-blob-lifecycle-replication/lab.yml&quot;,&quot;renderer&quot;:&quot;az104-checkpoint-roadmap-svg/1.0.0&quot;,&quot;source&quot;:&quot;labs/08-blob-lifecycle-replication/README.md&quot;,&quot;sourceSha256&quot;:&quot;189238aa453dddf53e331f45a6e80285bb82e8dd0a214128aa6bbc71cbe593c3&quot;,&quot;status&quot;:&quot;offline-validated&quot;,&quot;tasks&quot;:[{&quot;anchor&quot;:&quot;#task-1&quot;,&quot;expectedState&quot;:&quot;AzCopy v10 and an interactive learner object ID are available before any storage account is created.&quot;,&quot;id&quot;:&quot;LAB08-CP01&quot;,&quot;number&quot;:1,&quot;objectiveIds&quot;:[&quot;ST-ACCOUNTS-03&quot;],&quot;purpose&quot;:&quot;Validate the local transfer tool, signed-in user, provider, and unique account names before creating endpoints.&quot;,&quot;title&quot;:&quot;Confirm AzCopy, identity, and object-replication prerequisites&quot;},{&quot;anchor&quot;:&quot;#task-2&quot;,&quot;expectedState&quot;:&quot;Both accounts have change feed and soft delete; source versioning is on, destination versioning is intentionally off for the next break/fix, and lifecycle manages base blobs and versions.&quot;,&quot;id&quot;:&quot;LAB08-CP02&quot;,&quot;number&quot;:2,&quot;objectiveIds&quot;:[&quot;ST-ACCOUNTS-05&quot;],&quot;purpose&quot;:&quot;Persist each account immediately, configure soft delete and change feed, assign data roles, and install the source lifecycle rule.&quot;,&quot;title&quot;:&quot;Create and protect the source and destination accounts&quot;},{&quot;anchor&quot;:&quot;#task-3&quot;,&quot;expectedState&quot;:&quot;The pre-repair attempt fails, destination versioning becomes true, and the same policy ID with one rule exists on both accounts.&quot;,&quot;id&quot;:&quot;LAB08-CP03&quot;,&quot;number&quot;:3,&quot;objectiveIds&quot;:[&quot;ST-DATA-02&quot;],&quot;purpose&quot;:&quot;Require replication creation to fail while destination versioning is off, repair the prerequisite, then apply the destination-generated policy to both endpoints.&quot;,&quot;title&quot;:&quot;Inject the missing-versioning fault and build both policy copies&quot;},{&quot;anchor&quot;:&quot;#task-4&quot;,&quot;expectedState&quot;:&quot;The source has a current Cool blob plus at least one prior version; eligible versions begin asynchronous replication to destination.&quot;,&quot;id&quot;:&quot;LAB08-CP04&quot;,&quot;number&quot;:4,&quot;objectiveIds&quot;:[&quot;ST-DATA-03&quot;],&quot;purpose&quot;:&quot;Use AZCLI auto-login, upload two revisions, and place the current version in Cool tier without SAS or account keys.&quot;,&quot;title&quot;:&quot;Transfer and version a blob with AzCopy using the Azure CLI token&quot;},{&quot;anchor&quot;:&quot;#task-5&quot;,&quot;expectedState&quot;:&quot;Both policy copies match, the lifecycle rule and source versions exist, and destination-copy count is reported as an observation rather than a synchronous pass gate.&quot;,&quot;id&quot;:&quot;LAB08-CP05&quot;,&quot;number&quot;:5,&quot;objectiveIds&quot;:[&quot;ST-ACCOUNTS-03&quot;,&quot;ST-ACCOUNTS-05&quot;,&quot;ST-DATA-02&quot;,&quot;ST-DATA-03&quot;,&quot;ST-DATA-04&quot;,&quot;ST-DATA-06&quot;,&quot;ST-DATA-07&quot;],&quot;purpose&quot;:&quot;Prove the lifecycle rule, recovery controls, two policy copies, source revisions, and observable replication status without pretending asynchronous convergence is immediate.&quot;,&quot;title&quot;:&quot;Reconcile protection, policy, versions, and asynchronous replication state&quot;}],&quot;title&quot;:&quot;Manage Blob lifecycle, tiers, versioning, replication, and AzCopy&quot;}</metadata>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101C"/><stop offset="1" stop-color="#101B30"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#142239"/><stop offset="1" stop-color="#0D1727"/></linearGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#4B688C" fill-opacity=".16"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#62D7FF" stroke-width="2"/></marker>
+  </defs>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif} .eyebrow{font-size:17px;font-weight:700;letter-spacing:1px;fill:#A7B8D1}
+    .heading{font-size:30px;font-weight:700;fill:#F1F6FF} .task-title{font-size:24px;font-weight:600;fill:#F1F6FF}
+    .checkpoint{font-size:17px;font-weight:700;letter-spacing:1px} .number{font-size:22px;font-weight:700;fill:#F1F6FF}
+    .hint{font-size:19px;fill:#B8C9E0} .small{font-size:16px;fill:#B8C9E0}
+  </style>
+  <rect width="100%" height="100%" rx="24" fill="url(#canvas)"/>
+  <rect width="100%" height="100%" rx="24" fill="url(#dots)"/>
+  <g aria-hidden="true">
+    <rect x="24" y="24" width="92" height="34" rx="10" fill="#29435D" stroke="#62D7FF" stroke-opacity=".6"/>
+    <text x="70" y="47" class="checkpoint" text-anchor="middle" fill="#82E1FF">LAB-08</text>
+    <text x="133" y="47" class="eyebrow">YOUR CHECKPOINT ROADMAP</text>
+    <text x="24" y="100" class="heading">Manage Blob lifecycle, tiers,</text>
+    <text x="24" y="135" class="heading">versioning, replication, and</text>
+    <text x="24" y="170" class="heading">AzCopy</text>
+    <text x="24" y="217" class="hint">Storage · 5 checkpoints</text>
+    <path d="M24 233H616" stroke="#2C405C"/>
+    <circle cx="42" cy="300" r="22" fill="#192B43" stroke="#62D7FF" stroke-width="2"/>
+    <text x="42" y="308" class="number" text-anchor="middle">1</text>
+    <g data-task="1" data-checkpoint-id="LAB08-CP01">
+      <rect x="78" y="252" width="538" height="226" rx="20" fill="url(#card)" stroke="#62D7FF" stroke-opacity=".47"/>
+      <rect x="78" y="271" width="4" height="188" rx="2" fill="#62D7FF"/>
+      <circle cx="142" cy="363" r="55" fill="#62D7FF" fill-opacity=".065"/>
+      <text x="204" y="286" class="checkpoint" fill="#62D7FF">LAB08-CP01</text>
+    <g transform="translate(92 313)" color="#62D7FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="11" y="17" width="78" height="56" rx="8"/>
+      <path d="M23 33L34 42L23 51M43 52H59M34 84H66M50 73V84"/>
+      <circle cx="80" cy="77" r="14" fill="#12253A"/>
+      <path d="M75 77L79 81L86 73"/>
+    </g>
+      <text x="204" y="324" class="task-title">Confirm AzCopy, identity,</text>
+      <text x="204" y="352" class="task-title">and object-replication</text>
+      <text x="204" y="380" class="task-title">prerequisites</text>
+      <text x="204" y="461" class="small">1 mapped objective · lesson #task-1</text>
+    </g>
+    <path d="M42 325V532" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="560" r="22" fill="#192B43" stroke="#AB98FF" stroke-width="2"/>
+    <text x="42" y="568" class="number" text-anchor="middle">2</text>
+    <g data-task="2" data-checkpoint-id="LAB08-CP02">
+      <rect x="78" y="512" width="538" height="226" rx="20" fill="url(#card)" stroke="#AB98FF" stroke-opacity=".47"/>
+      <rect x="78" y="531" width="4" height="188" rx="2" fill="#AB98FF"/>
+      <circle cx="142" cy="623" r="55" fill="#AB98FF" fill-opacity=".065"/>
+      <text x="204" y="546" class="checkpoint" fill="#AB98FF">LAB08-CP02</text>
+    <g transform="translate(92 573)" color="#AB98FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="22" cy="24" rx="16" ry="7"/><path d="M6 24V68C6 78 38 78 38 68V24M6 46C6 56 38 56 38 46"/>
+      <ellipse cx="78" cy="24" rx="16" ry="7"/><path d="M62 24V68C62 78 94 78 94 68V24M62 46C62 56 94 56 94 46"/>
+      <path d="M41 35H59M52 29L59 35L52 41M59 63H41M48 57L41 63L48 69"/>
+    </g>
+      <text x="204" y="584" class="task-title">Create and protect the</text>
+      <text x="204" y="612" class="task-title">source and destination</text>
+      <text x="204" y="640" class="task-title">accounts</text>
+      <text x="204" y="721" class="small">1 mapped objective · lesson #task-2</text>
+    </g>
+    <path d="M42 585V792" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="820" r="22" fill="#192B43" stroke="#63E9D0" stroke-width="2"/>
+    <text x="42" y="828" class="number" text-anchor="middle">3</text>
+    <g data-task="3" data-checkpoint-id="LAB08-CP03">
+      <rect x="78" y="772" width="538" height="226" rx="20" fill="url(#card)" stroke="#63E9D0" stroke-opacity=".47"/>
+      <rect x="78" y="791" width="4" height="188" rx="2" fill="#63E9D0"/>
+      <circle cx="142" cy="883" r="55" fill="#63E9D0" fill-opacity=".065"/>
+      <text x="204" y="806" class="checkpoint" fill="#63E9D0">LAB08-CP03</text>
+    <g transform="translate(92 833)" color="#63E9D0" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M50 10L84 25V49C84 71 66 87 50 94C34 87 16 71 16 49V25Z"/>
+      <path d="M33 49L46 62L70 36M50 12V29"/>
+    </g>
+      <text x="204" y="844" class="task-title">Inject the</text>
+      <text x="204" y="872" class="task-title">missing-versioning fault and</text>
+      <text x="204" y="900" class="task-title">build both policy copies</text>
+      <text x="204" y="981" class="small">1 mapped objective · lesson #task-3</text>
+    </g>
+    <path d="M42 845V1052" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1080" r="22" fill="#192B43" stroke="#8CACFF" stroke-width="2"/>
+    <text x="42" y="1088" class="number" text-anchor="middle">4</text>
+    <g data-task="4" data-checkpoint-id="LAB08-CP04">
+      <rect x="78" y="1032" width="538" height="226" rx="20" fill="url(#card)" stroke="#8CACFF" stroke-opacity=".47"/>
+      <rect x="78" y="1051" width="4" height="188" rx="2" fill="#8CACFF"/>
+      <circle cx="142" cy="1143" r="55" fill="#8CACFF" fill-opacity=".065"/>
+      <text x="204" y="1066" class="checkpoint" fill="#8CACFF">LAB08-CP04</text>
+    <g transform="translate(92 1093)" color="#8CACFF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="50" cy="22" rx="35" ry="13"/><path d="M15 22V76C15 94 85 94 85 76V22M15 40C15 58 85 58 85 40M15 58C15 76 85 76 85 58"/>
+      <circle cx="70" cy="78" r="3" fill="currentColor"/>
+    </g>
+      <text x="204" y="1104" class="task-title">Transfer and version a blob</text>
+      <text x="204" y="1132" class="task-title">with AzCopy using the Azure</text>
+      <text x="204" y="1160" class="task-title">CLI token</text>
+      <text x="204" y="1241" class="small">1 mapped objective · lesson #task-4</text>
+    </g>
+    <path d="M42 1105V1312" stroke="#62D7FF" stroke-width="2.5" stroke-opacity=".65" marker-end="url(#arrow)"/>
+    <circle cx="42" cy="1340" r="22" fill="#192B43" stroke="#D3A3FF" stroke-width="2"/>
+    <text x="42" y="1348" class="number" text-anchor="middle">5</text>
+    <g data-task="5" data-checkpoint-id="LAB08-CP05">
+      <rect x="78" y="1292" width="538" height="226" rx="20" fill="url(#card)" stroke="#D3A3FF" stroke-opacity=".47"/>
+      <rect x="78" y="1311" width="4" height="188" rx="2" fill="#D3A3FF"/>
+      <circle cx="142" cy="1403" r="55" fill="#D3A3FF" fill-opacity=".065"/>
+      <text x="204" y="1326" class="checkpoint" fill="#D3A3FF">LAB08-CP05</text>
+    <g transform="translate(92 1353)" color="#D3A3FF" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="22" cy="24" rx="16" ry="7"/><path d="M6 24V68C6 78 38 78 38 68V24M6 46C6 56 38 56 38 46"/>
+      <ellipse cx="78" cy="24" rx="16" ry="7"/><path d="M62 24V68C62 78 94 78 94 68V24M62 46C62 56 94 56 94 46"/>
+      <path d="M41 35H59M52 29L59 35L52 41M59 63H41M48 57L41 63L48 69"/>
+    </g>
+      <text x="204" y="1364" class="task-title">Reconcile protection,</text>
+      <text x="204" y="1392" class="task-title">policy, versions, and</text>
+      <text x="204" y="1420" class="task-title">asynchronous replication</text>
+      <text x="204" y="1448" class="task-title">state</text>
+      <text x="204" y="1501" class="small">7 mapped objectives · lesson #task-5</text>
+    </g>
+    <path d="M24 1553H616" stroke="#2C405C"/>
+    <circle cx="36" cy="1582" r="7" fill="#AB98FF"/>
+    <text x="54" y="1588" class="hint">Offline-validated · follow the lesson gates.</text>
+    <text x="24" y="1622" class="hint">Retain checkpoint evidence and verify cleanup.</text>
+    <text x="24" y="1651" class="small">Source: lab.yml checkpoints and README task headings</text>
+  </g>
+</svg>

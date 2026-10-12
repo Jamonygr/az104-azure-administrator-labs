@@ -2,6 +2,14 @@
 
 All notable changes to this curriculum are documented here.
 
+## 2026-10-12 — More illustrated lesson guides
+
+### Added
+
+- Thirty-six original teaching visuals: 28 checkpoint roadmaps, five setup illustrations, and three safety, troubleshooting, and cleanup guides.
+- Contextual illustrations within every lab, with captions and full-size links.
+- A visual gallery linking each guide to its lesson, plus deterministic SVG and curriculum-alignment checks.
+
 ## 2026-10-12 — Illustrated learning website
 
 ### Added
