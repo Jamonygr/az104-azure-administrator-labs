@@ -23,6 +23,8 @@ python tools/generate_indexes.py --check
 python tools/validate_assessments.py
 python tools/expand_assessments.py --check
 python tools/build_docs_site.py --check
+node --check docs/site-assets/quiz.js
+node --test tools/tests/browser_learning.test.cjs
 $pester = Invoke-Pester -Path labs -Output Detailed -PassThru
 if ($pester.FailedCount -gt 0) { throw "$($pester.FailedCount) Pester test(s) failed." }
 python tools/build_docs_site.py
@@ -42,6 +44,12 @@ python tools/render_diagrams.py --check
 ```
 
 Commit the generated `architecture.svg` beside its source. CI fails when the source and SVG differ or when a diagram uses unsupported syntax.
+
+## Website and artwork
+
+Edit the homepage in `docs/site/index.md`; its curriculum cards and quiz data are staged from the validated catalog and question banks. Keep lesson paths, task anchors, and the version 1.0.0 progress export compatible.
+
+Store original artwork in `docs/site-assets/illustrations`, document generated cover prompts in [artwork notes](ASSET_NOTES.md), and provide descriptive alternative text, captions, and full-size links. Review the black and light themes at desktop, tablet, and phone widths, including keyboard focus and reduced motion.
 
 ## Assessment contributions
 

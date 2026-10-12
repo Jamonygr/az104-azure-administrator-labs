@@ -1,57 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1528" height="534" viewBox="0 0 1528 534" role="img" aria-labelledby="lab27-title lab27-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="1064" viewBox="0 0 2036 1064" role="img" aria-labelledby="lab27-title lab27-desc">
   <title id="lab27-title">LAB-27 architecture: Capstone — Operate, troubleshoot, back up, and recover an Azure workload</title>
-  <desc id="lab27-desc">Left-to-right service topology with 12 components and 13 directed relationships. Components: Private workload VM, Effective NSG path, Injected deny and repair, Storage transaction, Diagnostic setting, Log Analytics and KQL, Scoped metric alert, Recovery protection, Recovery point, Disk restore artifact, Network, telemetry, alert, and recovery assertions, Workload cleanup and deleted-vault proof. Relationships: Private workload VM to Effective NSG path; Injected deny and repair to Effective NSG path; Storage transaction to Diagnostic setting; Diagnostic setting to Log Analytics and KQL; Storage transaction to Scoped metric alert; Private workload VM to Recovery protection; Recovery protection to Recovery point; Recovery point to Disk restore artifact; Effective NSG path to Network, telemetry, alert, and recovery assertions; Log Analytics and KQL to Network, telemetry, alert, and recovery assertions; Scoped metric alert to Network, telemetry, alert, and recovery assertions; Disk restore artifact to Network, telemetry, alert, and recovery assertions; Network, telemetry, alert, and recovery assertions to Workload cleanup and deleted-vault proof.</desc>
-  <metadata id="lab27-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;2c9cd80f13823e95e22866f7d4a6834b4d8ef0555cd1a67bbc269ebb72d36e85&quot;}</metadata>
+  <desc id="lab27-desc">Illustrated service topology with 12 components and 13 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Private workload VM, Effective NSG path, Injected deny and repair, Storage transaction, Diagnostic setting, Log Analytics and KQL, Scoped metric alert, Recovery protection, Recovery point, Disk restore artifact, Network, telemetry, alert, and recovery assertions, Workload cleanup and deleted-vault proof. Relationships: Private workload VM to Effective NSG path; Injected deny and repair to Effective NSG path; Storage transaction to Diagnostic setting; Diagnostic setting to Log Analytics and KQL; Storage transaction to Scoped metric alert; Private workload VM to Recovery protection; Recovery protection to Recovery point; Recovery point to Disk restore artifact; Effective NSG path to Network, telemetry, alert, and recovery assertions; Log Analytics and KQL to Network, telemetry, alert, and recovery assertions; Scoped metric alert to Network, telemetry, alert, and recovery assertions; Disk restore artifact to Network, telemetry, alert, and recovery assertions; Network, telemetry, alert, and recovery assertions to Workload cleanup and deleted-vault proof.</desc>
+  <metadata id="lab27-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;2c9cd80f13823e95e22866f7d4a6834b4d8ef0555cd1a67bbc269ebb72d36e85&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 165 C 384 165, 384 114, 444 114"/>
-    <path class="edge" d="M 324 267 C 384 267, 384 114, 444 114"/>
-    <path class="edge" d="M 324 369 C 384 369, 384 216, 444 216"/>
-    <path class="edge" d="M 704 216 C 764 216, 764 165, 824 165"/>
-    <path class="edge" d="M 324 369 C 384 369, 384 318, 444 318"/>
-    <path class="edge" d="M 324 165 C 384 165, 384 420, 444 420"/>
-    <path class="edge" d="M 704 420 C 764 420, 764 267, 824 267"/>
-    <path class="edge" d="M 1084 267 C 1144 267, 1144 216, 1204 216"/>
-    <path class="edge" d="M 704 114 C 764 114, 764 369, 824 369"/>
-    <path class="edge" d="M 954 199 C 978 267, 978 267, 954 335"/>
-    <path class="edge" d="M 704 318 C 764 318, 764 369, 824 369"/>
-    <path class="edge" d="M 1204 216 C 1154 461, 1134 461, 1084 369"/>
-    <path class="edge" d="M 1084 369 C 1144 369, 1144 318, 1204 318"/>
-    <rect x="64" y="131" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="165" class="node-label" fill="#102a43">Private workload VM</text>
-    <rect x="444" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="114" class="node-label" fill="#102a43">Effective NSG path</text>
-    <rect x="64" y="233" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="267" class="node-label" fill="#102a43">Injected deny and repair</text>
-    <rect x="64" y="335" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="369" class="node-label" fill="#102a43">Storage transaction</text>
-    <rect x="444" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="216" class="node-label" fill="#102a43">Diagnostic setting</text>
-    <rect x="824" y="131" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="165" class="node-label" fill="#102a43">Log Analytics and KQL</text>
-    <rect x="444" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="318" class="node-label" fill="#102a43">Scoped metric alert</text>
-    <rect x="444" y="386" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="420" class="node-label" fill="#102a43">Recovery protection</text>
-    <rect x="824" y="233" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="267" class="node-label" fill="#102a43">Recovery point</text>
-    <rect x="1204" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1334" y="216" class="node-label" fill="#102a43">Disk restore artifact</text>
-    <rect x="824" y="335" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="954" y="369" class="node-label" fill="#102a43">Network, telemetry, alert, and recovery assertions</text>
-    <rect x="1204" y="284" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1334" y="318" class="node-label" fill="#102a43">Workload cleanup and deleted-vault proof</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">27</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Capstone — Operate, troubleshoot, back up, and recover an Azure workload</text>
+    <path id="edge-0" data-source="VM" data-target="N" class="edge" d="M 418 348 L 562 348 Q 574 348 574 336 L 574 250 Q 574 238 586 238 L 598 238"/>
+    <path id="edge-1" data-source="F" data-target="N" class="edge" d="M 418 568 L 430 568 Q 442 568 442 556 L 442 250 Q 442 238 454 238 L 598 238"/>
+    <path id="edge-2" data-source="S" data-target="D" class="edge" d="M 418 788 L 562 788 Q 574 788 574 776 L 574 470 Q 574 458 586 458 L 598 458"/>
+    <path id="edge-3" data-source="D" data-target="W" class="edge" d="M 928 458 L 1072 458 Q 1084 458 1084 446 L 1084 360 Q 1084 348 1096 348 L 1108 348"/>
+    <path id="edge-4" data-source="S" data-target="A" class="edge" d="M 418 788 L 430 788 Q 442 788 442 776 L 442 690 Q 442 678 454 678 L 598 678"/>
+    <path id="edge-5" data-source="VM" data-target="P" class="edge" d="M 418 348 L 562 348 Q 574 348 574 360 L 574 886 Q 574 898 586 898 L 598 898"/>
+    <path id="edge-6" data-source="P" data-target="RP" class="edge" d="M 928 898 L 1072 898 Q 1084 898 1084 886 L 1084 580 Q 1084 568 1096 568 L 1108 568"/>
+    <path id="edge-7" data-source="RP" data-target="R" class="edge" d="M 1438 568 L 1582 568 Q 1594 568 1594 556 L 1594 470 Q 1594 458 1606 458 L 1618 458"/>
+    <path id="edge-8" data-source="N" data-target="V" class="edge" d="M 928 238 L 940 238 Q 952 238 952 250 L 952 776 Q 952 788 964 788 L 1108 788"/>
+    <path id="edge-9" data-source="W" data-target="V" class="edge" d="M 1438 348 L 1450 348 Q 1462 348 1462 360 L 1462 690 Q 1462 702 1450 702 L 1096 702 Q 1084 702 1084 714 L 1084 776 Q 1084 788 1096 788 L 1108 788"/>
+    <path id="edge-10" data-source="A" data-target="V" class="edge" d="M 928 678 L 1072 678 Q 1084 678 1084 690 L 1084 776 Q 1084 788 1096 788 L 1108 788"/>
+    <path id="edge-11" data-source="R" data-target="V" class="edge" d="M 1948 458 L 1960 458 Q 1972 458 1972 470 L 1972 862 Q 1972 874 1960 874 L 1096 874 Q 1084 874 1084 862 L 1084 800 Q 1084 788 1096 788 L 1108 788"/>
+    <path id="edge-12" data-source="V" data-target="C" class="edge" d="M 1438 788 L 1582 788 Q 1594 788 1594 776 L 1594 690 Q 1594 678 1606 678 L 1618 678"/>
+    <g id="node-VM" data-service-icon="vm">
+      <rect x="88" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="309" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 316)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="35" rx="5"/><path d="M24 44v9M40 44v9M16 54h32M14 17h36M14 24h22M14 31h14"/><circle cx="47" cy="36" r="2"/></g>
+      <text x="198" y="348" class="node-label">Private workload VM</text>
+    </g>
+    <g id="node-N" data-service-icon="shield">
+      <rect x="598" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l22 9v17c0 13-9 23-22 29C19 55 10 45 10 32V15z"/><path d="M22 33l7 7 15-17"/></g>
+      <text x="708" y="238" class="node-label">Effective NSG path</text>
+    </g>
+    <g id="node-F" data-service-icon="cloud">
+      <rect x="88" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="529" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 536)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 48h29a13 13 0 0 0 1-26A18 18 0 0 0 14 25a12 12 0 0 0 4 23z"/></g>
+      <text x="198" y="556" class="node-label">Injected deny and</text>
+      <text x="198" y="580" class="node-label">repair</text>
+    </g>
+    <g id="node-S" data-service-icon="monitor">
+      <rect x="88" y="726" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="749" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 756)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="52" height="40" rx="5"/><path d="M11 34h10l5-13 10 23 5-10h12M24 50v7M40 50v7M18 58h28"/></g>
+      <text x="198" y="788" class="node-label">Storage transaction</text>
+    </g>
+    <g id="node-D" data-service-icon="monitor">
+      <rect x="598" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="419" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 426)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="52" height="40" rx="5"/><path d="M11 34h10l5-13 10 23 5-10h12M24 50v7M40 50v7M18 58h28"/></g>
+      <text x="708" y="458" class="node-label">Diagnostic setting</text>
+    </g>
+    <g id="node-W" data-service-icon="monitor">
+      <rect x="1108" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="309" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 316)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="52" height="40" rx="5"/><path d="M11 34h10l5-13 10 23 5-10h12M24 50v7M40 50v7M18 58h28"/></g>
+      <text x="1218" y="336" class="node-label">Log Analytics and</text>
+      <text x="1218" y="360" class="node-label">KQL</text>
+    </g>
+    <g id="node-A" data-service-icon="alert">
+      <rect x="598" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="639" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 646)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 43V27a15 15 0 0 1 30 0v16l6 7H11zM26 55a6 6 0 0 0 12 0M32 12V6"/><path d="M7 23l5-5M57 23l-5-5"/></g>
+      <text x="708" y="678" class="node-label">Scoped metric alert</text>
+    </g>
+    <g id="node-P" data-service-icon="recovery">
+      <rect x="598" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="859" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 866)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21a23 23 0 1 1-3 24M14 21V8M14 21H2"/><path d="M32 18v16l11 7"/></g>
+      <text x="708" y="898" class="node-label">Recovery protection</text>
+    </g>
+    <g id="node-RP" data-service-icon="recovery">
+      <rect x="1108" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1124" y="529" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1131 536)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21a23 23 0 1 1-3 24M14 21V8M14 21H2"/><path d="M32 18v16l11 7"/></g>
+      <text x="1218" y="568" class="node-label">Recovery point</text>
+    </g>
+    <g id="node-R" data-service-icon="recovery">
+      <rect x="1618" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1634" y="419" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1641 426)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21a23 23 0 1 1-3 24M14 21V8M14 21H2"/><path d="M32 18v16l11 7"/></g>
+      <text x="1728" y="446" class="node-label">Disk restore</text>
+      <text x="1728" y="470" class="node-label">artifact</text>
+    </g>
+    <g id="node-V" data-service-icon="check">
+      <rect x="1108" y="726" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="749" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 756)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="1218" y="764" class="node-label">Network, telemetry,</text>
+      <text x="1218" y="788" class="node-label">alert, and recovery</text>
+      <text x="1218" y="812" class="node-label">assertions</text>
+    </g>
+    <g id="node-C" data-service-icon="cleanup">
+      <rect x="1618" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1634" y="639" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1641 646)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="1728" y="666" class="node-label">Workload cleanup and</text>
+      <text x="1728" y="690" class="node-label">deleted-vault proof</text>
+    </g>
+    <path d="M36 1024H2000" stroke="#29405D"/>
+    <text x="36" y="1047" class="footer">12 components · 13 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

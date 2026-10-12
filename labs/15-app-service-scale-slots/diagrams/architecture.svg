@@ -1,48 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1528" height="432" viewBox="0 0 1528 432" role="img" aria-labelledby="lab15-title lab15-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="844" viewBox="0 0 2036 844" role="img" aria-labelledby="lab15-title lab15-desc">
   <title id="lab15-title">LAB-15 architecture: Scale App Service and operate deployment slots</title>
-  <desc id="lab15-desc">Left-to-right service topology with 9 components and 10 directed relationships. Components: Operator and Azure CLI, Linux App Service plan, Production slot, Staging slot, Autoscale profile, Reversible slot swap, Slot-sticky settings, Capacity, slot, and sticky assertions, Slot before plan cleanup. Relationships: Operator and Azure CLI to Linux App Service plan; Linux App Service plan to Production slot; Linux App Service plan to Staging slot; Autoscale profile to Linux App Service plan; Staging slot to Reversible slot swap; Reversible slot swap to Production slot; Slot-sticky settings to Staging slot; Production slot to Capacity, slot, and sticky assertions; Staging slot to Capacity, slot, and sticky assertions; Capacity, slot, and sticky assertions to Slot before plan cleanup.</desc>
-  <metadata id="lab15-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;7f0c4449ffa62d3491ae18cece88ad5e92e8f3c76881f2b47733b7fe65e0dda6&quot;}</metadata>
+  <desc id="lab15-desc">Illustrated service topology with 9 components and 10 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Operator and Azure CLI, Linux App Service plan, Production slot, Staging slot, Autoscale profile, Reversible slot swap, Slot-sticky settings, Capacity, slot, and sticky assertions, Slot before plan cleanup. Relationships: Operator and Azure CLI to Linux App Service plan; Linux App Service plan to Production slot; Linux App Service plan to Staging slot; Autoscale profile to Linux App Service plan; Staging slot to Reversible slot swap; Reversible slot swap to Production slot; Slot-sticky settings to Staging slot; Production slot to Capacity, slot, and sticky assertions; Staging slot to Capacity, slot, and sticky assertions; Capacity, slot, and sticky assertions to Slot before plan cleanup.</desc>
+  <metadata id="lab15-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;7f0c4449ffa62d3491ae18cece88ad5e92e8f3c76881f2b47733b7fe65e0dda6&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 114 C 384 114, 384 165, 444 165"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 114, 824 114"/>
-    <path class="edge" d="M 574 199 C 618 216, 618 216, 574 233"/>
-    <path class="edge" d="M 324 216 C 384 216, 384 165, 444 165"/>
-    <path class="edge" d="M 704 267 C 764 267, 764 216, 824 216"/>
-    <path class="edge" d="M 954 250 C 998 165, 998 165, 954 80"/>
-    <path class="edge" d="M 324 318 C 384 318, 384 267, 444 267"/>
-    <path class="edge" d="M 954 148 C 988 216, 988 216, 954 284"/>
-    <path class="edge" d="M 704 267 C 764 267, 764 318, 824 318"/>
-    <path class="edge" d="M 1084 318 C 1144 318, 1144 216, 1204 216"/>
-    <rect x="64" y="80" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="114" class="node-label" fill="#102a43">Operator and Azure CLI</text>
-    <rect x="444" y="131" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="165" class="node-label" fill="#102a43">Linux App Service plan</text>
-    <rect x="824" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="114" class="node-label" fill="#102a43">Production slot</text>
-    <rect x="444" y="233" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="267" class="node-label" fill="#102a43">Staging slot</text>
-    <rect x="64" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="216" class="node-label" fill="#102a43">Autoscale profile</text>
-    <rect x="824" y="182" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="954" y="216" class="node-label" fill="#102a43">Reversible slot swap</text>
-    <rect x="64" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="318" class="node-label" fill="#102a43">Slot-sticky settings</text>
-    <rect x="824" y="284" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="954" y="318" class="node-label" fill="#102a43">Capacity, slot, and sticky assertions</text>
-    <rect x="1204" y="182" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1334" y="216" class="node-label" fill="#102a43">Slot before plan cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">15</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Scale App Service and operate deployment slots</text>
+    <path id="edge-0" data-source="A" data-target="P" class="edge" d="M 418 238 L 562 238 Q 574 238 574 250 L 574 336 Q 574 348 586 348 L 598 348"/>
+    <path id="edge-1" data-source="P" data-target="PR" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 336 L 1084 250 Q 1084 238 1096 238 L 1108 238"/>
+    <path id="edge-2" data-source="P" data-target="ST" class="edge" d="M 928 348 L 940 348 Q 952 348 952 360 L 952 470 Q 952 482 940 482 L 586 482 Q 574 482 574 494 L 574 556 Q 574 568 586 568 L 598 568"/>
+    <path id="edge-3" data-source="AS" data-target="P" class="edge" d="M 418 458 L 562 458 Q 574 458 574 446 L 574 360 Q 574 348 586 348 L 598 348"/>
+    <path id="edge-4" data-source="ST" data-target="SW" class="edge" d="M 928 568 L 1072 568 Q 1084 568 1084 556 L 1084 470 Q 1084 458 1096 458 L 1108 458"/>
+    <path id="edge-5" data-source="SW" data-target="PR" class="edge" d="M 1438 458 L 1450 458 Q 1462 458 1462 446 L 1462 336 Q 1462 324 1450 324 L 1096 324 Q 1084 324 1084 312 L 1084 250 Q 1084 238 1096 238 L 1108 238"/>
+    <path id="edge-6" data-source="SS" data-target="ST" class="edge" d="M 418 678 L 562 678 Q 574 678 574 666 L 574 580 Q 574 568 586 568 L 598 568"/>
+    <path id="edge-7" data-source="PR" data-target="V" class="edge" d="M 1438 238 L 1450 238 Q 1462 238 1462 250 L 1462 580 Q 1462 592 1450 592 L 1096 592 Q 1084 592 1084 604 L 1084 666 Q 1084 678 1096 678 L 1108 678"/>
+    <path id="edge-8" data-source="ST" data-target="V" class="edge" d="M 928 568 L 940 568 Q 952 568 952 580 L 952 666 Q 952 678 964 678 L 1108 678"/>
+    <path id="edge-9" data-source="V" data-target="C" class="edge" d="M 1438 678 L 1582 678 Q 1594 678 1594 666 L 1594 470 Q 1594 458 1606 458 L 1618 458"/>
+    <g id="node-A" data-service-icon="code">
+      <rect x="88" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="198" y="226" class="node-label">Operator and Azure</text>
+      <text x="198" y="250" class="node-label">CLI</text>
+    </g>
+    <g id="node-P" data-service-icon="app">
+      <rect x="598" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="309" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 316)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="708" y="336" class="node-label">Linux App Service</text>
+      <text x="708" y="360" class="node-label">plan</text>
+    </g>
+    <g id="node-PR" data-service-icon="app">
+      <rect x="1108" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="199" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 206)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="1218" y="238" class="node-label">Production slot</text>
+    </g>
+    <g id="node-ST" data-service-icon="app">
+      <rect x="598" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="529" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 536)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="708" y="568" class="node-label">Staging slot</text>
+    </g>
+    <g id="node-AS" data-service-icon="scale">
+      <rect x="88" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="22" width="19" height="28" rx="3"/><rect x="27" y="14" width="19" height="36" rx="3"/><path d="M48 9h9v41h-9M11 32h9M11 39h9M32 24h9M32 32h9M32 40h9"/></g>
+      <text x="198" y="458" class="node-label">Autoscale profile</text>
+    </g>
+    <g id="node-SW" data-service-icon="app">
+      <rect x="1108" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="1218" y="458" class="node-label">Reversible slot swap</text>
+    </g>
+    <g id="node-SS" data-service-icon="app">
+      <rect x="88" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="639" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 646)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="198" y="678" class="node-label">Slot-sticky settings</text>
+    </g>
+    <g id="node-V" data-service-icon="check">
+      <rect x="1108" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="639" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 646)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="1218" y="666" class="node-label">Capacity, slot, and</text>
+      <text x="1218" y="690" class="node-label">sticky assertions</text>
+    </g>
+    <g id="node-C" data-service-icon="cleanup">
+      <rect x="1618" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1634" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1641 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="1728" y="446" class="node-label">Slot before plan</text>
+      <text x="1728" y="470" class="node-label">cleanup</text>
+    </g>
+    <path d="M36 804H2000" stroke="#29405D"/>
+    <text x="36" y="827" class="footer">9 components · 10 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

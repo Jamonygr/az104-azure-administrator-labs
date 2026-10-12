@@ -1,48 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2288" height="432" viewBox="0 0 2288 432" role="img" aria-labelledby="lab19-title lab19-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="1112" viewBox="0 0 2036 1112" role="img" aria-labelledby="lab19-title lab19-desc">
   <title id="lab19-title">LAB-19 architecture: Compare service endpoints and private endpoints</title>
-  <desc id="lab19-desc">Left-to-right service topology with 9 components and 10 directed relationships. Components: VNet client path, Linked private DNS zone, Blob private A record, Blob private endpoint, Public-disabled storage, Private DNS zone group, Public endpoint denied, Approval, IP, DNS, and policy assertions, Endpoint before DNS cleanup. Relationships: VNet client path to Linked private DNS zone; Linked private DNS zone to Blob private A record; Blob private A record to Blob private endpoint; Blob private endpoint to Public-disabled storage; Private DNS zone group to Blob private A record; Blob private endpoint to Private DNS zone group; Public-disabled storage to Public endpoint denied; Blob private endpoint to Approval, IP, DNS, and policy assertions; Public endpoint denied to Approval, IP, DNS, and policy assertions; Approval, IP, DNS, and policy assertions to Endpoint before DNS cleanup.</desc>
-  <metadata id="lab19-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;6400337949902e7525aad768208efaee4b3694db6ce08e31db542a59c63ca8e2&quot;}</metadata>
+  <desc id="lab19-desc">Illustrated service topology with 9 components and 10 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: VNet client path, Linked private DNS zone, Blob private A record, Blob private endpoint, Public-disabled storage, Private DNS zone group, Public endpoint denied, Approval, IP, DNS, and policy assertions, Endpoint before DNS cleanup. Relationships: VNet client path to Linked private DNS zone; Linked private DNS zone to Blob private A record; Blob private A record to Blob private endpoint; Blob private endpoint to Public-disabled storage; Private DNS zone group to Blob private A record; Blob private endpoint to Private DNS zone group; Public-disabled storage to Public endpoint denied; Blob private endpoint to Approval, IP, DNS, and policy assertions; Public endpoint denied to Approval, IP, DNS, and policy assertions; Approval, IP, DNS, and policy assertions to Endpoint before DNS cleanup.</desc>
+  <metadata id="lab19-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;6400337949902e7525aad768208efaee4b3694db6ce08e31db542a59c63ca8e2&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 216 C 384 216, 384 216, 444 216"/>
-    <path class="edge" d="M 704 216 C 764 216, 764 216, 824 216"/>
-    <path class="edge" d="M 1084 216 C 1144 216, 1144 216, 1204 216"/>
-    <path class="edge" d="M 1464 216 C 1524 216, 1524 114, 1584 114"/>
-    <path class="edge" d="M 1584 216 C 1534 294, 1134 294, 1084 216"/>
-    <path class="edge" d="M 1464 216 C 1524 216, 1524 216, 1584 216"/>
-    <path class="edge" d="M 1844 114 C 1904 114, 1904 165, 1964 165"/>
-    <path class="edge" d="M 1464 216 C 1524 216, 1524 318, 1584 318"/>
-    <path class="edge" d="M 1964 165 C 1914 410, 1894 410, 1844 318"/>
-    <path class="edge" d="M 1844 318 C 1904 318, 1904 267, 1964 267"/>
-    <rect x="64" y="182" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="216" class="node-label" fill="#102a43">VNet client path</text>
-    <rect x="444" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="216" class="node-label" fill="#102a43">Linked private DNS zone</text>
-    <rect x="824" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="216" class="node-label" fill="#102a43">Blob private A record</text>
-    <rect x="1204" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1334" y="216" class="node-label" fill="#102a43">Blob private endpoint</text>
-    <rect x="1584" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1714" y="114" class="node-label" fill="#102a43">Public-disabled storage</text>
-    <rect x="1584" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1714" y="216" class="node-label" fill="#102a43">Private DNS zone group</text>
-    <rect x="1964" y="131" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="2094" y="165" class="node-label" fill="#102a43">Public endpoint denied</text>
-    <rect x="1584" y="284" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1714" y="318" class="node-label" fill="#102a43">Approval, IP, DNS, and policy assertions</text>
-    <rect x="1964" y="233" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="2094" y="267" class="node-label" fill="#102a43">Endpoint before DNS cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">19</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Compare service endpoints and private endpoints</text>
+    <path id="edge-0" data-source="C" data-target="DNS" class="edge" d="M 418 238 L 598 238"/>
+    <path id="edge-1" data-source="DNS" data-target="R" class="edge" d="M 928 238 L 1108 238"/>
+    <path id="edge-2" data-source="R" data-target="PE" class="edge" d="M 1438 238 L 1618 238"/>
+    <path id="edge-3" data-source="PE" data-target="S" class="edge" d="M 1948 238 L 1960 238 Q 1972 238 1972 250 L 1972 408 Q 1972 420 1960 420 L 76 420 Q 64 420 64 432 L 64 494 Q 64 506 76 506 L 88 506"/>
+    <path id="edge-4" data-source="ZG" data-target="R" class="edge" d="M 418 726 L 1072 726 Q 1084 726 1084 714 L 1084 250 Q 1084 238 1096 238 L 1108 238"/>
+    <path id="edge-5" data-source="PE" data-target="ZG" class="edge" d="M 1948 238 L 1960 238 Q 1972 238 1972 250 L 1972 312 Q 1972 324 1960 324 L 76 324 Q 64 324 64 336 L 64 714 Q 64 726 76 726 L 88 726"/>
+    <path id="edge-6" data-source="S" data-target="D" class="edge" d="M 418 506 L 562 506 Q 574 506 574 518 L 574 604 Q 574 616 586 616 L 598 616"/>
+    <path id="edge-7" data-source="PE" data-target="V" class="edge" d="M 1948 238 L 1988 238 Q 2000 238 2000 250 L 2000 738 Q 2000 750 1988 750 L 454 750 Q 442 750 442 762 L 442 848 Q 442 860 430 860 L 76 860 Q 64 860 64 872 L 64 934 Q 64 946 76 946 L 88 946"/>
+    <path id="edge-8" data-source="D" data-target="V" class="edge" d="M 928 616 L 940 616 Q 952 616 952 628 L 952 690 Q 952 702 940 702 L 586 702 Q 574 702 574 714 L 574 824 Q 574 836 562 836 L 76 836 Q 64 836 64 848 L 64 934 Q 64 946 76 946 L 88 946"/>
+    <path id="edge-9" data-source="V" data-target="X" class="edge" d="M 418 946 L 562 946 Q 574 946 574 934 L 574 848 Q 574 836 586 836 L 598 836"/>
+    <g id="node-C" data-service-icon="network">
+      <rect x="88" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="25" width="16" height="14" rx="3"/><circle cx="12" cy="12" r="6"/><circle cx="52" cy="12" r="6"/><circle cx="12" cy="52" r="6"/><circle cx="52" cy="52" r="6"/><path d="M17 17l8 8M47 17l-8 8M17 47l8-8M47 47l-8-8"/></g>
+      <text x="198" y="238" class="node-label">VNet client path</text>
+    </g>
+    <g id="node-DNS" data-service-icon="dns">
+      <rect x="598" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><ellipse cx="32" cy="32" rx="11" ry="24"/><path d="M9 25h46M9 39h46M32 8v48"/></g>
+      <text x="708" y="226" class="node-label">Linked private DNS</text>
+      <text x="708" y="250" class="node-label">zone</text>
+    </g>
+    <g id="node-R" data-service-icon="dns">
+      <rect x="1108" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><ellipse cx="32" cy="32" rx="11" ry="24"/><path d="M9 25h46M9 39h46M32 8v48"/></g>
+      <text x="1218" y="226" class="node-label">Blob private A</text>
+      <text x="1218" y="250" class="node-label">record</text>
+    </g>
+    <g id="node-PE" data-service-icon="network">
+      <rect x="1618" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1634" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1641 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="25" width="16" height="14" rx="3"/><circle cx="12" cy="12" r="6"/><circle cx="52" cy="12" r="6"/><circle cx="12" cy="52" r="6"/><circle cx="52" cy="52" r="6"/><path d="M17 17l8 8M47 17l-8 8M17 47l8-8M47 47l-8-8"/></g>
+      <text x="1728" y="226" class="node-label">Blob private</text>
+      <text x="1728" y="250" class="node-label">endpoint</text>
+    </g>
+    <g id="node-S" data-service-icon="storage">
+      <rect x="88" y="444" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="467" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 474)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="13" rx="22" ry="8"/><path d="M10 13v37c0 11 44 11 44 0V13M10 27c0 11 44 11 44 0M10 40c0 11 44 11 44 0"/></g>
+      <text x="198" y="494" class="node-label">Public-disabled</text>
+      <text x="198" y="518" class="node-label">storage</text>
+    </g>
+    <g id="node-ZG" data-service-icon="dns">
+      <rect x="88" y="664" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="687" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 694)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><ellipse cx="32" cy="32" rx="11" ry="24"/><path d="M9 25h46M9 39h46M32 8v48"/></g>
+      <text x="198" y="714" class="node-label">Private DNS zone</text>
+      <text x="198" y="738" class="node-label">group</text>
+    </g>
+    <g id="node-D" data-service-icon="shield">
+      <rect x="598" y="554" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="577" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 584)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l22 9v17c0 13-9 23-22 29C19 55 10 45 10 32V15z"/><path d="M22 33l7 7 15-17"/></g>
+      <text x="708" y="604" class="node-label">Public endpoint</text>
+      <text x="708" y="628" class="node-label">denied</text>
+    </g>
+    <g id="node-V" data-service-icon="check">
+      <rect x="88" y="884" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="907" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 914)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="198" y="922" class="node-label">Approval, IP, DNS,</text>
+      <text x="198" y="946" class="node-label">and policy</text>
+      <text x="198" y="970" class="node-label">assertions</text>
+    </g>
+    <g id="node-X" data-service-icon="cleanup">
+      <rect x="598" y="774" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="797" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 804)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="708" y="824" class="node-label">Endpoint before DNS</text>
+      <text x="708" y="848" class="node-label">cleanup</text>
+    </g>
+    <path d="M36 1072H2000" stroke="#29405D"/>
+    <text x="36" y="1095" class="footer">9 components · 10 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

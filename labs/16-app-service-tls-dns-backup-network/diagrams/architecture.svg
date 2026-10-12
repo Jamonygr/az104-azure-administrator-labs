@@ -1,49 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1908" height="432" viewBox="0 0 1908 432" role="img" aria-labelledby="lab16-title lab16-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="1112" viewBox="0 0 2036 1112" role="img" aria-labelledby="lab16-title lab16-desc">
   <title id="lab16-title">LAB-16 architecture: Configure App Service TLS, DNS, backup, and networking</title>
-  <desc id="lab16-desc">Left-to-right service topology with 10 components and 9 directed relationships. Components: Operator and Azure CLI, HTTPS-only App Service, TLS and managed certificate, Delegated VNet subnet, Backup configuration, Transient redacted SAS, Private Blob container, Owned hostname gate, TLS, DNS, backup, and VNet assertions, Secret-free cleanup. Relationships: Operator and Azure CLI to HTTPS-only App Service; HTTPS-only App Service to TLS and managed certificate; HTTPS-only App Service to Delegated VNet subnet; HTTPS-only App Service to Backup configuration; Backup configuration to Transient redacted SAS; Transient redacted SAS to Private Blob container; Owned hostname gate to TLS and managed certificate; HTTPS-only App Service to TLS, DNS, backup, and VNet assertions; TLS, DNS, backup, and VNet assertions to Secret-free cleanup.</desc>
-  <metadata id="lab16-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;e02d81c139127fa42df74fbaf54886abf4e8b4df4b7a71d3180faba4a90f9dd6&quot;}</metadata>
+  <desc id="lab16-desc">Illustrated service topology with 10 components and 9 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Operator and Azure CLI, HTTPS-only App Service, TLS and managed certificate, Delegated VNet subnet, Backup configuration, Transient redacted SAS, Private Blob container, Owned hostname gate, TLS, DNS, backup, and VNet assertions, Secret-free cleanup. Relationships: Operator and Azure CLI to HTTPS-only App Service; HTTPS-only App Service to TLS and managed certificate; HTTPS-only App Service to Delegated VNet subnet; HTTPS-only App Service to Backup configuration; Backup configuration to Transient redacted SAS; Transient redacted SAS to Private Blob container; Owned hostname gate to TLS and managed certificate; HTTPS-only App Service to TLS, DNS, backup, and VNet assertions; TLS, DNS, backup, and VNet assertions to Secret-free cleanup.</desc>
+  <metadata id="lab16-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;e02d81c139127fa42df74fbaf54886abf4e8b4df4b7a71d3180faba4a90f9dd6&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 165 C 384 165, 384 165, 444 165"/>
-    <path class="edge" d="M 574 199 C 608 216, 608 216, 574 233"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 114, 824 114"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 216, 824 216"/>
-    <path class="edge" d="M 1084 216 C 1144 216, 1144 165, 1204 165"/>
-    <path class="edge" d="M 1464 165 C 1524 165, 1524 216, 1584 216"/>
-    <path class="edge" d="M 324 267 C 384 267, 384 267, 444 267"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 318, 824 318"/>
-    <path class="edge" d="M 1084 318 C 1144 318, 1144 267, 1204 267"/>
-    <rect x="64" y="131" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="165" class="node-label" fill="#102a43">Operator and Azure CLI</text>
-    <rect x="444" y="131" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="165" class="node-label" fill="#102a43">HTTPS-only App Service</text>
-    <rect x="444" y="233" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="267" class="node-label" fill="#102a43">TLS and managed certificate</text>
-    <rect x="824" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="114" class="node-label" fill="#102a43">Delegated VNet subnet</text>
-    <rect x="824" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="216" class="node-label" fill="#102a43">Backup configuration</text>
-    <rect x="1204" y="131" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1334" y="165" class="node-label" fill="#102a43">Transient redacted SAS</text>
-    <rect x="1584" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1714" y="216" class="node-label" fill="#102a43">Private Blob container</text>
-    <rect x="64" y="233" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="267" class="node-label" fill="#102a43">Owned hostname gate</text>
-    <rect x="824" y="284" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="954" y="318" class="node-label" fill="#102a43">TLS, DNS, backup, and VNet assertions</text>
-    <rect x="1204" y="233" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1334" y="267" class="node-label" fill="#102a43">Secret-free cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">16</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Configure App Service TLS, DNS, backup, and networking</text>
+    <path id="edge-0" data-source="A" data-target="APP" class="edge" d="M 418 348 L 598 348"/>
+    <path id="edge-1" data-source="APP" data-target="TLS" class="edge" d="M 928 348 L 940 348 Q 952 348 952 360 L 952 470 Q 952 482 940 482 L 586 482 Q 574 482 574 494 L 574 556 Q 574 568 586 568 L 598 568"/>
+    <path id="edge-2" data-source="APP" data-target="VI" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 336 L 1084 250 Q 1084 238 1096 238 L 1108 238"/>
+    <path id="edge-3" data-source="APP" data-target="B" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 360 L 1084 446 Q 1084 458 1096 458 L 1108 458"/>
+    <path id="edge-4" data-source="B" data-target="SAS" class="edge" d="M 1438 458 L 1582 458 Q 1594 458 1594 446 L 1594 360 Q 1594 348 1606 348 L 1618 348"/>
+    <path id="edge-5" data-source="SAS" data-target="ST" class="edge" d="M 1948 348 L 1960 348 Q 1972 348 1972 360 L 1972 848 Q 1972 860 1960 860 L 76 860 Q 64 860 64 872 L 64 934 Q 64 946 76 946 L 88 946"/>
+    <path id="edge-6" data-source="DNS" data-target="TLS" class="edge" d="M 418 568 L 598 568"/>
+    <path id="edge-7" data-source="APP" data-target="V" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 360 L 1084 666 Q 1084 678 1096 678 L 1108 678"/>
+    <path id="edge-8" data-source="V" data-target="C" class="edge" d="M 1438 678 L 1582 678 Q 1594 678 1594 666 L 1594 580 Q 1594 568 1606 568 L 1618 568"/>
+    <g id="node-A" data-service-icon="code">
+      <rect x="88" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="309" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 316)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="198" y="336" class="node-label">Operator and Azure</text>
+      <text x="198" y="360" class="node-label">CLI</text>
+    </g>
+    <g id="node-APP" data-service-icon="app">
+      <rect x="598" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="309" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 316)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="46" rx="6"/><path d="M7 21h50M15 15h1M22 15h1M19 32l-7 7 7 7M45 32l7 7-7 7M36 28l-8 23"/></g>
+      <text x="708" y="336" class="node-label">HTTPS-only App</text>
+      <text x="708" y="360" class="node-label">Service</text>
+    </g>
+    <g id="node-TLS" data-service-icon="key">
+      <rect x="598" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="529" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 536)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="23" r="13"/><circle cx="23" cy="23" r="4"/><path d="M33 33l23 23M43 43l7-7M50 50l7-7"/></g>
+      <text x="708" y="556" class="node-label">TLS and managed</text>
+      <text x="708" y="580" class="node-label">certificate</text>
+    </g>
+    <g id="node-VI" data-service-icon="network">
+      <rect x="1108" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="25" width="16" height="14" rx="3"/><circle cx="12" cy="12" r="6"/><circle cx="52" cy="12" r="6"/><circle cx="12" cy="52" r="6"/><circle cx="52" cy="52" r="6"/><path d="M17 17l8 8M47 17l-8 8M17 47l8-8M47 47l-8-8"/></g>
+      <text x="1218" y="226" class="node-label">Delegated VNet</text>
+      <text x="1218" y="250" class="node-label">subnet</text>
+    </g>
+    <g id="node-B" data-service-icon="recovery">
+      <rect x="1108" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1124" y="419" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1131 426)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21a23 23 0 1 1-3 24M14 21V8M14 21H2"/><path d="M32 18v16l11 7"/></g>
+      <text x="1218" y="458" class="node-label">Backup configuration</text>
+    </g>
+    <g id="node-SAS" data-service-icon="key">
+      <rect x="1618" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1634" y="309" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1641 316)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="23" r="13"/><circle cx="23" cy="23" r="4"/><path d="M33 33l23 23M43 43l7-7M50 50l7-7"/></g>
+      <text x="1728" y="336" class="node-label">Transient redacted</text>
+      <text x="1728" y="360" class="node-label">SAS</text>
+    </g>
+    <g id="node-ST" data-service-icon="files">
+      <rect x="88" y="884" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="907" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 914)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20h18l6 7h22v27H10z"/><path d="M17 13h25l10 10M29 36h17M29 44h17"/><rect x="18" y="34" width="5" height="13" rx="2"/></g>
+      <text x="198" y="934" class="node-label">Private Blob</text>
+      <text x="198" y="958" class="node-label">container</text>
+    </g>
+    <g id="node-DNS" data-service-icon="dns">
+      <rect x="88" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="529" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 536)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><ellipse cx="32" cy="32" rx="11" ry="24"/><path d="M9 25h46M9 39h46M32 8v48"/></g>
+      <text x="198" y="568" class="node-label">Owned hostname gate</text>
+    </g>
+    <g id="node-V" data-service-icon="check">
+      <rect x="1108" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="639" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 646)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="1218" y="666" class="node-label">TLS, DNS, backup,</text>
+      <text x="1218" y="690" class="node-label">and VNet assertions</text>
+    </g>
+    <g id="node-C" data-service-icon="cleanup">
+      <rect x="1618" y="506" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1634" y="529" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1641 536)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="1728" y="568" class="node-label">Secret-free cleanup</text>
+    </g>
+    <path d="M36 1072H2000" stroke="#29405D"/>
+    <text x="36" y="1095" class="footer">10 components · 9 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

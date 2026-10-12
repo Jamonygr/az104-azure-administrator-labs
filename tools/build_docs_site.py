@@ -12,11 +12,13 @@ import re
 import shutil
 import tempfile
 from collections import defaultdict
+from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
 import yaml
+import markdown as markdown_library
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -24,6 +26,15 @@ DEFAULT_OUTPUT = REPO_ROOT / ".site-docs"
 SITE_SOURCE = REPO_ROOT / "docs" / "site"
 SITE_ASSETS = REPO_ROOT / "docs" / "site-assets"
 CATALOG_PATH = REPO_ROOT / "labs" / "catalog.yml"
+BLUEPRINT_PATH = REPO_ROOT / "curriculum" / "blueprint.yml"
+
+EXAM_DOMAINS = {
+    "identity-governance": ("IG", "identity-governance", "Govern with confidence", "Manage identities, access, policy, and costs.", "Identity shield with users and governance controls"),
+    "storage": ("ST", "storage", "Protect your data", "Secure storage, move data, and manage lifecycle.", "Storage cylinders and protected data connections"),
+    "compute": ("CP", "compute", "Build resilient workloads", "Deploy infrastructure, virtual machines, and apps.", "Virtual machines, containers, and an application platform"),
+    "networking": ("NW", "networking", "Connect securely", "Design networks, control traffic, and isolate services.", "Connected network nodes and a secure boundary"),
+    "monitor-recovery": ("MR", "monitor-recovery", "Operate and recover", "Observe, alert, back up, and restore workloads.", "Monitoring signals beside a backup and recovery shield"),
+}
 
 DOMAIN_LABELS = {
     "foundation": "Foundation",
@@ -63,11 +74,20 @@ class AccessibilityParser(HTMLParser):
         self.h1_count = 0
         self.images_without_alt = 0
         self.external_active_resources: list[str] = []
+        self.links: list[str] = []
+        self.home_card_count = 0
+        self.domain_card_count = 0
+        self.code_blocks = 0
+        self.skip_target = None
+        self.document_title = ""
+        self.in_document_title = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
         if tag == "html" and attributes.get("lang"):
             self.has_language = True
+        elif tag == "title":
+            self.in_document_title = True
         elif tag == "meta" and attributes.get("name", "").lower() == "viewport":
             self.has_viewport = True
         elif tag == "main":
@@ -76,6 +96,17 @@ class AccessibilityParser(HTMLParser):
             self.h1_count += 1
         elif tag == "img" and "alt" not in attributes:
             self.images_without_alt += 1
+        elif tag == "pre":
+            self.code_blocks += 1
+        if tag == "a" and attributes.get("href"):
+            self.links.append(attributes["href"])
+            if "md-skip" in attributes.get("class", "").split():
+                self.skip_target = attributes["href"]
+        classes = attributes.get("class", "").split()
+        if "az104-lab-card" in classes:
+            self.home_card_count += 1
+        if "az104-domain-card" in classes:
+            self.domain_card_count += 1
         active_resource = None
         if tag in {"img", "script", "source"}:
             active_resource = attributes.get("src")
@@ -85,6 +116,14 @@ class AccessibilityParser(HTMLParser):
                 active_resource = attributes.get("href")
         if active_resource and re.match(r"^https?://", active_resource, re.IGNORECASE):
             self.external_active_resources.append(active_resource)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "title":
+            self.in_document_title = False
+
+    def handle_data(self, data: str) -> None:
+        if self.in_document_title:
+            self.document_title += data
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -177,23 +216,96 @@ def copy_file(source: Path, destination: Path) -> None:
     shutil.copy2(source, destination)
 
 
-def copy_site_sources(output: Path) -> None:
+def homepage_sections(labs: list[dict[str, Any]]) -> dict[str, str]:
+    """Render compact, escaped HTML from the authoritative catalog and blueprint."""
+    blueprint = load_yaml(BLUEPRINT_PATH)
+    domains = blueprint.get("domains", [])
+    objective_count = sum(
+        len(group.get("objectives", []))
+        for domain in domains
+        for group in domain.get("groups", [])
+    )
+    question_count = sum(lab["questionCount"] for lab in labs)
+    if objective_count != 82 or objective_count != blueprint["exam"]["officialObjectiveCount"]:
+        raise SiteBuildError("Homepage must use all 82 official objectives from the blueprint")
+    if question_count != 1250:
+        raise SiteBuildError("Homepage must use exactly 1,250 catalog questions")
+    stats = '<div class="az104-stats" aria-label="Curriculum at a glance">' + "".join(
+        f'<div><strong>{value:,}</strong><span>{label}</span></div>'
+        for value, label in ((len(labs), "guided labs"), (question_count, "practice questions"), (objective_count, "exam objectives"))
+    ) + '</div>'
+    domain_cards: list[str] = []
+    for domain, (domain_id, illustration, headline, description, alt) in EXAM_DOMAINS.items():
+        authoritative = next((item for item in domains if item["id"] == domain_id), None)
+        if not authoritative:
+            raise SiteBuildError(f"Blueprint is missing exam domain {domain_id}")
+        selected_labs = [lab for lab in labs if lab["domain"] == domain]
+        visual = f"assets/illustrations/domain-{illustration}.svg"
+        domain_cards.append(
+            f'<article class="az104-domain-card"><figure><a href="{visual}" aria-label="Open {escape(DOMAIN_LABELS[domain])} illustration at full size"><img src="{visual}" alt="{escape(alt)}" loading="lazy" width="640" height="400"></a>'
+            f'<figcaption>{escape(DOMAIN_LABELS[domain])} · <a href="{visual}">Full size</a></figcaption></figure>'
+            f'<div class="az104-card-body"><span class="az104-eyebrow">{escape(authoritative["weight"])} of the exam</span><h3><a href="domains/{domain}/">{escape(headline)}</a></h3>'
+            f'<p>{escape(description)}</p><p class="az104-card-meta">{len(selected_labs)} labs · {sum(lab["questionCount"] for lab in selected_labs)} questions</p></div></article>'
+        )
+    lab_cards: list[str] = []
+    for lab in labs:
+        path_url = f'labs/{lab["folderName"]}/'
+        visual = f'{path_url}diagrams/architecture.svg'
+        lab_cards.append(
+            f'<article class="az104-lab-card" data-lab-id="{lab["labId"]}"><figure><a href="{visual}" aria-label="Open {lab["labId"]} architecture at full size"><img src="{visual}" alt="{escape(lab["title"])}: service topology and connections" loading="lazy" width="960" height="600"></a>'
+            f'<figcaption>{lab["labId"]} architecture · <a href="{visual}">Full size</a></figcaption></figure>'
+            f'<div class="az104-card-body"><span class="az104-eyebrow">{lab["labId"]} · {escape(DOMAIN_LABELS[lab["domain"]])}</span><h3><a href="{path_url}">{escape(lab["title"])}</a></h3>'
+            f'<ul class="az104-card-tags" aria-label="Lab details"><li>{lab["estimatedMinutes"]} min</li><li>{escape(lab["difficulty"])}</li><li>Cost: {escape(lab["costClass"])}</li><li>{lab["questionCount"]} questions</li></ul>'
+            f'<p class="az104-card-status">{escape(lab["status"])}</p><a class="az104-card-link" href="{path_url}">Open lab <span aria-hidden="true">→</span></a></div></article>'
+        )
+    return {
+        "AZ104_STATS": stats,
+        "AZ104_DOMAINS": '<div class="az104-domain-grid">' + "\n".join(domain_cards) + '</div>',
+        "AZ104_LAB_CARDS": '<div class="az104-lab-grid">' + "\n".join(lab_cards) + '</div>',
+    }
+
+
+def validate_homepage(content: str) -> None:
+    rendered = markdown_library.markdown(content, extensions=["attr_list", "tables", "admonition"])
+    parser = AccessibilityParser()
+    parser.feed(rendered)
+    if parser.h1_count != 1 or 'id="home-title"' not in rendered:
+        raise SiteBuildError("Homepage must render one native Markdown H1 with the home-title anchor")
+    if parser.code_blocks or "&lt;article" in rendered or "&lt;section" in rendered:
+        raise SiteBuildError("Homepage HTML must not render as indented code or escaped markup")
+    if parser.home_card_count != 28 or parser.domain_card_count != 5:
+        raise SiteBuildError("Homepage must render exactly 28 lab cards and five domain cards")
+    if parser.images_without_alt:
+        raise SiteBuildError("Homepage images must have descriptive alternative text")
+
+
+def copy_site_sources(output: Path, labs: list[dict[str, Any]]) -> None:
     required_pages = {
         "index.md": "index.md",
         "learning-pathways.md": "learning-pathways.md",
         "environment-readiness.md": "environment-readiness.md",
         "learner-progress.md": "learner-progress.md",
         "glossary.md": "glossary.md",
+        "practice.md": "practice.md",
     }
     for source_name, destination_name in required_pages.items():
         source = SITE_SOURCE / source_name
         if not source.is_file():
             raise SiteBuildError(f"Missing site source: {source.relative_to(REPO_ROOT)}")
         content = source.read_text(encoding="utf-8")
+        if source_name == "index.md":
+            for marker, value in homepage_sections(labs).items():
+                token = f"<!-- {marker} -->"
+                if content.count(token) != 1:
+                    raise SiteBuildError(f"Homepage must contain exactly one {marker} marker")
+                content = content.replace(token, value)
+            validate_homepage(content)
         link_rewrites = {
             "../../labs/": "labs/",
             "../objective-map.md": "docs/objective-map.md",
             "../study-plan.md": "docs/study-plan.md",
+            "../assessment-guide.md": "docs/assessment-guide.md",
+            "../cost-and-cleanup.md": "docs/cost-and-cleanup.md",
             "../../learner.config.example.yml": "downloads/learner.config.example.yml",
             "../../curriculum/progress-schema.json": "contracts/progress-schema.json",
         }
@@ -215,8 +327,8 @@ def copy_repository_docs(output: Path) -> None:
         if not source.is_file():
             continue
         relative = source.relative_to(docs_root)
-        # Branding/raster source assets are not staged. The learning site uses
-        # only each lab's reproducible architecture.svg instructional visual.
+        # Authoritative site art is staged separately from site-assets; legacy
+        # branding sources under visuals remain downloadable in the repository.
         if relative.parts[0] in {"site", "site-assets", "visuals"}:
             continue
         copy_file(source, output / "docs" / relative)
@@ -280,6 +392,28 @@ def copy_labs(output: Path, labs: list[dict[str, Any]]) -> None:
             if relative == Path("README.md"):
                 content = source.read_text(encoding="utf-8")
                 staged = add_staged_navigation(content, navigation_line(labs, index))
+                # The generated comment preceding the original H1 makes MkDocs
+                # fall back to "Index". Metadata gives search and page titles a
+                # meaningful label without rewriting authoritative lesson text.
+                page_metadata = yaml.safe_dump(
+                    {"title": f"Lab {lab['id']}: {lab['title']}"},
+                    allow_unicode=True,
+                    sort_keys=False,
+                )
+                staged = f"---\n{page_metadata}---\n\n{staged}"
+                diagram_alt = f"{lab['labId']}: {lab['title']}; service topology and connections"
+                diagram_figure = (
+                    f'<figure class="az104-teaching-visual"><a href="diagrams/architecture.svg" aria-label="Open {lab["labId"]} architecture at full size">'
+                    f'<img src="diagrams/architecture.svg" alt="{escape(diagram_alt)}" loading="lazy"></a>'
+                    f'<figcaption>{escape(lab["title"])} — topology for this lab. <a href="diagrams/architecture.svg">Open at full size</a>.</figcaption></figure>'
+                )
+                staged, replacements = re.subn(
+                    r"!\[[^\]]+\]\(diagrams/architecture\.svg\)",
+                    lambda _: diagram_figure,
+                    staged,
+                )
+                if replacements != 1:
+                    raise SiteBuildError(f"{lab['labId']} must contain exactly one instructional architecture image")
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 with destination.open("w", encoding="utf-8", newline="\n") as handle:
                     handle.write(staged)
@@ -337,6 +471,62 @@ def write_domain_pages(output: Path, labs: list[dict[str, Any]]) -> None:
             handle.write(domain_page(domain, grouped[domain]))
 
 
+def write_quiz_banks(output: Path, labs: list[dict[str, Any]]) -> None:
+    """Add route information to exact YAML question records without rewriting them."""
+    quiz_root = output / "assets" / "quiz"
+    quiz_root.mkdir(parents=True, exist_ok=True)
+    entries = []
+    total_questions = 0
+    for lab in labs:
+        if not lab["questionCount"]:
+            continue
+        path = lab["folder"] / "assessment" / "questions.yml"
+        try:
+            questions = yaml.safe_load(path.read_text(encoding="utf-8"))
+        except (OSError, yaml.YAMLError) as exc:
+            raise SiteBuildError(f"Cannot load quiz bank {path}: {exc}") from exc
+        if not isinstance(questions, list) or len(questions) != 50:
+            raise SiteBuildError(f"{lab['labId']} must stage 50 questions")
+        path_url = f'labs/{lab["folderName"]}/'
+        readme = (lab["folder"] / "README.md").read_text(encoding="utf-8")
+        anchors = set(re.findall(r"\{#([a-z0-9-]+)\}", readme))
+        staged_questions = []
+        for question in questions:
+            if not isinstance(question, dict):
+                raise SiteBuildError(f"{lab['labId']} has a non-mapping quiz question")
+            anchor = question.get("remediationAnchor", "")
+            if not isinstance(anchor, str) or not anchor.startswith("#") or anchor[1:] not in anchors:
+                raise SiteBuildError(f"{question.get('id')} has an invalid remediation anchor")
+            if set(question.get("options", {})) != {"A", "B", "C", "D"} or question.get("correctOption") not in {"A", "B", "C", "D"}:
+                raise SiteBuildError(f"{question.get('id')} has invalid quiz options")
+            if set(question.get("optionExplanations", {})) != {"A", "B", "C", "D"}:
+                raise SiteBuildError(f"{question.get('id')} needs four quiz explanations")
+            staged_questions.append({**question, "reviewUrl": f"{path_url}{anchor}"})
+        bank_name = f'{lab["labId"]}.json'
+        document = {"schemaVersion": "1.0.0", "labId": lab["labId"], "title": lab["title"], "pathUrl": path_url, "questions": staged_questions}
+        (quiz_root / bank_name).write_text(json.dumps(document, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+        entries.append({"labId": lab["labId"], "title": lab["title"], "pathUrl": path_url, "questionCount": len(questions), "bankUrl": bank_name})
+        total_questions += len(questions)
+    if len(entries) != 25 or total_questions != 1250:
+        raise SiteBuildError("Staged quizzes must contain 25 banks and exactly 1,250 unchanged questions")
+    (quiz_root / "index.json").write_text(json.dumps({"schemaVersion": "1.0.0", "labs": entries}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
+def check_artwork(output: Path, labs: list[dict[str, Any]]) -> None:
+    hero = output / "assets" / "illustrations" / "az104-cloud-cover.png"
+    if not hero.is_file() or hero.read_bytes()[:8] != b"\x89PNG\r\n\x1a\n":
+        raise SiteBuildError("Original AZ-104 cover artwork must be a local PNG")
+    for _, illustration, _, _, _ in EXAM_DOMAINS.values():
+        source = SITE_ASSETS / "illustrations" / f"domain-{illustration}.svg"
+        if not source.is_file():
+            raise SiteBuildError(f"Missing original domain illustration {source.name}")
+        validate_svg(source)
+    for lab in labs:
+        diagram = output / "labs" / lab["folderName"] / "diagrams" / "architecture.svg"
+        if not diagram.is_file():
+            raise SiteBuildError(f"Missing architecture visual for {lab['labId']}")
+
+
 def write_manifest(output: Path) -> None:
     files: list[dict[str, Any]] = []
     for path in sorted(output.rglob("*")):
@@ -357,10 +547,12 @@ def write_manifest(output: Path) -> None:
 def populate_staging_tree(output: Path, labs: list[dict[str, Any]]) -> None:
     """Create one complete site source tree from authoritative inputs."""
 
-    copy_site_sources(output)
+    copy_site_sources(output, labs)
     copy_repository_docs(output)
     copy_labs(output, labs)
     write_domain_pages(output, labs)
+    write_quiz_banks(output, labs)
+    check_artwork(output, labs)
     write_manifest(output)
 
 
@@ -412,9 +604,11 @@ def check() -> None:
 
 def check_built_site(site_root: Path) -> None:
     site_root = site_root.resolve()
+    labs = load_labs()
     representative = (
         site_root / "index.html",
         site_root / "learner-progress" / "index.html",
+        site_root / "practice" / "index.html",
         site_root / "labs" / "00-safe-bootstrap" / "index.html",
         site_root / "labs" / "14-container-apps" / "index.html",
         site_root / "labs" / "27-capstone-operate-recover" / "index.html",
@@ -442,6 +636,43 @@ def check_built_site(site_root: Path) -> None:
             )
         if failures:
             raise SiteBuildError(f"{page} failed static accessibility checks: {', '.join(failures)}")
+        if page == site_root / "index.html":
+            if parser.home_card_count != 28 or parser.domain_card_count != 5 or parser.code_blocks:
+                raise SiteBuildError("Built homepage must contain 28 lab cards, five domain cards, and no code blocks")
+            if parser.skip_target != "#home-title":
+                raise SiteBuildError("Built homepage must retain the native skip-to-content target")
+            for href in parser.links:
+                if href.startswith(("labs/", "domains/", "assets/illustrations/", "practice/")):
+                    target = site_root / href.split("#", 1)[0]
+                    if not target.is_file() and not (target / "index.html").is_file():
+                        raise SiteBuildError(f"Built homepage link is missing: {href}")
+
+    quiz_root = site_root / "assets" / "quiz"
+    try:
+        quiz_index = json.loads((quiz_root / "index.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise SiteBuildError(f"Built quiz index is unavailable: {exc}") from exc
+    if len(quiz_index.get("labs", [])) != 25:
+        raise SiteBuildError("Built quiz index must offer exactly 25 labs")
+    total_questions = 0
+    for entry in quiz_index["labs"]:
+        bank = json.loads((quiz_root / entry["bankUrl"]).read_text(encoding="utf-8"))
+        if len(bank["questions"]) != 50 or bank["labId"] != entry["labId"]:
+            raise SiteBuildError(f"Built quiz {entry['labId']} has invalid question count or identity")
+        lab_page = site_root / entry["pathUrl"] / "index.html"
+        if not lab_page.is_file():
+            raise SiteBuildError(f"Built quiz lesson route is missing: {entry['pathUrl']}")
+        lesson_html = lab_page.read_text(encoding="utf-8")
+        for question in bank["questions"]:
+            anchor = question["reviewUrl"].split("#", 1)[1]
+            if f'id="{anchor}"' not in lesson_html:
+                raise SiteBuildError(f"Built quiz remediation is missing for {question['id']}")
+        total_questions += len(bank["questions"])
+    if total_questions != 1250:
+        raise SiteBuildError("Built quiz assets must contain all 1,250 questions")
+    for asset in ("learning.css", "quiz.js", "illustrations/az104-cloud-cover.png"):
+        if not (site_root / "assets" / asset).is_file():
+            raise SiteBuildError(f"Built site is missing local learning asset: {asset}")
 
     progress_script = site_root / "assets" / "progress.js"
     progress_styles = site_root / "assets" / "progress.css"
@@ -459,6 +690,8 @@ def check_built_site(site_root: Path) -> None:
     except (OSError, json.JSONDecodeError) as exc:
         raise SiteBuildError(f"Client-side search index is invalid: {exc}") from exc
     indexed_documents = search_document.get("docs", [])
+    if search_document.get("config", {}).get("separator") != r"[\s\-\.]+":
+        raise SiteBuildError("Search separator must split whitespace, hyphens, and periods with single regex escapes")
     if not isinstance(indexed_documents, list) or not indexed_documents:
         raise SiteBuildError("Client-side search index contains no documents")
     answer_hits = [
@@ -492,6 +725,19 @@ def check_built_site(site_root: Path) -> None:
             "Client-side search must include every lab guide; "
             f"found {len(indexed_lab_roots)} of 28"
         )
+    for lab in labs:
+        location = f'labs/{lab["folderName"]}/'
+        page_path = site_root / location / "index.html"
+        if not page_path.is_file():
+            raise SiteBuildError(f"Built site is missing lab guide: {location}")
+        parser = AccessibilityParser()
+        parser.feed(page_path.read_text(encoding="utf-8"))
+        expected_title = f"Lab {lab['id']}: {lab['title']}"
+        if not parser.document_title.startswith(expected_title) or parser.document_title.startswith("Index"):
+            raise SiteBuildError(f"{lab['labId']} must have its meaningful lab title rather than Index")
+        root_documents = [item for item in indexed_documents if isinstance(item, dict) and item.get("location") == location]
+        if len(root_documents) != 1 or root_documents[0].get("title") != expected_title:
+            raise SiteBuildError(f"Search must use the meaningful {lab['labId']} title at {location}")
 
 
 def parse_args() -> argparse.Namespace:

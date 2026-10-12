@@ -1,47 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2288" height="330" viewBox="0 0 2288 330" role="img" aria-labelledby="lab12-title lab12-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="1112" viewBox="0 0 2036 1112" role="img" aria-labelledby="lab12-title lab12-desc">
   <title id="lab12-title">LAB-12 architecture: Design VM resilience, scale sets, and mobility</title>
-  <desc id="lab12-desc">Left-to-right service topology with 9 components and 9 directed relationships. Components: Operator and Azure CLI, Source tagged resource group, Availability set and VM, VM scale set, Autoscale profile, VM dependency move, Destination tagged resource group, Placement and scale assertions, Two-boundary cleanup. Relationships: Operator and Azure CLI to Source tagged resource group; Source tagged resource group to Availability set and VM; Source tagged resource group to VM scale set; VM scale set to Autoscale profile; Availability set and VM to VM dependency move; VM dependency move to Destination tagged resource group; Autoscale profile to Placement and scale assertions; Destination tagged resource group to Placement and scale assertions; Placement and scale assertions to Two-boundary cleanup.</desc>
-  <metadata id="lab12-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;9bad19fb53560b79deaa1001649f0d1dc97ea69ac0c3507eb22aea575aa7cbb0&quot;}</metadata>
+  <desc id="lab12-desc">Illustrated service topology with 9 components and 9 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Operator and Azure CLI, Source tagged resource group, Availability set and VM, VM scale set, Autoscale profile, VM dependency move, Destination tagged resource group, Placement and scale assertions, Two-boundary cleanup. Relationships: Operator and Azure CLI to Source tagged resource group; Source tagged resource group to Availability set and VM; Source tagged resource group to VM scale set; VM scale set to Autoscale profile; Availability set and VM to VM dependency move; VM dependency move to Destination tagged resource group; Autoscale profile to Placement and scale assertions; Destination tagged resource group to Placement and scale assertions; Placement and scale assertions to Two-boundary cleanup.</desc>
+  <metadata id="lab12-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;9bad19fb53560b79deaa1001649f0d1dc97ea69ac0c3507eb22aea575aa7cbb0&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 165 C 384 165, 384 165, 444 165"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 114, 824 114"/>
-    <path class="edge" d="M 704 165 C 764 165, 764 216, 824 216"/>
-    <path class="edge" d="M 1084 216 C 1144 216, 1144 114, 1204 114"/>
-    <path class="edge" d="M 1084 114 C 1144 114, 1144 216, 1204 216"/>
-    <path class="edge" d="M 1464 216 C 1524 216, 1524 114, 1584 114"/>
-    <path class="edge" d="M 1464 114 C 1524 114, 1524 216, 1584 216"/>
-    <path class="edge" d="M 1714 148 C 1748 165, 1748 165, 1714 182"/>
-    <path class="edge" d="M 1844 216 C 1904 216, 1904 165, 1964 165"/>
-    <rect x="64" y="131" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="165" class="node-label" fill="#102a43">Operator and Azure CLI</text>
-    <rect x="444" y="131" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="165" class="node-label" fill="#102a43">Source tagged resource group</text>
-    <rect x="824" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="114" class="node-label" fill="#102a43">Availability set and VM</text>
-    <rect x="824" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="216" class="node-label" fill="#102a43">VM scale set</text>
-    <rect x="1204" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1334" y="114" class="node-label" fill="#102a43">Autoscale profile</text>
-    <rect x="1204" y="182" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1334" y="216" class="node-label" fill="#102a43">VM dependency move</text>
-    <rect x="1584" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1714" y="114" class="node-label" fill="#102a43">Destination tagged resource group</text>
-    <rect x="1584" y="182" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="1714" y="216" class="node-label" fill="#102a43">Placement and scale assertions</text>
-    <rect x="1964" y="131" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="2094" y="165" class="node-label" fill="#102a43">Two-boundary cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">12</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Design VM resilience, scale sets, and mobility</text>
+    <path id="edge-0" data-source="A" data-target="S" class="edge" d="M 418 348 L 598 348"/>
+    <path id="edge-1" data-source="S" data-target="AV" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 336 L 1084 250 Q 1084 238 1096 238 L 1108 238"/>
+    <path id="edge-2" data-source="S" data-target="SS" class="edge" d="M 928 348 L 1072 348 Q 1084 348 1084 360 L 1084 446 Q 1084 458 1096 458 L 1108 458"/>
+    <path id="edge-3" data-source="SS" data-target="AS" class="edge" d="M 1438 458 L 1582 458 Q 1594 458 1594 446 L 1594 250 Q 1594 238 1606 238 L 1618 238"/>
+    <path id="edge-4" data-source="AV" data-target="M" class="edge" d="M 1438 238 L 1450 238 Q 1462 238 1462 250 L 1462 446 Q 1462 458 1474 458 L 1618 458"/>
+    <path id="edge-5" data-source="M" data-target="T" class="edge" d="M 1948 458 L 1960 458 Q 1972 458 1972 470 L 1972 628 Q 1972 640 1960 640 L 76 640 Q 64 640 64 652 L 64 714 Q 64 726 76 726 L 88 726"/>
+    <path id="edge-6" data-source="AS" data-target="V" class="edge" d="M 1948 238 L 1960 238 Q 1972 238 1972 250 L 1972 532 Q 1972 544 1960 544 L 76 544 Q 64 544 64 556 L 64 934 Q 64 946 76 946 L 88 946"/>
+    <path id="edge-7" data-source="T" data-target="V" class="edge" d="M 418 726 L 430 726 Q 442 726 442 738 L 442 848 Q 442 860 430 860 L 76 860 Q 64 860 64 872 L 64 934 Q 64 946 76 946 L 88 946"/>
+    <path id="edge-8" data-source="V" data-target="C" class="edge" d="M 418 946 L 562 946 Q 574 946 574 934 L 574 848 Q 574 836 586 836 L 598 836"/>
+    <g id="node-A" data-service-icon="code">
+      <rect x="88" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="309" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 316)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="198" y="336" class="node-label">Operator and Azure</text>
+      <text x="198" y="360" class="node-label">CLI</text>
+    </g>
+    <g id="node-S" data-service-icon="scope">
+      <rect x="598" y="286" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="309" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 316)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="708" y="336" class="node-label">Source tagged</text>
+      <text x="708" y="360" class="node-label">resource group</text>
+    </g>
+    <g id="node-AV" data-service-icon="scale">
+      <rect x="1108" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="199" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 206)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="22" width="19" height="28" rx="3"/><rect x="27" y="14" width="19" height="36" rx="3"/><path d="M48 9h9v41h-9M11 32h9M11 39h9M32 24h9M32 32h9M32 40h9"/></g>
+      <text x="1218" y="226" class="node-label">Availability set and</text>
+      <text x="1218" y="250" class="node-label">VM</text>
+    </g>
+    <g id="node-SS" data-service-icon="scale">
+      <rect x="1108" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="22" width="19" height="28" rx="3"/><rect x="27" y="14" width="19" height="36" rx="3"/><path d="M48 9h9v41h-9M11 32h9M11 39h9M32 24h9M32 32h9M32 40h9"/></g>
+      <text x="1218" y="458" class="node-label">VM scale set</text>
+    </g>
+    <g id="node-AS" data-service-icon="scale">
+      <rect x="1618" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1634" y="199" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1641 206)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="22" width="19" height="28" rx="3"/><rect x="27" y="14" width="19" height="36" rx="3"/><path d="M48 9h9v41h-9M11 32h9M11 39h9M32 24h9M32 32h9M32 40h9"/></g>
+      <text x="1728" y="238" class="node-label">Autoscale profile</text>
+    </g>
+    <g id="node-M" data-service-icon="vm">
+      <rect x="1618" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1634" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1641 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="35" rx="5"/><path d="M24 44v9M40 44v9M16 54h32M14 17h36M14 24h22M14 31h14"/><circle cx="47" cy="36" r="2"/></g>
+      <text x="1728" y="458" class="node-label">VM dependency move</text>
+    </g>
+    <g id="node-T" data-service-icon="scope">
+      <rect x="88" y="664" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="687" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 694)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="198" y="714" class="node-label">Destination tagged</text>
+      <text x="198" y="738" class="node-label">resource group</text>
+    </g>
+    <g id="node-V" data-service-icon="check">
+      <rect x="88" y="884" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="907" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 914)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="198" y="934" class="node-label">Placement and scale</text>
+      <text x="198" y="958" class="node-label">assertions</text>
+    </g>
+    <g id="node-C" data-service-icon="cleanup">
+      <rect x="598" y="774" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="797" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 804)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="708" y="836" class="node-label">Two-boundary cleanup</text>
+    </g>
+    <path d="M36 1072H2000" stroke="#29405D"/>
+    <text x="36" y="1095" class="footer">9 components · 9 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

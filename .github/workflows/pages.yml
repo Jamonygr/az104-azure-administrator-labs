@@ -15,7 +15,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  quality:
+    uses: ./.github/workflows/quality.yml
+
   build:
+    needs: quality
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -42,55 +46,11 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install -r requirements-dev.txt -r requirements-docs.txt
 
-      - name: Verify authoritative generated content
-        run: |
-          python tools/validate_repository.py --release
-          python tools/generate_labs.py --check
-          python tools/render_diagrams.py --check
-          python tools/generate_indexes.py --check
-          python tools/expand_assessments.py --check
-          python tools/validate_assessments.py
-
-      - name: Install PowerShell quality modules
-        shell: pwsh
-        run: |
-          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-          Install-Module Pester -RequiredVersion 5.7.1 -Scope CurrentUser -Force
-          Install-Module PSScriptAnalyzer -RequiredVersion 1.25.0 -Scope CurrentUser -Force
-
-      - name: Verify lifecycle scripts before publication
-        shell: pwsh
-        run: |
-          $scripts = @(
-            Get-ChildItem labs -Recurse -Filter '*.ps1' |
-              Where-Object { $_.FullName -match '[\\/]scripts[\\/]cli[\\/]' }
-            Get-Item tools/Initialize-LabEnvironment.ps1
-            Get-Item tools/Test-LabEnvironment.ps1
-            Get-Item tools/Update-LearnerProgress.ps1
-          )
-          $findings = $scripts | ForEach-Object {
-            Invoke-ScriptAnalyzer -Path $_.FullName -Severity Warning,Error
-          }
-          if ($findings) {
-            $findings | Format-Table -AutoSize
-            throw 'PSScriptAnalyzer reported warning or error findings.'
-          }
-          $result = Invoke-Pester -Path labs -Output Detailed -PassThru
-          if ($result.FailedCount -gt 0) {
-            throw "Pester reported $($result.FailedCount) failed test(s)."
-          }
-
-      - name: Build and lint Bicep before publication
-        run: |
-          az bicep install --version v0.46.1
-          az config set bicep.check_version=false
-          find labs -type f -name '*.bicep' -print0 | xargs -0 -r -I{} az bicep lint --file {}
-          find labs -type f -name '*.bicep' -print0 | xargs -0 -r -I{} az bicep build --file {} --outdir /tmp
-
       - name: Validate documentation staging
         run: |
           python -m py_compile tools/build_docs_site.py tools/check_toolchain.py
           node --check docs/site-assets/progress.js
+          node --check docs/site-assets/quiz.js
           python tools/build_docs_site.py --check
 
       - name: Stage authoritative content
@@ -103,17 +63,17 @@ jobs:
         run: python tools/build_docs_site.py --check-built-site site
 
       - name: Configure GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - name: Upload GitHub Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: site
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-24.04
     permissions:

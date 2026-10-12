@@ -1,65 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="768" height="656" viewBox="0 0 768 656" role="img" aria-labelledby="lab04-title lab04-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1016" height="1284" viewBox="0 0 1016 1284" role="img" aria-labelledby="lab04-title lab04-desc">
   <title id="lab04-title">LAB-04 architecture: Manage hierarchy, resource groups, tags, and locks</title>
-  <desc id="lab04-desc">Left-to-right service topology with 8 components and 8 directed relationships. Components: Tenant root management group, Subscription, Empty lab management group, Tagged resource group, Virtual network, Governance and ownership tags, CanNotDelete lock, Dependency-aware cleanup. Relationships: Tenant root management group to Subscription (existing hierarchy); Tenant root management group to Empty lab management group (optional exact-YES gate); Subscription to Tagged resource group (contains); Tagged resource group to Virtual network (contains); Governance and ownership tags to Tagged resource group (merge); Governance and ownership tags to Virtual network (explicit apply
+  <desc id="lab04-desc">Illustrated service topology with 8 components and 8 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Tenant root management group, Subscription, Empty lab management group, Tagged resource group, Virtual network, Governance and ownership tags, CanNotDelete lock, Dependency-aware cleanup. Relationships: Tenant root management group to Subscription (existing hierarchy); Tenant root management group to Empty lab management group (optional exact-YES gate); Subscription to Tagged resource group (contains); Tagged resource group to Virtual network (contains); Governance and ownership tags to Tagged resource group (merge); Governance and ownership tags to Virtual network (explicit apply
 no inheritance); CanNotDelete lock to Tagged resource group (protects control plane); Dependency-aware cleanup to CanNotDelete lock (remove exact lock first).</desc>
-  <metadata id="lab04-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;280fd82cd512b0ad6d74efd8f22ce078b54dbbe0054f88e1a0503b9851cef24e&quot;}</metadata>
+  <metadata id="lab04-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;280fd82cd512b0ad6d74efd8f22ce078b54dbbe0054f88e1a0503b9851cef24e&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 216 C 384 216, 384 114, 444 114"/>
-    <path class="edge" d="M 324 216 C 384 216, 384 226, 444 226"/>
-    <path class="edge" d="M 574 148 C 618 226, 618 226, 574 304"/>
-    <path class="edge" d="M 574 372 C 598 389, 598 389, 574 406"/>
-    <path class="edge" d="M 324 338 C 384 338, 384 338, 444 338"/>
-    <path class="edge" d="M 324 338 C 384 338, 384 440, 444 440"/>
-    <path class="edge" d="M 574 576 C 598 440, 598 440, 574 304"/>
-    <path class="edge" d="M 324 450 C 384 450, 384 542, 444 542"/>
-    <rect class="edge-label-bg" x="314" y="154" width="140" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="165">existing hierarchy</text>
-    <rect class="edge-label-bg" x="296.5" y="210" width="175" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="221">optional exact-YES gate</text>
-    <rect class="edge-label-bg" x="583" y="215" width="70" height="22" rx="4"/>
-    <text class="edge-label" x="618" y="226">contains</text>
-    <rect class="edge-label-bg" x="563" y="378" width="70" height="22" rx="4"/>
-    <text class="edge-label" x="598" y="389">contains</text>
-    <rect class="edge-label-bg" x="359" y="327" width="50" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="338">merge</text>
-    <rect class="edge-label-bg" x="275.5" y="378" width="217" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="389">explicit apply
-no inheritance</text>
-    <rect class="edge-label-bg" x="514" y="429" width="168" height="22" rx="4"/>
-    <text class="edge-label" x="598" y="440">protects control plane</text>
-    <rect class="edge-label-bg" x="296.5" y="485" width="175" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="496">remove exact lock first</text>
-    <rect x="64" y="172" width="260" height="88" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="206" class="node-label" fill="#102a43">Tenant root</text>
-    <text x="194" y="226" class="node-label" fill="#102a43">management group</text>
-    <rect x="444" y="80" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="114" class="node-label" fill="#102a43">Subscription</text>
-    <rect x="444" y="182" width="260" height="88" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="216" class="node-label" fill="#102a43">Empty lab</text>
-    <text x="574" y="236" class="node-label" fill="#102a43">management group</text>
-    <rect x="444" y="304" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="338" class="node-label" fill="#102a43">Tagged resource group</text>
-    <rect x="444" y="406" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="440" class="node-label" fill="#102a43">Virtual network</text>
-    <rect x="64" y="294" width="260" height="88" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="328" class="node-label" fill="#102a43">Governance and</text>
-    <text x="194" y="348" class="node-label" fill="#102a43">ownership tags</text>
-    <rect x="444" y="508" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="542" class="node-label" fill="#102a43">CanNotDelete lock</text>
-    <rect x="64" y="416" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="194" y="450" class="node-label" fill="#102a43">Dependency-aware cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">04</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Manage hierarchy, resource groups, tags, and locks</text>
+    <path id="edge-0" data-source="root" data-target="sub" class="edge" d="M 418 458 L 562 458 Q 574 458 574 446 L 574 250 Q 574 238 586 238 L 598 238"/>
+    <path id="edge-1" data-source="root" data-target="optional" class="edge" d="M 418 458 L 598 458"/>
+    <path id="edge-2" data-source="sub" data-target="rg" class="edge" d="M 928 238 L 940 238 Q 952 238 952 250 L 952 580 Q 952 592 940 592 L 586 592 Q 574 592 574 604 L 574 666 Q 574 678 586 678 L 598 678"/>
+    <path id="edge-3" data-source="rg" data-target="vnet" class="edge" d="M 928 678 L 940 678 Q 952 678 952 690 L 952 800 Q 952 812 940 812 L 586 812 Q 574 812 574 824 L 574 886 Q 574 898 586 898 L 598 898"/>
+    <path id="edge-4" data-source="tags" data-target="rg" class="edge" d="M 418 678 L 598 678"/>
+    <path id="edge-5" data-source="tags" data-target="vnet" class="edge" d="M 418 678 L 430 678 Q 442 678 442 690 L 442 886 Q 442 898 454 898 L 598 898"/>
+    <path id="edge-6" data-source="lock" data-target="rg" class="edge" d="M 928 1118 L 940 1118 Q 952 1118 952 1106 L 952 776 Q 952 764 940 764 L 586 764 Q 574 764 574 752 L 574 690 Q 574 678 586 678 L 598 678"/>
+    <path id="edge-7" data-source="cleanup" data-target="lock" class="edge" d="M 418 898 L 562 898 Q 574 898 574 910 L 574 1106 Q 574 1118 586 1118 L 598 1118"/>
+    <g id="node-root" data-service-icon="scope">
+      <rect x="88" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="419" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 426)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="198" y="446" class="node-label">Tenant root</text>
+      <text x="198" y="470" class="node-label">management group</text>
+    </g>
+    <g id="node-sub" data-service-icon="scope">
+      <rect x="598" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="708" y="238" class="node-label">Subscription</text>
+    </g>
+    <g id="node-optional" data-service-icon="scope">
+      <rect x="598" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="419" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 426)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="708" y="446" class="node-label">Empty lab</text>
+      <text x="708" y="470" class="node-label">management group</text>
+    </g>
+    <g id="node-rg" data-service-icon="scope">
+      <rect x="598" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="639" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 646)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="708" y="666" class="node-label">Tagged resource</text>
+      <text x="708" y="690" class="node-label">group</text>
+    </g>
+    <g id="node-vnet" data-service-icon="network">
+      <rect x="598" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="859" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 866)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="25" width="16" height="14" rx="3"/><circle cx="12" cy="12" r="6"/><circle cx="52" cy="12" r="6"/><circle cx="12" cy="52" r="6"/><circle cx="52" cy="52" r="6"/><path d="M17 17l8 8M47 17l-8 8M17 47l8-8M47 47l-8-8"/></g>
+      <text x="708" y="898" class="node-label">Virtual network</text>
+    </g>
+    <g id="node-tags" data-service-icon="scope">
+      <rect x="88" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="639" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 646)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h18l6 7h24v27H8z"/><path d="M8 20V10h21l6 7h21v10M20 39h24M20 46h15"/></g>
+      <text x="198" y="666" class="node-label">Governance and</text>
+      <text x="198" y="690" class="node-label">ownership tags</text>
+    </g>
+    <g id="node-lock" data-service-icon="lock">
+      <rect x="598" y="1056" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="1079" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 1086)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="28" width="38" height="30" rx="5"/><path d="M21 28V19a11 11 0 0 1 22 0v9"/><circle cx="32" cy="40" r="3"/><path d="M32 43v7"/></g>
+      <text x="708" y="1118" class="node-label">CanNotDelete lock</text>
+    </g>
+    <g id="node-cleanup" data-service-icon="cleanup">
+      <rect x="88" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="859" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 866)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="198" y="886" class="node-label">Dependency-aware</text>
+      <text x="198" y="910" class="node-label">cleanup</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-0">
+      <rect x="457.2" y="873" width="125.6" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="520" y="889">explicit apply</text>
+      <text class="edge-label" x="520" y="907">no inheritance</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-1">
+      <rect x="445.2" y="433" width="125.6" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="508" y="449">optional</text>
+      <text class="edge-label" x="508" y="467">exact-YES gate</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-2">
+      <rect x="518.6" y="983" width="110.8" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="574" y="999">remove exact</text>
+      <text class="edge-label" x="574" y="1017">lock first</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-3">
+      <path d="M763 801L763 764" stroke="#6AA0B2" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+      <rect x="692.8" y="776" width="140.4" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="763" y="792">protects control</text>
+      <text class="edge-label" x="763" y="810">plane</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-4">
+      <rect x="529.7" y="323" width="88.6" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="574" y="339">existing</text>
+      <text class="edge-label" x="574" y="357">hierarchy</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-5">
+      <path d="M763 564L763 592" stroke="#6AA0B2" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+      <rect x="722.4" y="548" width="81.2" height="32" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="763" y="564">contains</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-6">
+      <path d="M643 784L643 812" stroke="#6AA0B2" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+      <rect x="602.4" y="768" width="81.2" height="32" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="643" y="784">contains</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-7">
+      <rect x="477" y="662" width="62" height="32" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="508" y="678">merge</text>
+    </g>
+    <path d="M36 1244H980" stroke="#29405D"/>
+    <text x="36" y="1267" class="footer">8 components · 8 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

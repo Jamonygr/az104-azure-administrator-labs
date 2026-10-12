@@ -26,20 +26,18 @@ theme:
     - content.code.copy
     - content.code.annotate
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue
-      accent: cyan
-      toggle:
-        icon: material/brightness-7
-        name: Use dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: blue
       accent: cyan
       toggle:
         icon: material/brightness-4
         name: Use light mode
+    - scheme: default
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Use dark mode
 
 nav:
   - Home: index.md
@@ -68,16 +66,16 @@ nav:
       - Troubleshooting: docs/troubleshooting.md
       - Evidence handling: docs/evidence-handling.md
   - Progress: learner-progress.md
+  - Practice questions: practice.md
 
 plugins:
   - search:
       lang: en
-      separator: '[\\s\\-\\.]+'
+      separator: '[\s\-\.]+'
 
 markdown_extensions:
   - admonition
   - attr_list
-  - md_in_html
   - tables
   - toc:
       permalink: true
@@ -91,9 +89,11 @@ markdown_extensions:
 
 extra_css:
   - assets/progress.css
+  - assets/learning.css
 
 extra_javascript:
   - assets/progress.js
+  - assets/quiz.js
 
 validation:
   nav:

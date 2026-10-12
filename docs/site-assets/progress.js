@@ -124,14 +124,36 @@
     window.localStorage.setItem(storageKey, JSON.stringify(record));
   }
 
+  // The quiz updates a fresh, validated record rather than a page's cached
+  // snapshot. Assessment results never imply deployment or cleanup success.
+  function saveAssessmentScore(labId, score) {
+    if (!/^LAB-(?:0[1-9]|1[0-9]|2[0-5])$/.test(labId)) {
+      throw new Error("Only LAB-01 through LAB-25 have an assessment score.");
+    }
+    if (!Number.isInteger(score) || score < 0 || score > 100) {
+      throw new Error("Assessment scores must be whole numbers from 0 through 100.");
+    }
+    const record = readRecord(true);
+    record.labs[labId].assessmentScore = score;
+    record.labs[labId].updatedAt = new Date().toISOString();
+    writeRecord(record);
+    return score;
+  }
+
+  window.az104Progress = Object.freeze({ saveAssessmentScore });
+
   function errorText(error) {
     return error instanceof Error ? error.message : String(error);
   }
 
-  function persistRecord(record, statusElement, successMessage) {
+  function persistLabChange(labId, statusElement, change, successMessage) {
     try {
+      const record = readRecord(true);
+      const entry = record.labs[labId];
+      change(entry);
+      entry.updatedAt = new Date().toISOString();
       writeRecord(record);
-      statusElement.textContent = successMessage;
+      statusElement.textContent = successMessage(entry);
       return true;
     } catch (error) {
       statusElement.textContent = `Progress could not be saved in this browser: ${errorText(error)}`;
@@ -176,24 +198,21 @@
     actions.className = "az104-progress-actions";
 
     actions.append(makeButton("Mark in progress", () => {
-      entry.status = "in-progress";
-      entry.updatedAt = new Date().toISOString();
-      record.labs[labId] = entry;
-      persistRecord(record, summary, `Status: ${entry.status}; ${masteryText(entry)}.`);
+      persistLabChange(labId, summary, (current) => {
+        current.status = "in-progress";
+      }, (current) => `Status: ${current.status}; ${masteryText(current)}.`);
     }));
     actions.append(makeButton("Record validation pass", () => {
-      entry.validationPassed = true;
-      entry.status = entry.cleanupPassed ? "complete" : "in-progress";
-      entry.updatedAt = new Date().toISOString();
-      record.labs[labId] = entry;
-      persistRecord(record, summary, `Status: ${entry.status}; deployment validation passed.`);
+      persistLabChange(labId, summary, (current) => {
+        current.validationPassed = true;
+        current.status = current.cleanupPassed ? "complete" : "in-progress";
+      }, (current) => `Status: ${current.status}; deployment validation passed.`);
     }));
     actions.append(makeButton("Record cleanup pass", () => {
-      entry.cleanupPassed = true;
-      entry.status = entry.validationPassed ? "complete" : "in-progress";
-      entry.updatedAt = new Date().toISOString();
-      record.labs[labId] = entry;
-      persistRecord(record, summary, `Status: ${entry.status}; cleanup validation passed.`);
+      persistLabChange(labId, summary, (current) => {
+        current.cleanupPassed = true;
+        current.status = current.validationPassed ? "complete" : "in-progress";
+      }, (current) => `Status: ${current.status}; cleanup validation passed.`);
     }));
 
     const labNumber = Number.parseInt(labId.slice(4), 10);
@@ -213,15 +232,19 @@
       actions.append(scoreLabel);
       actions.append(makeButton("Save score", () => {
         const score = Number(scoreInput.value);
-        if (!Number.isInteger(score) || score < 0 || score > 100) {
+        if (!scoreInput.value.trim() || !Number.isInteger(score) || score < 0 || score > 100) {
           summary.textContent = "Enter a whole-number assessment score from 0 through 100.";
           scoreInput.focus();
           return;
         }
-        entry.assessmentScore = score;
-        entry.updatedAt = new Date().toISOString();
-        record.labs[labId] = entry;
-        persistRecord(record, summary, `Status: ${entry.status}; ${masteryText(entry)}.`);
+        try {
+          saveAssessmentScore(labId, score);
+          const savedEntry = readRecord(true).labs[labId];
+          Object.assign(entry, savedEntry);
+          summary.textContent = `Status: ${savedEntry.status}; ${masteryText(savedEntry)}.`;
+        } catch (error) {
+          summary.textContent = `Progress could not be saved in this browser: ${errorText(error)}`;
+        }
       }));
     }
 

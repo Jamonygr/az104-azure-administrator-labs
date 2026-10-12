@@ -1,62 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="2668" height="228" viewBox="0 0 2668 228" role="img" aria-labelledby="lab00-title lab00-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="672" viewBox="0 0 2036 672" role="img" aria-labelledby="lab00-title lab00-desc">
   <title id="lab00-title">LAB-00 architecture: Safe Azure lab bootstrap</title>
-  <desc id="lab00-desc">Left-to-right service topology with 7 components and 8 directed relationships. Components: Learner, Environment initializer, Version and dependency checks, Read-only Azure CLI context, Ignored run manifest, Setup and cleanup previews, Validation and residual audit. Relationships: Learner to Environment initializer (run one PowerShell command); Environment initializer to Version and dependency checks (inspect only); Version and dependency checks to Read-only Azure CLI context (required tools pass); Read-only Azure CLI context to Ignored run manifest (approved cloud and subscription); Ignored run manifest to Setup and cleanup previews (exact IDs, tags, and gates); Setup and cleanup previews to Validation and residual audit (no mutation in Lab 00); Validation and residual audit to Ignored run manifest (readiness and cleanup results); Ignored run manifest to Learner (safe boundary understood).</desc>
-  <metadata id="lab00-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;0b1aed881e472530657776b37c6b2c40299a7a3ac8edb94958a943f49755a803&quot;}</metadata>
+  <desc id="lab00-desc">Illustrated service topology with 7 components and 8 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Learner, Environment initializer, Version and dependency checks, Read-only Azure CLI context, Ignored run manifest, Setup and cleanup previews, Validation and residual audit. Relationships: Learner to Environment initializer (run one PowerShell command); Environment initializer to Version and dependency checks (inspect only); Version and dependency checks to Read-only Azure CLI context (required tools pass); Read-only Azure CLI context to Ignored run manifest (approved cloud and subscription); Ignored run manifest to Setup and cleanup previews (exact IDs, tags, and gates); Setup and cleanup previews to Validation and residual audit (no mutation in Lab 00); Validation and residual audit to Ignored run manifest (readiness and cleanup results); Ignored run manifest to Learner (safe boundary understood).</desc>
+  <metadata id="lab00-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;0b1aed881e472530657776b37c6b2c40299a7a3ac8edb94958a943f49755a803&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 324 114 C 384 114, 384 114, 444 114"/>
-    <path class="edge" d="M 704 114 C 764 114, 764 114, 824 114"/>
-    <path class="edge" d="M 1084 114 C 1144 114, 1144 114, 1204 114"/>
-    <path class="edge" d="M 1464 114 C 1524 114, 1524 114, 1584 114"/>
-    <path class="edge" d="M 1844 114 C 1904 114, 1904 114, 1964 114"/>
-    <path class="edge" d="M 2224 114 C 2284 114, 2284 114, 2344 114"/>
-    <path class="edge" d="M 2344 114 C 2294 178, 1894 178, 1844 114"/>
-    <path class="edge" d="M 1584 114 C 1534 192, 374 192, 324 114"/>
-    <rect class="edge-label-bg" x="286" y="103" width="196" height="22" rx="4"/>
-    <text class="edge-label" x="384" y="114">run one PowerShell command</text>
-    <rect class="edge-label-bg" x="715" y="103" width="98" height="22" rx="4"/>
-    <text class="edge-label" x="764" y="114">inspect only</text>
-    <rect class="edge-label-bg" x="1070.5" y="103" width="147" height="22" rx="4"/>
-    <text class="edge-label" x="1144" y="114">required tools pass</text>
-    <rect class="edge-label-bg" x="1408.5" y="103" width="231" height="22" rx="4"/>
-    <text class="edge-label" x="1524" y="114">approved cloud and subscription</text>
-    <rect class="edge-label-bg" x="1806" y="103" width="196" height="22" rx="4"/>
-    <text class="edge-label" x="1904" y="114">exact IDs, tags, and gates</text>
-    <rect class="edge-label-bg" x="2203.5" y="103" width="161" height="22" rx="4"/>
-    <text class="edge-label" x="2284" y="114">no mutation in Lab 00</text>
-    <rect class="edge-label-bg" x="1985.5" y="167" width="217" height="22" rx="4"/>
-    <text class="edge-label" x="2094" y="178">readiness and cleanup results</text>
-    <rect class="edge-label-bg" x="863" y="181" width="182" height="22" rx="4"/>
-    <text class="edge-label" x="954" y="192">safe boundary understood</text>
-    <rect x="64" y="80" width="260" height="68" rx="34" fill="#f6f8fa" stroke="#24292f"/>
-    <text x="194" y="114" class="node-label" fill="#24292f">Learner</text>
-    <rect x="444" y="80" width="260" height="68" rx="10" fill="#e7f3ff" stroke="#0969da"/>
-    <text x="574" y="114" class="node-label" fill="#0550ae">Environment initializer</text>
-    <rect x="824" y="80" width="260" height="68" rx="10" fill="#e7f3ff" stroke="#0969da"/>
-    <text x="954" y="114" class="node-label" fill="#0550ae">Version and dependency checks</text>
-    <rect x="1204" y="89" width="260" height="50" fill="#eaf5ea" stroke="#1a7f37"/>
-    <ellipse cx="1334" cy="89" rx="130" ry="9" fill="#eaf5ea" stroke="#1a7f37"/>
-    <path d="M 1204 139 a 130 9 0 0 0 260 0" fill="none" stroke="#1a7f37"/>
-    <text x="1334" y="114" class="node-label" fill="#116329">Read-only Azure CLI context</text>
-    <rect x="1584" y="89" width="260" height="50" fill="#fff8c5" stroke="#9a6700"/>
-    <ellipse cx="1714" cy="89" rx="130" ry="9" fill="#fff8c5" stroke="#9a6700"/>
-    <path d="M 1584 139 a 130 9 0 0 0 260 0" fill="none" stroke="#9a6700"/>
-    <text x="1714" y="114" class="node-label" fill="#633c01">Ignored run manifest</text>
-    <rect x="1964" y="80" width="260" height="68" rx="10" fill="#e7f3ff" stroke="#0969da"/>
-    <text x="2094" y="114" class="node-label" fill="#0550ae">Setup and cleanup previews</text>
-    <rect x="2344" y="80" width="260" height="68" rx="10" fill="#e7f3ff" stroke="#0969da"/>
-    <text x="2474" y="114" class="node-label" fill="#0550ae">Validation and residual audit</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">00</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Safe Azure lab bootstrap</text>
+    <path id="edge-0" data-source="learner" data-target="initializer" class="edge" d="M 418 238 L 598 238"/>
+    <path id="edge-1" data-source="initializer" data-target="tools" class="edge" d="M 928 238 L 1108 238"/>
+    <path id="edge-2" data-source="tools" data-target="context" class="edge" d="M 1438 238 L 1618 238"/>
+    <path id="edge-3" data-source="context" data-target="manifest" class="edge" d="M 1948 238 L 1960 238 Q 1972 238 1972 250 L 1972 408 Q 1972 420 1960 420 L 76 420 Q 64 420 64 432 L 64 494 Q 64 506 76 506 L 88 506"/>
+    <path id="edge-4" data-source="manifest" data-target="preview" class="edge" d="M 418 506 L 598 506"/>
+    <path id="edge-5" data-source="preview" data-target="audit" class="edge" d="M 928 506 L 1108 506"/>
+    <path id="edge-6" data-source="audit" data-target="manifest" class="edge" d="M 1438 506 L 1450 506 Q 1462 506 1462 518 L 1462 580 Q 1462 592 1450 592 L 76 592 Q 64 592 64 580 L 64 518 Q 64 506 76 506 L 88 506"/>
+    <path id="edge-7" data-source="manifest" data-target="learner" class="edge" d="M 418 506 L 430 506 Q 442 506 442 494 L 442 336 Q 442 324 430 324 L 76 324 Q 64 324 64 312 L 64 250 Q 64 238 76 238 L 88 238"/>
+    <g id="node-learner" data-service-icon="person">
+      <rect x="88" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="199" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 206)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="18" r="9"/><path d="M14 54v-8a18 18 0 0 1 36 0v8z"/><path d="M32 37v17"/></g>
+      <text x="198" y="238" class="node-label">Learner</text>
+    </g>
+    <g id="node-initializer" data-service-icon="code">
+      <rect x="598" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="708" y="226" class="node-label">Environment</text>
+      <text x="708" y="250" class="node-label">initializer</text>
+    </g>
+    <g id="node-tools" data-service-icon="check">
+      <rect x="1108" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="199" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 206)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="1218" y="226" class="node-label">Version and</text>
+      <text x="1218" y="250" class="node-label">dependency checks</text>
+    </g>
+    <g id="node-context" data-service-icon="code">
+      <rect x="1618" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1634" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1641 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="1728" y="226" class="node-label">Read-only Azure CLI</text>
+      <text x="1728" y="250" class="node-label">context</text>
+    </g>
+    <g id="node-manifest" data-service-icon="manifest">
+      <rect x="88" y="444" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="104" y="467" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(111 474)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6h25l10 10v42H15zM40 6v13h10M23 29h19M23 38h19M23 47h11"/></g>
+      <text x="198" y="506" class="node-label">Ignored run manifest</text>
+    </g>
+    <g id="node-preview" data-service-icon="cleanup">
+      <rect x="598" y="444" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="467" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 474)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="708" y="494" class="node-label">Setup and cleanup</text>
+      <text x="708" y="518" class="node-label">previews</text>
+    </g>
+    <g id="node-audit" data-service-icon="cleanup">
+      <rect x="1108" y="444" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="467" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 474)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="1218" y="494" class="node-label">Validation and</text>
+      <text x="1218" y="518" class="node-label">residual audit</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-0">
+      <rect x="947.8" y="395" width="140.4" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="1018" y="411">approved cloud</text>
+      <text class="edge-label" x="1018" y="429">and subscription</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-1">
+      <path d="M1540.5 549L1462 549" stroke="#6AA0B2" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+      <rect x="1474" y="524" width="133" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="1540.5" y="540">readiness and</text>
+      <text class="edge-label" x="1540.5" y="558">cleanup results</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-2">
+      <rect x="460" y="204" width="96" height="68" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="508" y="220">run one</text>
+      <text class="edge-label" x="508" y="238">PowerShell</text>
+      <text class="edge-label" x="508" y="256">command</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-3">
+      <rect x="437.8" y="481" width="140.4" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="508" y="497">exact IDs, tags,</text>
+      <text class="edge-label" x="508" y="515">and gates</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-4">
+      <path d="M253 361L253 324" stroke="#6AA0B2" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+      <rect x="193.9" y="336" width="118.2" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="253" y="352">safe boundary</text>
+      <text class="edge-label" x="253" y="370">understood</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-5">
+      <rect x="955.2" y="481" width="125.6" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="1018" y="497">no mutation in</text>
+      <text class="edge-label" x="1018" y="515">Lab 00</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-6">
+      <rect x="1465.2" y="213" width="125.6" height="50" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="1528" y="229">required tools</text>
+      <text class="edge-label" x="1528" y="247">pass</text>
+    </g>
+    <g class="edge-caption" id="edge-caption-7">
+      <rect x="962.6" y="222" width="110.8" height="32" rx="9" fill="#0D1728" stroke="#3E7189"/>
+      <text class="edge-label" x="1018" y="238">inspect only</text>
+    </g>
+    <path d="M36 632H2000" stroke="#29405D"/>
+    <text x="36" y="655" class="footer">7 components · 8 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>

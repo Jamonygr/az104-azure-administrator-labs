@@ -1,10 +1,18 @@
 # AZ-104 Complete Learning Environment
 
-![AZ-104 Complete Learning Environment cover showing Azure administration services](docs/visuals/az104-complete-learning-environment-cover.png)
+![Illustrated Azure cloud connected to identity, storage, compute, networking, monitoring, and an open learning book on a black background](docs/site-assets/illustrations/az104-cloud-cover.png)
+
+Connected Azure administration domains. [Open cover at full size](docs/site-assets/illustrations/az104-cloud-cover.png).
 
 A command-first path from Azure fundamentals to job-ready administration, aligned with Microsoft AZ-104.
 
-All learner Azure operations use Azure CLI (`az` and `az rest`), Bicep, AzCopy, or KQL from PowerShell 7. There are no browser-based lab steps, screenshots, or screenshot-evidence requirements. Architecture diagrams are the only instructional visuals.
+28 guided labs · 1,250 original practice questions · 82 mapped objectives
+
+[Start learning](https://jamonygr.github.io/az104-azure-administrator-labs/) · [Practice questions](https://jamonygr.github.io/az104-azure-administrator-labs/practice/) · [Your progress](https://jamonygr.github.io/az104-azure-administrator-labs/learner-progress/)
+
+Explore the illustrated learning website with a black default theme, a light-mode toggle, searchable lessons, interactive assessments, and private browser-local progress.
+
+All learner Azure operations use Azure CLI (`az` and `az rest`), Bicep, AzCopy, or KQL from PowerShell 7. Lab evidence uses redacted command output and structured results.
 
 > [!IMPORTANT]
 > This independent project is not an official Microsoft course. Azure resources can incur charges. Use an approved disposable subscription, review each lab's cost and permission gates, and complete its residual-resource audit.
@@ -17,7 +25,7 @@ All learner Azure operations use Azure CLI (`az` and `az rest`), Bicep, AzCopy, 
 | Full exam preparation | Learners covering every official objective | Labs 00–25 in order → all 1,250 questions → Capstones 26–27 |
 | Job ready | Learners practising operational ownership | Labs 00–25 → every break/fix and job-style challenge → both capstones |
 
-The searchable documentation site adds generated domain navigation, a glossary, cost guidance, and private browser-local progress. From PowerShell, stage and preview the site with:
+The searchable documentation site adds illustrated domain navigation, a glossary, cost guidance, automatically scored quizzes, and private browser-local progress. From PowerShell, stage and preview the site with:
 
 ```powershell
 python -m pip install -r requirements-dev.txt -r requirements-docs.txt
@@ -25,10 +33,9 @@ python tools/build_docs_site.py
 python -m mkdocs serve --strict
 ```
 
-The Pages workflow builds on pull requests and deploys only from `main`. Before
-the first deployment, the repository owner must enable GitHub Pages with
-**GitHub Actions** as its publishing source; the workflow does not change that
-repository setting.
+GitHub Pages uses **GitHub Actions** as its publishing source. Pull requests run
+the quality checks and documentation build; successful updates to `main` publish
+the website.
 
 ## Start safely
 

@@ -2,6 +2,23 @@
 
 All notable changes to this curriculum are documented here.
 
+## 2026-10-12 — Illustrated learning website
+
+### Added
+
+- An original cloud cover and five domain illustrations with a black default theme and light-mode toggle.
+- A responsive homepage with all 28 lab cards, curriculum statistics, and learning pathways.
+- Interactive 50-question assessments for Labs 01–25, explanations, official references, and task remediation links.
+- Automatic percentage scores integrated with the existing private learner-progress format.
+- Accessible service icons and refreshed SVG architecture diagrams, generated from the unchanged Mermaid sources.
+
+### Fixed
+
+- The quality workflow dependency-cache path and checksum-verified tool installation.
+- Documentation publishing now depends on the reusable repository quality checks.
+- Search tokenization and lab result titles.
+- Lesson progress actions preserve quiz scores saved in other tabs.
+
 ## Unreleased
 
 ### Added

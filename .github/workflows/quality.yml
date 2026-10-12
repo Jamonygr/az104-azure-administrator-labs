@@ -1,10 +1,7 @@
 name: Offline quality
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+  workflow_call:
   workflow_dispatch:
 
 permissions:
@@ -22,6 +19,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements-dev.txt
 
       - name: Install validation dependencies
         run: python -m pip install -r requirements-dev.txt
@@ -44,6 +42,18 @@ jobs:
       - name: Validate all 1,250 authored assessment records
         run: python tools/validate_assessments.py
 
+      - name: Set up Node.js for browser learning checks
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          package-manager-cache: false
+
+      - name: Validate quizzes and progress compatibility
+        run: |
+          node --check docs/site-assets/progress.js
+          node --check docs/site-assets/quiz.js
+          node --test tools/tests/browser_learning.test.cjs
+
       - name: Install PowerShell quality modules
         shell: pwsh
         run: |
@@ -56,6 +66,12 @@ jobs:
         run: |
           $scripts = Get-ChildItem labs -Recurse -Filter '*.ps1' |
             Where-Object { $_.FullName -match '[\\/]scripts[\\/]cli[\\/]' }
+          $scripts = @(
+            $scripts
+            Get-Item tools/Initialize-LabEnvironment.ps1
+            Get-Item tools/Test-LabEnvironment.ps1
+            Get-Item tools/Update-LearnerProgress.ps1
+          )
           $findings = $scripts | ForEach-Object {
             Invoke-ScriptAnalyzer -Path $_.FullName -Severity Warning,Error
           }
@@ -86,15 +102,19 @@ jobs:
       - name: Spell-check documentation
         run: npx --yes cspell@8.14.4 --no-progress "**/*.md"
 
+      - name: Set up Python for verified quality tools
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: "3.12"
+
+      - name: Install checksum-verified quality tools
+        run: python tools/install_check_tools.py
+
       - name: Lint GitHub Actions workflows
-        run: |
-          go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.1
-          "$(go env GOPATH)/bin/actionlint"
+        run: .check-tools/actionlint
 
       - name: Scan for committed secrets
-        run: |
-          go install github.com/zricethezav/gitleaks/v8@v8.18.4
-          "$(go env GOPATH)/bin/gitleaks" detect --source . --redact --no-banner
+        run: .check-tools/gitleaks git . --redact --no-banner
 
       - name: Build and lint Bicep artifacts
         run: |

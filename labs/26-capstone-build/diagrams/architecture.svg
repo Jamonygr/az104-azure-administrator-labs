@@ -1,57 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1528" height="636" viewBox="0 0 1528 636" role="img" aria-labelledby="lab26-title lab26-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2036" height="1284" viewBox="0 0 2036 1284" role="img" aria-labelledby="lab26-title lab26-desc">
   <title id="lab26-title">LAB-26 architecture: Capstone — Build a governed, secure, observable Azure workload</title>
-  <desc id="lab26-desc">Left-to-right service topology with 12 components and 13 directed relationships. Components: Bicep governed foundation, Segmented VNet and NSG, Private backend VM 1, Private backend VM 2, Standard load balancer, Blob private endpoint and DNS, Public-disabled storage, Diagnostics to Log Analytics, Scoped Policy, Optional scoped RBAC, Traffic, data, and governance assertions, Dependency-aware capstone cleanup. Relationships: Bicep governed foundation to Segmented VNet and NSG; Segmented VNet and NSG to Private backend VM 1; Segmented VNet and NSG to Private backend VM 2; Standard load balancer to Private backend VM 1; Standard load balancer to Private backend VM 2; Segmented VNet and NSG to Blob private endpoint and DNS; Blob private endpoint and DNS to Public-disabled storage; Public-disabled storage to Diagnostics to Log Analytics; Scoped Policy to Bicep governed foundation; Optional scoped RBAC to Public-disabled storage; Standard load balancer to Traffic, data, and governance assertions; Diagnostics to Log Analytics to Traffic, data, and governance assertions; Traffic, data, and governance assertions to Dependency-aware capstone cleanup.</desc>
-  <metadata id="lab26-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/1.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;252fa3cf94e9df42fa8eb40f892588fb965f02b50efbcf3c8addf834ccf04a82&quot;}</metadata>
+  <desc id="lab26-desc">Illustrated service topology with 12 components and 13 directed relationships. Original left-to-right ranks continue on the next row when necessary. Components: Bicep governed foundation, Segmented VNet and NSG, Private backend VM 1, Private backend VM 2, Standard load balancer, Blob private endpoint and DNS, Public-disabled storage, Diagnostics to Log Analytics, Scoped Policy, Optional scoped RBAC, Traffic, data, and governance assertions, Dependency-aware capstone cleanup. Relationships: Bicep governed foundation to Segmented VNet and NSG; Segmented VNet and NSG to Private backend VM 1; Segmented VNet and NSG to Private backend VM 2; Standard load balancer to Private backend VM 1; Standard load balancer to Private backend VM 2; Segmented VNet and NSG to Blob private endpoint and DNS; Blob private endpoint and DNS to Public-disabled storage; Public-disabled storage to Diagnostics to Log Analytics; Scoped Policy to Bicep governed foundation; Optional scoped RBAC to Public-disabled storage; Standard load balancer to Traffic, data, and governance assertions; Diagnostics to Log Analytics to Traffic, data, and governance assertions; Traffic, data, and governance assertions to Dependency-aware capstone cleanup.</desc>
+  <metadata id="lab26-metadata">{&quot;renderer&quot;:&quot;az104-mermaid-flowchart-svg/2.0.0&quot;,&quot;source&quot;:&quot;architecture.mmd&quot;,&quot;sourceSha256&quot;:&quot;252fa3cf94e9df42fa8eb40f892588fb965f02b50efbcf3c8addf834ccf04a82&quot;}</metadata>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
-      <path d="M 0 0 L 10 4 L 0 8 z" fill="#57606a"/>
-    </marker>
+    <linearGradient id="canvas-fill" x2="1" y2="1"><stop stop-color="#090D19"/><stop offset="1" stop-color="#111B30"/></linearGradient>
+    <linearGradient id="card-fill" x2="0" y2="1"><stop stop-color="#18253C"/><stop offset="1" stop-color="#111B2E"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#72A6E8" opacity=".10"/></pattern>
+    <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0 0L9 4L0 8z" fill="#59D6E8"/></marker>
     <style>
-      .edge { fill: none; stroke: #57606a; stroke-width: 2; marker-end: url(#arrow); }
-      .edge-label-bg { fill: #ffffff; opacity: .94; }
-      .edge-label { fill: #57606a; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
-      .node-label { font: 600 15px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .edge { fill: none; stroke: #59D6E8; stroke-width: 2; stroke-opacity: .8; marker-end: url(#arrow); }
+      .node-label { fill: #F6F8FF; font: 600 18px 'Segoe UI', Arial, sans-serif; dominant-baseline: central; }
+      .edge-label { fill: #D9F8FD; font: 13px 'Segoe UI', Arial, sans-serif; text-anchor: middle; dominant-baseline: central; }
+      .heading { fill: #F6F8FF; font: 700 27px 'Segoe UI', Arial, sans-serif; }
+      .eyebrow { fill: #87C9FF; font: 600 14px 'Segoe UI', Arial, sans-serif; letter-spacing: 2px; }
+      .footer { fill: #ACC0DC; font: 13px 'Segoe UI', Arial, sans-serif; }
     </style>
   </defs>
-  <rect width="100%" height="100%" fill="#ffffff"/>
+  <rect width="100%" height="100%" fill="url(#canvas-fill)"/>
+  <rect width="100%" height="100%" fill="url(#grid)"/>
   <g aria-hidden="true">
-    <path class="edge" d="M 704 114 C 764 114, 764 216, 824 216"/>
-    <path class="edge" d="M 824 216 C 774 294, 754 294, 704 216"/>
-    <path class="edge" d="M 824 216 C 774 410, 754 410, 704 318"/>
-    <path class="edge" d="M 324 216 C 384 216, 384 216, 444 216"/>
-    <path class="edge" d="M 324 216 C 384 216, 384 318, 444 318"/>
-    <path class="edge" d="M 1084 216 C 1144 216, 1144 318, 1204 318"/>
-    <path class="edge" d="M 1204 318 C 1154 484, 754 484, 704 420"/>
-    <path class="edge" d="M 704 420 C 764 420, 764 318, 824 318"/>
-    <path class="edge" d="M 324 318 C 384 318, 384 114, 444 114"/>
-    <path class="edge" d="M 324 420 C 384 420, 384 420, 444 420"/>
-    <path class="edge" d="M 324 216 C 384 216, 384 522, 444 522"/>
-    <path class="edge" d="M 824 318 C 774 614, 754 614, 704 522"/>
-    <path class="edge" d="M 704 522 C 764 522, 764 420, 824 420"/>
-    <rect x="444" y="80" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="574" y="114" class="node-label" fill="#102a43">Bicep governed foundation</text>
-    <rect x="824" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="216" class="node-label" fill="#102a43">Segmented VNet and NSG</text>
-    <rect x="444" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="216" class="node-label" fill="#102a43">Private backend VM 1</text>
-    <rect x="444" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="318" class="node-label" fill="#102a43">Private backend VM 2</text>
-    <rect x="64" y="182" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="216" class="node-label" fill="#102a43">Standard load balancer</text>
-    <rect x="1204" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="1334" y="318" class="node-label" fill="#102a43">Blob private endpoint and DNS</text>
-    <rect x="444" y="386" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="574" y="420" class="node-label" fill="#102a43">Public-disabled storage</text>
-    <rect x="824" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="954" y="318" class="node-label" fill="#102a43">Diagnostics to Log Analytics</text>
-    <rect x="64" y="284" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="318" class="node-label" fill="#102a43">Scoped Policy</text>
-    <rect x="64" y="386" width="260" height="68" rx="10" fill="#e9f8ef" stroke="#16803a"/>
-    <text x="194" y="420" class="node-label" fill="#102a43">Optional scoped RBAC</text>
-    <rect x="444" y="488" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="574" y="522" class="node-label" fill="#102a43">Traffic, data, and governance assertions</text>
-    <rect x="824" y="386" width="260" height="68" rx="10" fill="#e8f1ff" stroke="#2563eb"/>
-    <text x="954" y="420" class="node-label" fill="#102a43">Dependency-aware capstone cleanup</text>
+    <rect x="36" y="35" width="72" height="34" rx="10" fill="#6366F1" fill-opacity=".23" stroke="#A295F9" stroke-opacity=".55"/>
+    <text x="72" y="58" class="eyebrow" text-anchor="middle">26</text>
+    <text x="126" y="58" class="eyebrow">AZURE ADMINISTRATOR · SERVICE TOPOLOGY</text>
+    <text x="36" y="102" class="heading">Capstone — Build a governed, secure, observable Azure workload</text>
+    <path id="edge-0" data-source="B" data-target="VNET" class="edge" d="M 928 238 L 1072 238 Q 1084 238 1084 250 L 1084 446 Q 1084 458 1096 458 L 1108 458"/>
+    <path id="edge-1" data-source="VNET" data-target="VM1" class="edge" d="M 1438 458 L 1450 458 Q 1462 458 1462 446 L 1462 384 Q 1462 372 1450 372 L 586 372 Q 574 372 574 384 L 574 446 Q 574 458 586 458 L 598 458"/>
+    <path id="edge-2" data-source="VNET" data-target="VM2" class="edge" d="M 1438 458 L 1450 458 Q 1462 458 1462 470 L 1462 580 Q 1462 592 1450 592 L 586 592 Q 574 592 574 604 L 574 666 Q 574 678 586 678 L 598 678"/>
+    <path id="edge-3" data-source="LB" data-target="VM1" class="edge" d="M 418 458 L 598 458"/>
+    <path id="edge-4" data-source="LB" data-target="VM2" class="edge" d="M 418 458 L 430 458 Q 442 458 442 470 L 442 666 Q 442 678 454 678 L 598 678"/>
+    <path id="edge-5" data-source="VNET" data-target="PE" class="edge" d="M 1438 458 L 1582 458 Q 1594 458 1594 470 L 1594 666 Q 1594 678 1606 678 L 1618 678"/>
+    <path id="edge-6" data-source="PE" data-target="ST" class="edge" d="M 1948 678 L 1960 678 Q 1972 678 1972 690 L 1972 800 Q 1972 812 1960 812 L 586 812 Q 574 812 574 824 L 574 886 Q 574 898 586 898 L 598 898"/>
+    <path id="edge-7" data-source="ST" data-target="D" class="edge" d="M 928 898 L 1072 898 Q 1084 898 1084 886 L 1084 690 Q 1084 678 1096 678 L 1108 678"/>
+    <path id="edge-8" data-source="P" data-target="B" class="edge" d="M 418 678 L 562 678 Q 574 678 574 666 L 574 250 Q 574 238 586 238 L 598 238"/>
+    <path id="edge-9" data-source="R" data-target="ST" class="edge" d="M 418 898 L 598 898"/>
+    <path id="edge-10" data-source="LB" data-target="X" class="edge" d="M 418 458 L 430 458 Q 442 458 442 470 L 442 1106 Q 442 1118 454 1118 L 598 1118"/>
+    <path id="edge-11" data-source="D" data-target="X" class="edge" d="M 1438 678 L 1450 678 Q 1462 678 1462 690 L 1462 1020 Q 1462 1032 1450 1032 L 586 1032 Q 574 1032 574 1044 L 574 1106 Q 574 1118 586 1118 L 598 1118"/>
+    <path id="edge-12" data-source="X" data-target="C" class="edge" d="M 928 1118 L 1072 1118 Q 1084 1118 1084 1106 L 1084 910 Q 1084 898 1096 898 L 1108 898"/>
+    <g id="node-B" data-service-icon="code">
+      <rect x="598" y="176" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="614" y="199" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(621 206)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18L8 32l14 14M42 18l14 14-14 14M37 9L27 55"/></g>
+      <text x="708" y="226" class="node-label">Bicep governed</text>
+      <text x="708" y="250" class="node-label">foundation</text>
+    </g>
+    <g id="node-VNET" data-service-icon="shield">
+      <rect x="1108" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="1124" y="419" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(1131 426)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l22 9v17c0 13-9 23-22 29C19 55 10 45 10 32V15z"/><path d="M22 33l7 7 15-17"/></g>
+      <text x="1218" y="446" class="node-label">Segmented VNet and</text>
+      <text x="1218" y="470" class="node-label">NSG</text>
+    </g>
+    <g id="node-VM1" data-service-icon="vm">
+      <rect x="598" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="419" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 426)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="35" rx="5"/><path d="M24 44v9M40 44v9M16 54h32M14 17h36M14 24h22M14 31h14"/><circle cx="47" cy="36" r="2"/></g>
+      <text x="708" y="458" class="node-label">Private backend VM 1</text>
+    </g>
+    <g id="node-VM2" data-service-icon="vm">
+      <rect x="598" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="614" y="639" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(621 646)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="50" height="35" rx="5"/><path d="M24 44v9M40 44v9M16 54h32M14 17h36M14 24h22M14 31h14"/><circle cx="47" cy="36" r="2"/></g>
+      <text x="708" y="678" class="node-label">Private backend VM 2</text>
+    </g>
+    <g id="node-LB" data-service-icon="balance">
+      <rect x="88" y="396" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="104" y="419" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(111 426)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="23" y="6" width="18" height="14" rx="3"/><rect x="5" y="44" width="18" height="14" rx="3"/><rect x="41" y="44" width="18" height="14" rx="3"/><path d="M32 20v10H14v14M32 30h18v14M10 52h8M46 52h8"/></g>
+      <text x="198" y="446" class="node-label">Standard load</text>
+      <text x="198" y="470" class="node-label">balancer</text>
+    </g>
+    <g id="node-PE" data-service-icon="dns">
+      <rect x="1618" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1634" y="639" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1641 646)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><ellipse cx="32" cy="32" rx="11" ry="24"/><path d="M9 25h46M9 39h46M32 8v48"/></g>
+      <text x="1728" y="666" class="node-label">Blob private</text>
+      <text x="1728" y="690" class="node-label">endpoint and DNS</text>
+    </g>
+    <g id="node-ST" data-service-icon="storage">
+      <rect x="598" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="859" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 866)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="13" rx="22" ry="8"/><path d="M10 13v37c0 11 44 11 44 0V13M10 27c0 11 44 11 44 0M10 40c0 11 44 11 44 0"/></g>
+      <text x="708" y="886" class="node-label">Public-disabled</text>
+      <text x="708" y="910" class="node-label">storage</text>
+    </g>
+    <g id="node-D" data-service-icon="monitor">
+      <rect x="1108" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="1124" y="639" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(1131 646)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="52" height="40" rx="5"/><path d="M11 34h10l5-13 10 23 5-10h12M24 50v7M40 50v7M18 58h28"/></g>
+      <text x="1218" y="666" class="node-label">Diagnostics to Log</text>
+      <text x="1218" y="690" class="node-label">Analytics</text>
+    </g>
+    <g id="node-P" data-service-icon="shield">
+      <rect x="88" y="616" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="639" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 646)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l22 9v17c0 13-9 23-22 29C19 55 10 45 10 32V15z"/><path d="M22 33l7 7 15-17"/></g>
+      <text x="198" y="678" class="node-label">Scoped Policy</text>
+    </g>
+    <g id="node-R" data-service-icon="shield">
+      <rect x="88" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#B8A4FF" stroke-opacity=".64"/>
+      <rect x="104" y="859" width="78" height="78" rx="20" fill="#B8A4FF" fill-opacity=".10"/>
+      <g transform="translate(111 866)" fill="none" stroke="#B8A4FF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6l22 9v17c0 13-9 23-22 29C19 55 10 45 10 32V15z"/><path d="M22 33l7 7 15-17"/></g>
+      <text x="198" y="898" class="node-label">Optional scoped RBAC</text>
+    </g>
+    <g id="node-X" data-service-icon="check">
+      <rect x="598" y="1056" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#5BE1EF" stroke-opacity=".64"/>
+      <rect x="614" y="1079" width="78" height="78" rx="20" fill="#5BE1EF" fill-opacity=".10"/>
+      <g transform="translate(621 1086)" fill="none" stroke="#5BE1EF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M18 32l9 10 20-23"/></g>
+      <text x="708" y="1094" class="node-label">Traffic, data, and</text>
+      <text x="708" y="1118" class="node-label">governance</text>
+      <text x="708" y="1142" class="node-label">assertions</text>
+    </g>
+    <g id="node-C" data-service-icon="cleanup">
+      <rect x="1108" y="836" width="330" height="124" rx="20" fill="url(#card-fill)" stroke="#69AFFF" stroke-opacity=".64"/>
+      <rect x="1124" y="859" width="78" height="78" rx="20" fill="#69AFFF" fill-opacity=".10"/>
+      <g transform="translate(1131 866)" fill="none" stroke="#69AFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18h36M25 11h14M18 18l3 38h22l3-38M27 26v22M37 26v22"/></g>
+      <text x="1218" y="886" class="node-label">Dependency-aware</text>
+      <text x="1218" y="910" class="node-label">capstone cleanup</text>
+    </g>
+    <path d="M36 1244H2000" stroke="#29405D"/>
+    <text x="36" y="1267" class="footer">12 components · 13 directed connections · Original source: architecture.mmd</text>
   </g>
 </svg>
