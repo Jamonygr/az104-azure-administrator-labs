@@ -5,6 +5,8 @@
 - Azure fundamentals, networking, operating systems, servers, and virtualization.
 - Basic command-line and source-control familiarity.
 
+Microsoft's AZ-104 audience profile also expects experience with PowerShell, Azure CLI, the Azure portal, Azure Resource Manager templates or Bicep files, and Microsoft Entra ID. This curriculum builds the PowerShell, Azure CLI, Bicep, and Microsoft Entra ID experience directly; it does not contain portal procedures, so review the portal independently if you have never used it.
+
 ## Azure environment
 
 - A disposable sandbox tenant and subscription that you are authorized to modify.
