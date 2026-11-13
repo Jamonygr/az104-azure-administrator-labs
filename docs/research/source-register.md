@@ -1,15 +1,15 @@
 # AZ-104 source register
 
-Research date: **2026-08-30**
-
 Only first-party Microsoft sources are authoritative for the exam blueprint and technical lab claims. The current English study guide is the sole source used to count official objectives; supporting sources add role context, learning paths, and tool guidance.
 
 ## Blueprint and credential authorities
 
 | Source ID | Source | Purpose | Verified | Notes |
 |---|---|---|---|---|
-| `SRC-EXAM-GUIDE` | [Study guide for Exam AZ-104: Microsoft Azure Administrator](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104) | Canonical domain weights, skill groups, and objective text | 2026-08-30 | Skills measured as of 2026-04-17; page reports last update 2026-03-19 |
-| `SRC-CERTIFICATION` | [Microsoft Certified: Azure Administrator Associate](https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/) | Audience, role, exam, renewal, and credential context | 2026-08-30 | Credential page reports last update 2026-04-17 |
+| `SRC-EXAM-GUIDE` | [Study guide for Exam AZ-104: Microsoft Azure Administrator](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104) | Canonical domain weights, skill groups, and objective text | 2026-11-07 | The blueprint baseline is the skills-measured version recorded as `blueprintEffectiveDate` in `curriculum/blueprint.yml`. At re-verification the live page had been republished and rendered only the superseded skills list and its older change log in every locale checked. No newer skills-measured version or future change log was published, so this is treated as a Microsoft publishing regression, not an exam update. The blueprint is unchanged; recheck the live page before the next release. |
+| `SRC-EXAM-GUIDE-ARCHIVE` | [Internet Archive capture of the AZ-104 study guide](https://web.archive.org/web/20261012205028/https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104) | Archived evidence of the current skills-measured text used for bullet-by-bullet comparison | 2026-11-07 | Matches `curriculum/blueprint.yml` on all 82 objective bullets, 15 group headings, 5 domain names, and 5 weights. The preceding capture shows the same version, and the one before it shows the previous version. Evidence only; the live Microsoft page remains the authority once it is corrected. |
+| `SRC-CERTIFICATION` | [Microsoft Certified: Azure Administrator Associate](https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/) | Audience, role, exam, renewal, and credential context | 2026-11-07 | Skills content on this page is rendered client-side, so the study guide remains the objective-count source. |
+| `SRC-PRACTICE-ASSESSMENT` | [Microsoft practice assessment for AZ-104 on AI Skills Navigator](https://aka.ms/AZ104-PA) | Official learner-facing exam-readiness check referenced from the study plan and assessment guide | 2026-11-07 | Microsoft's study guide now directs learners to the AI Skills Navigator practice assessment and states that the legacy Microsoft Learn practice assessment (`https://aka.ms/AZ104-LearnPA`) is no longer being updated. Sign-in is required. Supporting source only: never used as a question source, and no wording from it may appear in this repository's banks. |
 | `SRC-COURSE` | [Course AZ-104T00-A: Microsoft Azure Administrator](https://learn.microsoft.com/en-us/training/courses/az-104t00) | Instructor-led course context and related training | 2026-08-30 | Supporting source only; does not control objective counts |
 
 ## Microsoft Learn paths
@@ -54,6 +54,7 @@ Only first-party Microsoft sources are authoritative for the exam blueprint and 
 ## Source policy
 
 - Recheck `SRC-EXAM-GUIDE` before authoring a release; Microsoft updates exams periodically and updates English first.
+- If the live study guide shows an older skills-measured version than the one recorded in `curriculum/blueprint.yml`, compare the page against the most recent Internet Archive capture, record the discrepancy in this register and in `docs/research/az-104-blueprint.md`, and keep the blueprint on the newest officially published version. Never downgrade the blueprint because of a page regression; only a newer skills list or change log counts as an exam update.
 - Cite the most specific current Microsoft article in each lab and each answer explanation rather than citing only a documentation hub.
 - Record a `lastVerified` date beside time-sensitive command or service behavior.
 - Treat Microsoft Learn training as helpful sequencing, not as a replacement for the official objective list.

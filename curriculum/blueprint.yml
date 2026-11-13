@@ -3,12 +3,16 @@ exam:
   code: "AZ-104"
   title: "Microsoft Azure Administrator"
   blueprintEffectiveDate: "2026-04-17"
-  researchedDate: "2026-08-30"
   officialObjectiveCount: 82
   domainCount: 5
   groupCount: 15
   primarySourceId: "SRC-EXAM-GUIDE"
   primarySourceUrl: "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104"
+  # Archived copy of the study guide used for bullet-by-bullet comparison when
+  # the live page regressed to a superseded skills list; see
+  # docs/research/az-104-blueprint.md for the verification notes.
+  archivedSourceId: "SRC-EXAM-GUIDE-ARCHIVE"
+  archivedSourceUrl: "https://web.archive.org/web/20261012205028/https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104"
 
 # These are repository prerequisites, not Microsoft exam objectives. They are
 # intentionally excluded from officialObjectiveCount.

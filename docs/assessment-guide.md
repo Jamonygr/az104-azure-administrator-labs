@@ -9,6 +9,7 @@ Labs 01–25 each contain a 50-question knowledge check. Lab 00 and Capstones 26
 3. Score one point for each correct response.
 4. Use each missed question's remediation link in `assessment/ANSWERS.md` to repeat the mapped task and checkpoint.
 5. Retry the assessment after reviewing the relevant Microsoft Learn sources.
+6. Once every lab bank is in the mastery band, take [Microsoft's official practice assessment on AI Skills Navigator](https://aka.ms/AZ104-PA) as an independent readiness check. The repository banks are original, are not derived from any Microsoft practice assessment, and do not predict live exam items; see the [study plan](study-plan.md#exam-readiness) for how to use the two together.
 
 Use these learning bands; they are not claims about Microsoft's exam scoring:
 

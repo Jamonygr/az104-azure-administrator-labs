@@ -1,14 +1,28 @@
 # AZ-104 blueprint research baseline
 
-Research date: **2026-08-30**
 Skills measured from: **2026-04-17**
 Primary authority: [Microsoft's AZ-104 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104)
+Archived evidence: [Internet Archive capture of the study guide](https://web.archive.org/web/20261012205028/https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104)
 
 ## Research result
 
 The current English-language study guide defines five weighted skill domains, 15 skill groups, and 82 objective bullets. `curriculum/blueprint.yml` is the machine-readable source of truth for this repository; `docs/objective-map.md` is its learner-readable lab mapping.
 
 Microsoft notes that the bullets illustrate how each skill is assessed, related topics may also appear, and most questions cover generally available features. Preview features may appear when commonly used. The repository therefore treats these objectives as a minimum coverage boundary rather than a promise about the exact contents or distribution of exam questions.
+
+## Verification notes
+
+| Pass | Result | Notes |
+|---|---|---|
+| Baseline | Blueprint captured | The live study guide showed the skills-measured version recorded above, and its 82 objectives were recorded in `curriculum/blueprint.yml`. |
+| Re-verification | Blueprint unchanged | The live page had been republished and rendered only the superseded skills list and its older change log in every locale checked. The current objective text was therefore compared bullet by bullet against the two most recent Internet Archive captures: all 82 objectives, 15 group headings, 5 domain names, and 5 weights match the blueprint exactly. No newer skills-measured version, future change log, or retirement notice was found, so the regression is recorded as a Microsoft publishing error rather than an exam update. |
+
+Two non-objective changes were confirmed in the current version and are now reflected in the learner documentation:
+
+- The audience profile lists experience with "Azure Resource Manager templates or Bicep files" (previously "Azure Resource Manager templates"); see `docs/prerequisites.md`.
+- Microsoft directs learners to the practice assessment on AI Skills Navigator and states that the legacy Microsoft Learn practice assessment is no longer being updated; see `docs/study-plan.md` and `docs/assessment-guide.md`.
+
+Neither change adds, removes, renames, or reorders an official objective, so objective IDs, lab mappings, and assessment mappings are unchanged.
 
 ## Skills at a glance
 
@@ -69,10 +83,11 @@ Before a release or whenever Microsoft announces an exam update:
 
 1. Reopen the English study guide and certification page.
 2. Confirm the effective date, five weights, group headings, and every objective bullet.
-3. Compare the new text against `curriculum/blueprint.yml`.
-4. Update the source register and research date.
-5. Re-run exact counts, uniqueness checks, lab coverage checks, and assessment coverage checks.
-6. Document additions, removals, renames, or reordered objectives in the release notes.
+3. If the live page shows an older skills-measured version than `curriculum/blueprint.yml` records, compare the page against the most recent Internet Archive capture, record the discrepancy in the verification notes and the source register, and keep the blueprint on the newest officially published version. Only a newer skills list or change log counts as an exam update.
+4. Compare the new text against `curriculum/blueprint.yml`.
+5. Update the source register.
+6. Re-run exact counts, uniqueness checks, lab coverage checks, and assessment coverage checks.
+7. Document additions, removals, renames, or reordered objectives in the release notes.
 
 ## Research boundaries
 
