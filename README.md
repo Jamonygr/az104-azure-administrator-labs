@@ -10,6 +10,14 @@ A command-first path from Azure fundamentals to job-ready administration, aligne
 
 [Start learning](https://jamonygr.github.io/az104-azure-administrator-labs/) · [Practice questions](https://jamonygr.github.io/az104-azure-administrator-labs/practice/) · [Visual guides](https://jamonygr.github.io/az104-azure-administrator-labs/visual-guides/) · [Your progress](https://jamonygr.github.io/az104-azure-administrator-labs/learner-progress/)
 
+## Companion book
+
+<a href="book/Cloud_Administration_in_Practice.pdf"><img src="book/cover.jpg" width="180" alt="Cloud Administration in Practice by Christos Panagiotidis"></a>
+
+**[Download Cloud Administration in Practice (PDF, 472 pages)](https://raw.githubusercontent.com/Jamonygr/az104-azure-administrator-labs/main/book/Cloud_Administration_in_Practice.pdf)** by Christos Panagiotidis. Follow a workload from identity and networking through deployment, monitoring, and recovery, then put those skills together in the capstone project.
+
+## Learning environment
+
 Explore the illustrated learning website with a black default theme, a light-mode toggle, searchable lessons, interactive assessments, and private browser-local progress.
 
 All learner Azure operations use Azure CLI (`az` and `az rest`), Bicep, AzCopy, or KQL from PowerShell 7. Lab evidence uses redacted command output and structured results.
